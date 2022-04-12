@@ -1,0 +1,26 @@
+{
+    "name": "file-format-project-template",
+    "version": "1.0.0",
+    "description": "A template project for working with Sketch documents",
+    "main": "src/index.ts",
+    "author": "Ale Muñoz",
+    "license": "MIT",
+    "dependencies": {
+        "@sketch-hq/sketch-file": "1.1.0",
+        "@sketch-hq/sketch-file-format": "6.2.0",
+        "@types/node": "17.0.23",
+        "node-fetch": "^2.6.7",
+        "path": "0.12.7",
+        "r": "^0.0.5",
+        "rgb-hex": "3.0.0",
+        "typescript": "4.6.3"
+    },
+    "scripts": {
+        "start": "tsc && node src/index.js"
+    },
+    "devDependencies": {
+        "@typescript-eslint/eslint-plugin": "5.18.0",
+        "@typescript-eslint/parser": "5.18.0",
+        "eslint": "8.12.0"
+    }
+}
