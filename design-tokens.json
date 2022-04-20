@@ -14,7 +14,7 @@
       "degree": "90",
       "stops": {
         "1": {
-          "color": "Black",
+          "color": "$Black",
           "position": 0
         },
         "2": {
@@ -39,7 +39,7 @@
           "position": 0.3
         },
         "3": {
-          "color": "Black",
+          "color": "$Black",
           "position": 1
         }
       }
@@ -65,7 +65,7 @@
       "degree": "90",
       "stops": {
         "1": {
-          "color": "Black",
+          "color": "$Black",
           "position": 0
         },
         "2": {
@@ -82,7 +82,7 @@
       "degree": "90",
       "stops": {
         "1": {
-          "color": "Black",
+          "color": "$Black",
           "position": 0
         },
         "2": {
@@ -98,7 +98,7 @@
   },
   "shadows": {
     "shadow-1": {
-      "shadow-color": "Black",
+      "shadow-color": "$Black",
       "shadow-blur-radius": 4,
       "shadow-offset-x": 0,
       "shadow-offset-y": 2,
@@ -114,7 +114,7 @@
   },
   "inner-shadows": {
     "inner-shadow-1": {
-      "inner-shadow-color": "Black",
+      "inner-shadow-color": "$Black",
       "inner-shadow-blur-radius": 3,
       "inner-shadow-offset-x": 0,
       "inner-shadow-offset-y": 1,
@@ -122,10 +122,10 @@
     }
   },
   "fonts": {
-    "font-family-Helvetica": "Helvetica",
-    "font-family-OpenSans-SemiboldItalic": "OpenSans-SemiboldItalic",
-    "font-family-HelveticaNeue-Bold": "HelveticaNeue-Bold",
-    "font-family-Helvetica-Light": "Helvetica-Light"
+    "$font-family-Helvetica": "Helvetica",
+    "$font-family-OpenSans-SemiboldItalic": "OpenSans-SemiboldItalic",
+    "$font-family-HelveticaNeue-Bold": "HelveticaNeue-Bold",
+    "$font-family-Helvetica-Light": "Helvetica-Light"
   },
   "font-sizes": {
     "font-size-1": 14,
@@ -144,35 +144,35 @@
   "text-vertical-alignments": {},
   "layer-styles": {
     "Background": {
-      "background-color": "White",
+      "background-color": "$White",
       "background2-color": "84b58eff",
-      "border-color": "Black",
+      "border-color": "$Black",
       "border2-color": "a54646ff",
       "border-position": "Inside",
       "border2-position": "Center",
       "border-size": "4px",
       "border2-size": "2px",
-      "shadow": "shadow-1",
-      "shadow-2": "shadow-2",
-      "inner-shadow": "inner-shadow-1"
+      "shadow": "$shadow-1",
+      "shadow-2": "$shadow-2",
+      "inner-shadow": "$inner-shadow-1"
     },
     "Blue Fill": {
       "background-color": "addbe9ff"
     },
     "Gradient Angular": {
-      "background-color": "angular-gradient-1"
+      "background-color": "$angular-gradient-1"
     },
     "Gradient Ellipse": {
-      "background-color": "radial-gradient-2"
+      "background-color": "$radial-gradient-2"
     },
     "Gradient Linear": {
-      "background-color": "linear-gradient-1"
+      "background-color": "$linear-gradient-1"
     },
     "Gradient Linear 2": {
-      "background-color": "linear-gradient-2"
+      "background-color": "$linear-gradient-2"
     },
     "Gradient Radial": {
-      "background-color": "radial-gradient-2"
+      "background-color": "$radial-gradient-2"
     },
     "Green Fill": {
       "background-color": "84b58eff"
@@ -203,72 +203,86 @@
       }
     },
     "Icons": {
-      "background-color": "Black",
-      "border-color": "Black",
+      "background-color": "$Black",
+      "border-color": "$Black",
       "border-position": "Inside",
       "border-size": "4px",
-      "shadow": "shadow-1",
-      "inner-shadow": "inner-shadow-1"
+      "shadow": "$shadow-1",
+      "inner-shadow": "$inner-shadow-1"
     },
     "Orange Fill": {
-      "background-color": "Orange"
+      "background-color": "$Orange"
     },
     "Primary": {
-      "background-color": "Red",
-      "border-color": "Black",
+      "background-color": "$Red",
+      "border-color": "$Black",
       "border-position": "Inside",
       "border-size": "3px",
-      "shadow": "shadow-1",
-      "inner-shadow": "inner-shadow-1"
+      "shadow": "$shadow-1",
+      "inner-shadow": "$inner-shadow-1"
     }
   },
   "text-styles": {
     "Body": {
       "Body": {
-        "font-family": "font-family-Helvetica",
-        "font-size": "font-size-2",
-        "text-color": "Black",
-        "text-align": "text-align-left"
+        "font-family": "$font-family-Helvetica",
+        "font-family-name": "Helvetica",
+        "font-weight": "Regular",
+        "font-size": "$font-size-2",
+        "text-color": "$Black",
+        "text-align": "$text-align-left"
       },
       "Body - small": {
-        "font-family": "font-family-OpenSans-SemiboldItalic",
-        "font-size": "font-size-1",
-        "text-color": "Black",
-        "text-align": "text-align-right"
+        "font-family": "$font-family-OpenSans-SemiboldItalic",
+        "font-family-name": "OpenSans",
+        "font-weight": "SemiboldItalic",
+        "font-size": "$font-size-1",
+        "text-color": "$Black",
+        "text-align": "$text-align-right"
       }
     },
     "Heading": {
       "H1": {
         "H1": {
-          "font-family": "font-family-HelveticaNeue-Bold",
-          "font-size": "font-size-4",
-          "text-color": "Red",
-          "text-align": "text-align-center"
+          "font-family": "$font-family-HelveticaNeue-Bold",
+          "font-family-name": "HelveticaNeue",
+          "font-weight": "Bold",
+          "font-size": "$font-size-4",
+          "text-color": "$Red",
+          "text-align": "$text-align-center"
         },
         "h1 Style": {
-          "font-family": "font-family-Helvetica-Light",
-          "font-size": "font-size-6",
-          "text-color": "Orange",
-          "text-align": "text-align-left"
+          "font-family": "$font-family-Helvetica-Light",
+          "font-family-name": "Helvetica",
+          "font-weight": "Light",
+          "font-size": "$font-size-6",
+          "text-color": "$Orange",
+          "text-align": "$text-align-left"
         }
       },
       "H2": {
-        "font-family": "font-family-Helvetica",
-        "font-size": "font-size-3",
-        "text-color": "Black",
-        "text-align": "text-align-left"
+        "font-family": "$font-family-Helvetica",
+        "font-family-name": "Helvetica",
+        "font-weight": "Regular",
+        "font-size": "$font-size-3",
+        "text-color": "$Black",
+        "text-align": "$text-align-left"
       },
       "h2 Style": {
-        "font-family": "font-family-Helvetica-Light",
-        "font-size": "font-size-5",
-        "text-color": "Orange",
-        "text-align": "text-align-left"
+        "font-family": "$font-family-Helvetica-Light",
+        "font-family-name": "Helvetica",
+        "font-weight": "Light",
+        "font-size": "$font-size-5",
+        "text-color": "$Orange",
+        "text-align": "$text-align-left"
       },
       "h3 Style": {
-        "font-family": "font-family-Helvetica-Light",
-        "font-size": "font-size-3",
-        "text-color": "Orange",
-        "text-align": "text-align-left"
+        "font-family": "$font-family-Helvetica-Light",
+        "font-family-name": "Helvetica",
+        "font-weight": "Light",
+        "font-size": "$font-size-3",
+        "text-color": "$Orange",
+        "text-align": "$text-align-left"
       }
     }
   }

@@ -1,9 +1,9 @@
 {
-    "name": "file-format-project-template",
+    "name": "sketch-design-tokens",
     "version": "1.0.0",
-    "description": "A template project for working with Sketch documents",
+    "description": "Export color variables, layer styles and text styles as design tokens in a JSON file",
     "main": "src/index.ts",
-    "author": "Ale Muñoz",
+    "author": "Matteo Gratton",
     "license": "MIT",
     "dependencies": {
         "@sketch-hq/sketch-file": "1.1.0",

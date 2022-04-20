@@ -3,14 +3,7 @@ import { fromFile, SketchFile } from '@sketch-hq/sketch-file'
 import { resolve } from 'path'
 import * as fs from 'fs'
 import rgbHex from 'rgb-hex'
-import {
-  collapseTextChangeRangesAcrossMultipleVersions,
-  getLineAndCharacterOfPosition,
-  isConstructorTypeNode,
-} from 'typescript'
-import { type } from 'os'
 import { isDeepStrictEqual } from 'util'
-import { sortObj } from 'sort-object'
 
 const sketchDocumentPath = '../sample-file.sketch'
 
@@ -43,6 +36,7 @@ fromFile(resolve(__dirname, sketchDocumentPath)).then(
     if (!document.sharedSwatches) return
 
     // Default variables
+    const variablePrefix = '$'
     const keyToDelete = 'length'
     const separator = '-'
     let designTokensList = {}
@@ -97,10 +91,9 @@ fromFile(resolve(__dirname, sketchDocumentPath)).then(
           if (checkToken(colorTokens, currentColor) === false) {
             currentShadow['shadow-color'] = currentColor
           } else {
-            currentShadow['shadow-color'] = getKeyByValue(
-              colorTokens,
-              currentColor
-            )
+            currentShadow['shadow-color'] =
+              variablePrefix +
+              getKeyByValue(colorTokens, currentColor, variablePrefix)
           }
           currentShadow['shadow-blur-radius'] = shadow.blurRadius
           currentShadow['shadow-offset-x'] = shadow.offsetX
@@ -137,10 +130,9 @@ fromFile(resolve(__dirname, sketchDocumentPath)).then(
           if (checkToken(colorTokens, currentColor) === false) {
             currentShadow['inner-shadow-color'] = currentColor
           } else {
-            currentShadow['inner-shadow-color'] = getKeyByValue(
-              colorTokens,
-              currentColor
-            )
+            currentShadow['inner-shadow-color'] =
+              variablePrefix +
+              getKeyByValue(colorTokens, currentColor, variablePrefix)
           }
           currentShadow['inner-shadow-blur-radius'] = shadow.blurRadius
           currentShadow['inner-shadow-offset-x'] = shadow.offsetX
@@ -195,7 +187,8 @@ fromFile(resolve(__dirname, sketchDocumentPath)).then(
           currentGradient = setGradientDetails(
             currentGradient,
             fill,
-            gradientType
+            gradientType,
+            variablePrefix
           )
           let gradientStylesCheck = {}
           createCouples(
@@ -318,19 +311,23 @@ fromFile(resolve(__dirname, sketchDocumentPath)).then(
               // createCouples(colorTokens, currentColor, "color", i);
               styleColors['background' + fillCount + '-color'] = currentColor
             } else {
-              styleColors['background' + fillCount + '-color'] = getKeyByValue(
-                colorTokens,
-                currentColor
-              )
+              styleColors['background' + fillCount + '-color'] =
+                variablePrefix + getKeyByValue(colorTokens, currentColor)
             }
           }
           // #endregion
+
           // #region fill gradient
           if (fillType === 1) {
             let currentGradient = {}
             let gradientType = fill.gradient.gradientType
             let gradientName = gradientTypeValue[gradientType]
-            currentGradient = setGradientDetails(currentGradient, fill)
+            currentGradient = setGradientDetails(
+              currentGradient,
+              fill,
+              gradientType,
+              variablePrefix
+            )
 
             let currentGradientName =
               gradientTypeValue[fill.gradient.gradientType]
@@ -341,11 +338,13 @@ fromFile(resolve(__dirname, sketchDocumentPath)).then(
                 isDeepStrictEqual(currentGradient, gradient) &&
                 gradientName.includes(currentGradientName)
               ) {
-                styleColors['background' + fillCount + '-color'] = gradientName
+                styleColors['background' + fillCount + '-color'] =
+                  variablePrefix + gradientName
               }
             }
           }
           // #endregion
+
           // #region fill image
           if (fillType === 4) {
             // console.log(style.name)
@@ -396,13 +395,10 @@ fromFile(resolve(__dirname, sketchDocumentPath)).then(
             color.alpha
           )
           if (checkToken(colorTokens, currentColor) === false) {
-            // createCouples(colorTokens, currentColor, "color", i);
             styleBorderColors['border' + fillCount + '-color'] = currentColor
           } else {
-            styleBorderColors['border' + fillCount + '-color'] = getKeyByValue(
-              colorTokens,
-              currentColor
-            )
+            styleBorderColors['border' + fillCount + '-color'] =
+              variablePrefix + getKeyByValue(colorTokens, currentColor)
           }
 
           // Position
@@ -450,10 +446,9 @@ fromFile(resolve(__dirname, sketchDocumentPath)).then(
           currentShadow['shadow-offset-y'] = shadow.offsetY
           currentShadow['shadow-spread'] = shadow.spread
           if (!checkToken(currentShadow, shadowStyles)) {
-            styleShadow['shadow' + shadowCount] = getKeyByValueObj(
-              shadowStyles,
-              currentShadow
-            )
+            styleShadow['shadow' + shadowCount] =
+              variablePrefix +
+              getKeyByValueObj(shadowStyles, currentShadow, variablePrefix)
           }
 
           counter++
@@ -496,10 +491,9 @@ fromFile(resolve(__dirname, sketchDocumentPath)).then(
           currentShadow['inner-shadow-spread'] = shadow.spread
 
           if (!checkToken(currentShadow, innerShadowStyles)) {
-            styleInnerShadows['inner-shadow' + shadowCount] = getKeyByValueObj(
-              innerShadowStyles,
-              currentShadow
-            )
+            styleInnerShadows['inner-shadow' + shadowCount] =
+              variablePrefix +
+              getKeyByValueObj(innerShadowStyles, currentShadow, variablePrefix)
           }
 
           counter++
@@ -544,6 +538,7 @@ fromFile(resolve(__dirname, sketchDocumentPath)).then(
     const textAlignmentOptions = ['left', 'right', 'center']
 
     let fonts = {}
+
     let fontSize = {}
     let fontWeight = {}
     let fontAlignment = {}
@@ -589,10 +584,13 @@ fromFile(resolve(__dirname, sketchDocumentPath)).then(
     // Check and list all the variants
     let counter = 1
     for (const textStyle of textStyles) {
+      let fontFamily = []
       let styleFontFamily
+      let styleFontFamilyName = {}
       let styleFontSize = {}
+      let styleFontForcedStyle
       let styleFontColor
-      let styleFontWeight
+      let styleFontWeight = {}
       let styleFontAlignment
       let styleFontVAlignment
       let styleFontKerning
@@ -615,8 +613,15 @@ fromFile(resolve(__dirname, sketchDocumentPath)).then(
           currentStyleFontKey = currentStyleFont.replaceAll(' ', separator)
         }
       }
-      createCouples(fonts, currentStyleFont, 'font-family', currentStyleFontKey)
+      fontFamily = currentStyleFont.split('-')
+      createCouples(
+        fonts,
+        currentStyleFont,
+        '$font-family',
+        currentStyleFontKey
+      )
       styleFontFamily = setStyleToken(fonts, currentStyleFont, 'font-family')
+      styleFontFamilyName['font-family-name'] = fontFamily[0]
       //console.log(styleFontFamily)
       // #endregion
 
@@ -624,11 +629,16 @@ fromFile(resolve(__dirname, sketchDocumentPath)).then(
       let currentStyleFontSize =
         textStyle.value.textStyle.encodedAttributes
           .MSAttributedStringFontAttribute.attributes.size
-      styleFontSize = setStyleToken(fontSize, currentStyleFontSize, 'font-size')
+      styleFontSize = setStyleToken(
+        fontSize,
+        currentStyleFontSize,
+        'font-size',
+        variablePrefix
+      )
       // console.log(styleFontSize)
       // #endregion
 
-      // #region  Font Color
+      // #region Font Color
       let currentStyleFontColor =
         textStyle.value.textStyle.encodedAttributes
           .MSAttributedStringColorAttribute
@@ -642,7 +652,12 @@ fromFile(resolve(__dirname, sketchDocumentPath)).then(
       if (checkToken(colorTokens, currentColor) === false) {
         createCouples(colorTokens, currentColor, 'color', counter.toString())
       }
-      styleFontColor = setStyleToken(colorTokens, currentColor, 'text-color')
+      styleFontColor = setStyleToken(
+        colorTokens,
+        currentColor,
+        'text-color',
+        variablePrefix
+      )
       // #endregion
 
       // #region Font Weight
@@ -659,6 +674,11 @@ fromFile(resolve(__dirname, sketchDocumentPath)).then(
       //   currentStyleFontWeight,
       //   'font-weight'
       // )
+      if (fontFamily[1] !== undefined) {
+        styleFontWeight['font-weight'] = fontFamily[1]
+      } else {
+        styleFontWeight['font-weight'] = 'Regular'
+      }
       // #endregion
 
       // #region Text Alignment
@@ -681,12 +701,18 @@ fromFile(resolve(__dirname, sketchDocumentPath)).then(
           styleFontAlignment = setStyleToken(
             fontAlignment,
             forcedAlignment,
-            'text-align'
+            'text-align',
+            variablePrefix
           )
         }
       } else {
         createCouples(fontAlignment, 'left', 'text-align', 'left')
-        styleFontAlignment = setStyleToken(fontAlignment, 'left', 'text-align')
+        styleFontAlignment = setStyleToken(
+          fontAlignment,
+          'left',
+          'text-align',
+          variablePrefix
+        )
       }
       // #endregion
 
@@ -781,8 +807,9 @@ fromFile(resolve(__dirname, sketchDocumentPath)).then(
       // manage the entire text style
       textStylesTokensList = Object.assign(
         styleFontFamily,
-        styleFontSize,
+        styleFontFamilyName,
         styleFontWeight,
+        styleFontSize,
         styleFontColor,
         styleFontAlignment,
         styleFontVAlignment,
@@ -896,15 +923,19 @@ function checkToken(object, currentItem) {
   return check
 }
 
-function getKeyByValue(object, value) {
+function getKeyByValue(object, value, discard = '') {
+  if (typeof value === 'string') {
+    value = value.replace(discard, '')
+  }
   return Object.keys(object).find(key => object[key] === value)
 }
 
-function getKeyByValueObj(object, value) {
+function getKeyByValueObj(object, value, discard = '') {
   return Object.keys(object).find(key => {
-    //console.log(object[key] === value)
-    //console.log(JSON.stringify(object[key]) === JSON.stringify(value))
-    return JSON.stringify(object[key]) === JSON.stringify(value)
+    return (
+      JSON.stringify(object[key]).replace(discard, '') ===
+      JSON.stringify(value).replace(discard, '')
+    )
   })
 }
 
@@ -939,12 +970,12 @@ function createCouples(
   }
 }
 
-function setStyleToken(object, currentItem, key = '') {
+function setStyleToken(object, currentItem, key = '', prefix = '') {
   let token = {}
   if (checkToken(object, currentItem)) {
-    token[key] = getKeyByValue(object, currentItem)
+    token[key] = prefix + getKeyByValue(object, currentItem)
   } else {
-    token[key] = currentItem
+    token[key] = prefix + currentItem
   }
   return token
 }
@@ -1014,7 +1045,7 @@ function setColorToken(object, currentItem, key, internalObject = undefined) {
 }
 
 // Set Gradients
-function setGradientDetails(object, currentItem, type = 0) {
+function setGradientDetails(object, currentItem, type = 0, prefix = '') {
   let currentObject = {}
   let fill = currentItem
 
@@ -1056,7 +1087,7 @@ function setGradientDetails(object, currentItem, type = 0) {
       currentStop = Object.assign(currentStop, { color: currentColor })
     } else {
       currentStop = Object.assign(currentStop, {
-        color: getKeyByValue(colorTokens, currentColor),
+        color: prefix + getKeyByValue(colorTokens, currentColor),
       })
     }
     currentStop = Object.assign(currentStop, {
