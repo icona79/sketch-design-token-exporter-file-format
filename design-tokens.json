@@ -9,6 +9,93 @@
     "Red": "ff0000ff",
     "White": "ffffffff"
   },
+  "gradients": {
+    "angular-gradient-1": {
+      "degree": "90",
+      "stops": {
+        "1": {
+          "color": "Black",
+          "position": 0
+        },
+        "2": {
+          "color": "537bffff",
+          "position": 0.5
+        },
+        "3": {
+          "color": "90d21eff",
+          "position": 0.85
+        }
+      }
+    },
+    "linear-gradient-1": {
+      "degree": "-90",
+      "stops": {
+        "1": {
+          "color": "90d21eff",
+          "position": 0
+        },
+        "2": {
+          "color": "ff41f8ff",
+          "position": 0.3
+        },
+        "3": {
+          "color": "Black",
+          "position": 1
+        }
+      }
+    },
+    "linear-gradient-2": {
+      "degree": "-90",
+      "stops": {
+        "1": {
+          "color": "1ea0d2ff",
+          "position": 0
+        },
+        "2": {
+          "color": "4aff41ff",
+          "position": 0.3
+        },
+        "3": {
+          "color": "e728f4ff",
+          "position": 1
+        }
+      }
+    },
+    "radial-gradient-1": {
+      "degree": "90",
+      "stops": {
+        "1": {
+          "color": "Black",
+          "position": 0
+        },
+        "2": {
+          "color": "ff6464ff",
+          "position": 0.7
+        },
+        "3": {
+          "color": "90d21eff",
+          "position": 1
+        }
+      }
+    },
+    "radial-gradient-2": {
+      "degree": "90",
+      "stops": {
+        "1": {
+          "color": "Black",
+          "position": 0
+        },
+        "2": {
+          "color": "ff6464ff",
+          "position": 0.7
+        },
+        "3": {
+          "color": "90d21eff",
+          "position": 1
+        }
+      }
+    }
+  },
   "shadows": {
     "shadow-1": {
       "shadow-color": "Black",
@@ -72,8 +159,48 @@
     "Blue Fill": {
       "background-color": "addbe9ff"
     },
+    "Gradient Angular": {
+      "background-color": "angular-gradient-1"
+    },
+    "Gradient Ellipse": {
+      "background-color": "radial-gradient-2"
+    },
+    "Gradient Linear": {
+      "background-color": "linear-gradient-1"
+    },
+    "Gradient Linear 2": {
+      "background-color": "linear-gradient-2"
+    },
+    "Gradient Radial": {
+      "background-color": "radial-gradient-2"
+    },
     "Green Fill": {
       "background-color": "84b58eff"
+    },
+    "Group": {
+      "Image FILL": {
+        "background-position": "center",
+        "background-repeat": "no-repeat",
+        "background-image": "images/99265022cd2655f30555c62da650e8e6b6f5c4e8.png"
+      },
+      "pattern FIT": {
+        "background-position": "center",
+        "background-size": "contain",
+        "background-repeat": "no-repeat",
+        "background-image": "images/853732577995ec08625706620b0235b0184b90e8.pdf"
+      },
+      "pattern STRETCH": {
+        "background-position": "center",
+        "background-size": "cover",
+        "background-repeat": "no-repeat",
+        "background-image": "images/853732577995ec08625706620b0235b0184b90e8.pdf"
+      },
+      "pattern TILE": {
+        "background-position": "center",
+        "background-size": "200%",
+        "background-repeat": "repeat",
+        "background-image": "images/853732577995ec08625706620b0235b0184b90e8.pdf"
+      }
     },
     "Icons": {
       "background-color": "Black",

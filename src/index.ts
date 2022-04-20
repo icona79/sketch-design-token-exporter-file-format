@@ -3,9 +3,37 @@ import { fromFile, SketchFile } from '@sketch-hq/sketch-file'
 import { resolve } from 'path'
 import * as fs from 'fs'
 import rgbHex from 'rgb-hex'
-import { isConstructorTypeNode } from 'typescript'
+import {
+  collapseTextChangeRangesAcrossMultipleVersions,
+  getLineAndCharacterOfPosition,
+  isConstructorTypeNode,
+} from 'typescript'
+import { type } from 'os'
+import { isDeepStrictEqual } from 'util'
+import { sortObj } from 'sort-object'
 
 const sketchDocumentPath = '../sample-file.sketch'
+
+// #region Default constants
+// filltType
+// 0 = Fill
+// 1 = Gradient
+// gradientType
+// 0 = Linear
+// 1 = Radial
+// 2 = Angular
+const borderPosition = ['Inside', 'Center', 'Outside']
+const gradientTypeValue = [
+  'linear-gradient',
+  'radial-gradient',
+  'angular-gradient',
+]
+const gradientCircleType = ['circle', 'ellipse']
+const imageFillType = ['tile', 'fill', 'stretch', 'fit']
+
+// Color Tokens (Color Variables ONLY)
+const colorTokens = {}
+// #endregion
 
 // Load the Sketch document and parse it into a SketchFile object
 fromFile(resolve(__dirname, sketchDocumentPath)).then(
@@ -26,9 +54,6 @@ fromFile(resolve(__dirname, sketchDocumentPath)).then(
       (a, b) => a.name.localeCompare(b.name, undefined, { numeric: true })
     )
 
-    // Color Tokens (Color Variables ONLY)
-    const colorTokens = {}
-
     swatches.forEach(swatch => {
       let swatchColor = rgbHex(
         swatch.value.red * 255,
@@ -48,9 +73,6 @@ fromFile(resolve(__dirname, sketchDocumentPath)).then(
     const layerStyles = document.layerStyles.objects.sort((a, b) =>
       a.name.localeCompare(b.name, undefined, { numeric: true })
     )
-
-    const borderPosition = ['Inside', 'Center', 'Outside']
-
     // Color styles checks
     let layerStylesTokensList = {}
     let layerStyleTokens = {}
@@ -142,6 +164,69 @@ fromFile(resolve(__dirname, sketchDocumentPath)).then(
     }
     // #endregion
 
+    // #region gradients
+    let gradientStyles = {}
+    let gradientStylesForComparison = {}
+    let counterLinear = 0
+    let counterRadial = 0
+    let counterAngular = 0
+    for (const style of layerStyles) {
+      let fills = style.value.fills
+
+      let counter = 1
+
+      for (const fill of fills) {
+        if (fill.fillType === 1) {
+          let currentGradient = {}
+          let gradientType = fill.gradient.gradientType
+          if (gradientType === 0) {
+            counterLinear++
+            counter = counterLinear
+          } else if (gradientType === 1) {
+            counterRadial++
+            counter = counterRadial
+          } else {
+            counterAngular++
+            counter = counterAngular
+          }
+          let currentGradientName =
+            gradientTypeValue[gradientType] + separator + counter.toString()
+
+          currentGradient = setGradientDetails(
+            currentGradient,
+            fill,
+            gradientType
+          )
+          let gradientStylesCheck = {}
+          createCouples(
+            gradientStylesCheck,
+            currentGradient,
+            currentGradientName,
+            '',
+            0
+          )
+          // checks
+          // console.log('Current Gradient')
+          // console.log(gradientStylesCheck)
+          // console.log('Gradient List')
+          // console.log(gradientStyles)
+          // console.log(isDeepStrictEqual(gradientStyles, gradientStylesCheck))
+          //
+
+          if (!checkToken(currentGradient, gradientStyles)) {
+            createCouples(
+              gradientStyles,
+              currentGradient,
+              currentGradientName,
+              '',
+              0
+            )
+          }
+        }
+      }
+    }
+    // #endregion
+
     for (const style of layerStyles) {
       let currentStyle = style.name
 
@@ -153,32 +238,138 @@ fromFile(resolve(__dirname, sketchDocumentPath)).then(
       let styleShadow = {}
       let styleInnerShadows = {}
 
+      // #region checks
+      // if (currentStyle == 'Blue Fill') {
+      //   console.log('Fill:')
+      //   console.log(style.value.fills)
+      // }
+      // if (currentStyle == 'Gradient Linear') {
+      //   console.log('Gradient Linear:')
+      //   console.log(style.value.fills)
+      //   // for (const fill of style.value.fills) {
+      //   //   // console.log(fill.gradient.gradientType)
+      //   //   // console.log(fill.gradient.stops)
+      //   //   console.log(fill.gradient.from.split(',')[0].replace('{', ''))
+      //   //   console.log(fill.gradient.from.split(',')[1].replace('}', ''))
+      //   //   console.log(fill.gradient.to)
+      //   //   let degree = getAngleDeg(
+      //   //     fill.gradient.from.split(',')[0].replace('{', ''),
+      //   //     fill.gradient.from.split(',')[1].replace('}', ''),
+      //   //     fill.gradient.to.split(',')[0].replace('{', ''),
+      //   //     fill.gradient.to.split(',')[1].replace('}', '')
+      //   //   )
+      //   //   console.log(Math.round(degree))
+      //   // }
+      // }
+      // if (currentStyle == 'Gradient Radial') {
+      //   console.log('Gradient Radial:')
+      //   console.log(style.value.fills)
+      //   // for (const fill of style.value.fills) {
+      //   //   // console.log(fill.gradient.gradientType)
+      //   //   // console.log(fill.gradient.stops)
+      //   //   console.log(fill.gradient.from.split(',')[0].replace('{', ''))
+      //   //   console.log(fill.gradient.from.split(',')[1].replace('}', ''))
+      //   //   console.log(fill.gradient.to)
+      //   //   let degree = getAngleDeg(
+      //   //     fill.gradient.from.split(',')[0].replace('{', ''),
+      //   //     fill.gradient.from.split(',')[1].replace('}', ''),
+      //   //     fill.gradient.to.split(',')[0].replace('{', ''),
+      //   //     fill.gradient.to.split(',')[1].replace('}', '')
+      //   //   )
+      //   //   console.log(Math.round(degree))
+      //   // }
+      // }
+      // if (currentStyle == 'Image') {
+      //   console.log('Image:')
+      //   for (const fill of style.value.fills) {
+      //   }
+      // }
+      // #endregion
+
       // #region Fills check
       let fills = style.value.fills
       let counter = 1
       for (const fill of fills) {
+        let fillType = fill.fillType
+        // console.log(
+        //   style.name +
+        //     ' - Fill Type: ' +
+        //     fillType +
+        //     ' - Fill Gradient Type: ' +
+        //     fill.gradient.gradientType
+        // )
+        let fillGradientStyles = {}
         if (fill.isEnabled) {
           let fillCount = ''
           if (counter > 1) {
             fillCount = counter.toString()
           }
 
-          let color = fill.color
-          let currentColor = rgbHex(
-            color.red * 255,
-            color.green * 255,
-            color.blue * 255,
-            color.alpha
-          )
-          if (checkToken(colorTokens, currentColor) === false) {
-            // createCouples(colorTokens, currentColor, "color", i);
-            styleColors['background' + fillCount + '-color'] = currentColor
-          } else {
-            styleColors['background' + fillCount + '-color'] = getKeyByValue(
-              colorTokens,
-              currentColor
+          // #region fill monochrome
+          if (fillType === 0) {
+            let color = fill.color
+            let currentColor = rgbHex(
+              color.red * 255,
+              color.green * 255,
+              color.blue * 255,
+              color.alpha
             )
+            if (checkToken(colorTokens, currentColor) === false) {
+              // createCouples(colorTokens, currentColor, "color", i);
+              styleColors['background' + fillCount + '-color'] = currentColor
+            } else {
+              styleColors['background' + fillCount + '-color'] = getKeyByValue(
+                colorTokens,
+                currentColor
+              )
+            }
           }
+          // #endregion
+          // #region fill gradient
+          if (fillType === 1) {
+            let currentGradient = {}
+            let gradientType = fill.gradient.gradientType
+            let gradientName = gradientTypeValue[gradientType]
+            currentGradient = setGradientDetails(currentGradient, fill)
+
+            let currentGradientName =
+              gradientTypeValue[fill.gradient.gradientType]
+            for (const [key, value] of Object.entries(gradientStyles)) {
+              let gradientName = key
+              let gradient = value
+              if (
+                isDeepStrictEqual(currentGradient, gradient) &&
+                gradientName.includes(currentGradientName)
+              ) {
+                styleColors['background' + fillCount + '-color'] = gradientName
+              }
+            }
+          }
+          // #endregion
+          // #region fill image
+          if (fillType === 4) {
+            // console.log(style.name)
+            // console.log(fill.image)
+            let patternType = imageFillType[fill.patternFillType]
+            let patternScale = fill.patternTileScale
+
+            styleColors['background-position'] = 'center'
+            if (patternType === 'tile' && patternScale !== 1) {
+              styleColors['background-size'] =
+                (patternScale * 100).toString() + '%'
+            } else if (patternType === 'stretch') {
+              styleColors['background-size'] = 'cover'
+            } else if (patternType === 'fit') {
+              styleColors['background-size'] = 'contain'
+            }
+            if (fill.patternFillType === 0) {
+              styleColors['background-repeat'] = 'repeat'
+            } else {
+              styleColors['background-repeat'] = 'no-repeat'
+            }
+            styleColors['background-image'] = fill.image._ref
+          }
+          // #endregion
           counter++
         }
       }
@@ -320,7 +511,6 @@ fromFile(resolve(__dirname, sketchDocumentPath)).then(
       counter = 1
 
       // manage the entire layer style
-
       layerStylesTokensList = Object.assign(
         styleColors,
         styleBorderColors,
@@ -331,7 +521,6 @@ fromFile(resolve(__dirname, sketchDocumentPath)).then(
       )
 
       if (currentStyle.indexOf('/') > -1) {
-        console.log(currentStyle)
         createNestedObject(
           layerStyleTokens,
           currentStyle.split('/'),
@@ -499,7 +688,6 @@ fromFile(resolve(__dirname, sketchDocumentPath)).then(
         createCouples(fontAlignment, 'left', 'text-align', 'left')
         styleFontAlignment = setStyleToken(fontAlignment, 'left', 'text-align')
       }
-
       // #endregion
 
       // #region Other text parameters
@@ -618,7 +806,18 @@ fromFile(resolve(__dirname, sketchDocumentPath)).then(
     }
     // #endregion
 
+    // #region Create the final Object to be converted in a JSON file
+    // 1. Order the Gradient Styles Descending by Key
+    gradientStyles = Object.keys(gradientStyles)
+      .sort()
+      .reduce(function (result, key) {
+        result[key] = gradientStyles[key]
+        return result
+      }, {})
+
+    // 2. Create the Object
     let colorsObj = { colors: colorTokens }
+    let gradientObj = { gradients: gradientStyles }
     let shadowsObj = { shadows: shadowStyles }
     let innerShadowsObj = { 'inner-shadows': innerShadowStyles }
     let fontsObj = { fonts: fonts }
@@ -645,6 +844,7 @@ fromFile(resolve(__dirname, sketchDocumentPath)).then(
 
     designTokensList = Object.assign(
       colorsObj,
+      gradientObj,
       shadowsObj,
       innerShadowsObj,
       fontsObj,
@@ -661,6 +861,8 @@ fromFile(resolve(__dirname, sketchDocumentPath)).then(
       textStylesObj
     )
 
+    // #endregion
+
     if (Object.keys(designTokensList).length > 0) {
       //if (fonts.length > 0) {
       delete designTokensList[keyToDelete]
@@ -673,12 +875,7 @@ fromFile(resolve(__dirname, sketchDocumentPath)).then(
       JSON.stringify(designTokensList, null, 2),
       err => {
         if (err) throw err
-        console.log(
-          '✅ Design Tokens extraction complete: ',
-          Object.keys(colorsObj).length + ' color tokens saved,',
-          Object.keys(layerStylesObj).length + ' layer style tokens saved,',
-          Object.keys(textStylesObj).length + ' text style tokens saved,'
-        )
+        console.log('✅ Design Tokens extraction complete')
       }
     )
 
@@ -689,10 +886,10 @@ fromFile(resolve(__dirname, sketchDocumentPath)).then(
   }
 )
 
-function checkToken(obj, currentItem) {
+function checkToken(object, currentItem) {
   let check = false
-  if (Object.keys(obj).length > 0) {
-    if (Object.values(obj).indexOf(currentItem) > -1) {
+  if (Object.keys(object).length > 0) {
+    if (Object.values(object).indexOf(currentItem) > -1) {
       check = true
     }
   }
@@ -711,7 +908,13 @@ function getKeyByValueObj(object, value) {
   })
 }
 
-function createCouples(obj, currentItem, name = '', i = '', suffixNeeded = 1) {
+function createCouples(
+  object,
+  currentItem,
+  name = '',
+  i = '',
+  suffixNeeded = 1
+) {
   // if null we need something different
   if (currentItem === null) {
     currentItem = 'auto'
@@ -723,57 +926,145 @@ function createCouples(obj, currentItem, name = '', i = '', suffixNeeded = 1) {
     suffix = ''
   }
   let keyName = name + suffix
-  if (Object.keys(obj).length > 0) {
-    if (Object.values(obj).indexOf(currentItem) > -1) {
+  if (Object.keys(object).length > 0) {
+    if (Object.values(object).indexOf(currentItem) > -1) {
       // This item already exists
     } else {
       // This item is new
-      obj[keyName] = currentItem
+      object[keyName] = currentItem
     }
   } else {
     // This item is the first one I evaluate
-    obj[keyName] = currentItem
+    object[keyName] = currentItem
   }
 }
 
-function setStyleToken(obj, currentItem, key = '') {
+function setStyleToken(object, currentItem, key = '') {
   let token = {}
-  if (checkToken(obj, currentItem)) {
-    token[key] = getKeyByValue(obj, currentItem)
+  if (checkToken(object, currentItem)) {
+    token[key] = getKeyByValue(object, currentItem)
   } else {
     token[key] = currentItem
   }
   return token
 }
 
-var createNestedObject = function (obj, keys, value) {
+function createNestedObject(object, keys, value) {
   // If a value is given, remove the last name and keep it for later:
   var lastKey = arguments.length === 3 ? keys.pop() : false
   // Walk the hierarchy, creating new objects where needed.
   // If the lastKey was removed, then the last object is not set yet:
   for (var i = 0; i < keys.length; i++) {
-    obj = obj[keys[i]] = obj[keys[i]] || {}
+    object = object[keys[i]] = object[keys[i]] || {}
   }
 
   // If a value was given, set it to the last name:
-  if (lastKey) obj = obj[lastKey] = value
+  if (lastKey) object = object[lastKey] = value
 
   // Return the last object in the hierarchy:
-  return obj
+  return object
 }
-
 // Usages:
-
 // createNestedObject(window, ['shapes', 'circle'])
 // // Now window.shapes.circle is an empty object, ready to be used.
+// var object = {} // Works with any object other that window too
+// createNestedObject(object, ['shapes', 'rectangle', 'width'], 300)
+// // Now we have: object.shapes.rectangle.width === 300
+// createNestedObject(object, 'shapes.rectangle.height'.split('.'), 400)
+// Now we have: object.shapes.rectangle.height === 400
 
-// var obj = {} // Works with any object other that window too
-// createNestedObject(obj, ['shapes', 'rectangle', 'width'], 300)
-// // Now we have: obj.shapes.rectangle.width === 300
+function getKey(object, val) {
+  Object.keys(object).find(key => object[key] === val)
+}
 
-// createNestedObject(obj, 'shapes.rectangle.height'.split('.'), 400)
-// Now we have: obj.shapes.rectangle.height === 400
+function getAngleDeg(ax, ay, bx, by) {
+  var angleRad = Math.atan((ay - by) / (ax - bx))
+  var angleDeg = (angleRad * 180) / Math.PI
 
-function getKey(obj, val) {
-  Object.keys(obj).find(key => obj[key] === val)
+  return angleDeg
+}
+
+// Internal functions
+// Set Color Token
+function setColorToken(object, currentItem, key, internalObject = undefined) {
+  let color = currentItem.color
+  let currentColor = rgbHex(
+    color.red * 255,
+    color.green * 255,
+    color.blue * 255,
+    color.alpha
+  )
+  let currentObject = {}
+  if (internalObject !== undefined) {
+    currentObject = internalObject
+  }
+  if (checkToken(colorTokens, currentColor) === false) {
+    createCouples(currentObject, currentColor, 'color', '', 0)
+    object[key] = currentObject
+  } else {
+    createCouples(
+      currentObject,
+      getKeyByValue(colorTokens, currentColor),
+      'color',
+      '',
+      0
+    )
+    object[key] = currentObject
+  }
+}
+
+// Set Gradients
+function setGradientDetails(object, currentItem, type = 0) {
+  let currentObject = {}
+  let fill = currentItem
+
+  if (type === 1) {
+    if (fill.gradient.elipseLength > 0) {
+      object['type'] = gradientCircleType[1]
+    } else {
+      object['type'] = gradientCircleType[0]
+    }
+  }
+  let degree = Math.round(
+    getAngleDeg(
+      fill.gradient.from.split(',')[0].replace('{', ''),
+      fill.gradient.from.split(',')[1].replace('}', ''),
+      fill.gradient.to.split(',')[0].replace('{', ''),
+      fill.gradient.to.split(',')[1].replace('}', '')
+    )
+  ).toString()
+  currentObject['degree'] = degree
+
+  let stops = fill.gradient.stops
+  let stopCounter = 1
+  let stopList = {}
+  for (const stop of stops) {
+    let currentStop = {}
+    let stopName = stopCounter.toString()
+    let currentColor = ''
+    let currentPosition = 0
+    // Define Color -> Not use the Function, as we need to set a bigger object for steps
+    let color = stop.color
+    currentColor = rgbHex(
+      color.red * 255,
+      color.green * 255,
+      color.blue * 255,
+      color.alpha
+    )
+    currentPosition = Math.round(stop.position * 100) / 100
+    if (checkToken(colorTokens, currentColor) === false) {
+      currentStop = Object.assign(currentStop, { color: currentColor })
+    } else {
+      currentStop = Object.assign(currentStop, {
+        color: getKeyByValue(colorTokens, currentColor),
+      })
+    }
+    currentStop = Object.assign(currentStop, {
+      position: currentPosition,
+    })
+    createNestedObject(stopList, [stopName], currentStop)
+    stopCounter++
+  }
+  createCouples(currentObject, stopList, 'stops', '', 0)
+  return currentObject
 }
