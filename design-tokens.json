@@ -1,288 +1,1322 @@
 {
   "colors": {
-    "Black": "000000ff",
-    "Icons": {
-      "Green": "84b58eff",
-      "Light-blue": "addbe9ff"
+    "Brand": {
+      "Branding": {
+        "Brand-Primary": "e3017eff",
+        "Brand-Primary--darker": "b00162ff",
+        "Brand-Primary--lighter": "fc1b97ff",
+        "Brand-Primary--transparent": "e3017e1f"
+      },
+      "Interactions": {
+        "Brand-Interaction": "5112b6ff",
+        "Brand-Interaction--hover": "00220fff"
+      }
     },
-    "Orange": "ff6600ff",
-    "Red": "ff0000ff",
-    "White": "ffffffff"
+    "General": {
+      "Backgrounds": {
+        "Sand": "fff1f9ff",
+        "White": "ffffffff"
+      },
+      "Text": {
+        "Text": "1b1b1bff",
+        "Text--darker": "090909ff",
+        "Text--inverted": "ffffffff",
+        "Text--lighter": "585858ff"
+      },
+      "Utility": {
+        "Error": "ab0200ff",
+        "Success": "00ab15ff"
+      }
+    },
+    "Products": {
+      "Autumn-Fresh": "b83367ff",
+      "Spring-Clean": "991f6eff",
+      "Summer-Haze": "eb6e1bff",
+      "Summer-Light": "f2af00ff",
+      "Winter-Bliss": "46aae1ff",
+      "Winter-Forest": "004f01ff"
+    },
+    "Shadows": {
+      "Shadow - 8": "00000014",
+      "Shadow - 12": "0000001f",
+      "Shadow - 24": "0000003d"
+    },
+    "color-1": "ffffffff",
+    "color-10": "5112b6ff",
+    "color-11": "1b1b1bff",
+    "color-12": "b00162ff",
+    "color-20": "fc1b97ff",
+    "color-60": "585858ff",
+    "color-78": "e3017eff",
+    "color-120": "00220fff"
   },
-  "gradients": {
-    "angular-gradient-1": {
-      "degree": "90",
-      "stops": {
-        "1": {
-          "color": "$Black",
-          "position": 0
-        },
-        "2": {
-          "color": "537bffff",
-          "position": 0.5
-        },
-        "3": {
-          "color": "90d21eff",
-          "position": 0.85
-        }
-      }
-    },
-    "linear-gradient-1": {
-      "degree": "-90",
-      "stops": {
-        "1": {
-          "color": "90d21eff",
-          "position": 0
-        },
-        "2": {
-          "color": "ff41f8ff",
-          "position": 0.3
-        },
-        "3": {
-          "color": "$Black",
-          "position": 1
-        }
-      }
-    },
-    "linear-gradient-2": {
-      "degree": "-90",
-      "stops": {
-        "1": {
-          "color": "1ea0d2ff",
-          "position": 0
-        },
-        "2": {
-          "color": "4aff41ff",
-          "position": 0.3
-        },
-        "3": {
-          "color": "e728f4ff",
-          "position": 1
-        }
-      }
-    },
-    "radial-gradient-1": {
-      "degree": "90",
-      "stops": {
-        "1": {
-          "color": "$Black",
-          "position": 0
-        },
-        "2": {
-          "color": "ff6464ff",
-          "position": 0.7
-        },
-        "3": {
-          "color": "90d21eff",
-          "position": 1
-        }
-      }
-    },
-    "radial-gradient-2": {
-      "degree": "90",
-      "stops": {
-        "1": {
-          "color": "$Black",
-          "position": 0
-        },
-        "2": {
-          "color": "ff6464ff",
-          "position": 0.7
-        },
-        "3": {
-          "color": "90d21eff",
-          "position": 1
-        }
-      }
-    }
-  },
+  "gradients": {},
   "shadows": {
     "shadow-1": {
-      "shadow-color": "$Black",
-      "shadow-blur-radius": 4,
+      "shadow-color": "$Shadow - 8",
+      "shadow-blur-radius": 8,
       "shadow-offset-x": 0,
       "shadow-offset-y": 2,
       "shadow-spread": 0
     },
     "shadow-2": {
-      "shadow-color": "00000080",
+      "shadow-color": "$Shadow - 12",
       "shadow-blur-radius": 4,
       "shadow-offset-x": 0,
       "shadow-offset-y": 2,
       "shadow-spread": 0
+    },
+    "shadow-3": {
+      "shadow-color": "$Brand-Interaction",
+      "shadow-blur-radius": 4,
+      "shadow-offset-x": 0,
+      "shadow-offset-y": 2,
+      "shadow-spread": -2.5
     }
   },
   "inner-shadows": {
     "inner-shadow-1": {
-      "inner-shadow-color": "$Black",
-      "inner-shadow-blur-radius": 3,
+      "inner-shadow-color": "$Shadow - 8",
+      "inner-shadow-blur-radius": 8,
       "inner-shadow-offset-x": 0,
-      "inner-shadow-offset-y": 1,
+      "inner-shadow-offset-y": 2,
       "inner-shadow-spread": 0
     }
   },
   "fonts": {
-    "$font-family-Helvetica": "Helvetica",
-    "$font-family-OpenSans-SemiboldItalic": "OpenSans-SemiboldItalic",
-    "$font-family-HelveticaNeue-Bold": "HelveticaNeue-Bold",
-    "$font-family-Helvetica-Light": "Helvetica-Light"
+    "font-family-OpenSans": "$OpenSans",
+    "font-family-OpenSans-Bold": "$OpenSans-Bold",
+    "font-family-OpenSans-Semibold": "$OpenSans-Semibold",
+    "font-family-Inconsolata-Regular": "$Inconsolata-Regular"
   },
   "font-sizes": {
-    "font-size-1": 14,
-    "font-size-2": 16,
-    "font-size-3": 24,
-    "font-size-4": 32,
-    "font-size-5": 36,
-    "font-size-6": 48
+    "font-size-1": 11,
+    "font-size-2": 13,
+    "font-size-3": 14,
+    "font-size-4": 15,
+    "font-size-5": 16,
+    "font-size-6": 18,
+    "font-size-7": 24,
+    "font-size-8": 32,
+    "font-size-9": 48,
+    "font-size-10": 80
   },
   "font-weights": {},
   "text-alignments": {
+    "text-align-center": "center",
     "text-align-left": "left",
-    "text-align-right": "right",
-    "text-align-center": "center"
+    "text-align-right": "right"
   },
   "text-vertical-alignments": {},
   "layer-styles": {
-    "Background": {
-      "background-color": "$White",
-      "background2-color": "84b58eff",
-      "border-color": "$Black",
-      "border2-color": "a54646ff",
-      "border-position": "Inside",
-      "border2-position": "Center",
-      "border-size": "4px",
-      "border2-size": "2px",
-      "shadow": "$shadow-1",
-      "shadow-2": "$shadow-2",
-      "inner-shadow": "$inner-shadow-1"
-    },
-    "Blue Fill": {
-      "background-color": "addbe9ff"
-    },
-    "Gradient Angular": {
-      "background-color": "$angular-gradient-1"
-    },
-    "Gradient Ellipse": {
-      "background-color": "$radial-gradient-2"
-    },
-    "Gradient Linear": {
-      "background-color": "$linear-gradient-1"
-    },
-    "Gradient Linear 2": {
-      "background-color": "$linear-gradient-2"
-    },
-    "Gradient Radial": {
-      "background-color": "$radial-gradient-2"
-    },
-    "Green Fill": {
-      "background-color": "84b58eff"
-    },
-    "Group": {
-      "Image FILL": {
-        "background-position": "center",
-        "background-repeat": "no-repeat",
-        "background-image": "images/99265022cd2655f30555c62da650e8e6b6f5c4e8.png"
+    "Backgrounds": {
+      "Plain": {
+        "Background - Black": {
+          "background-color": "$Text--darker"
+        },
+        "Background - Highlight": {
+          "background-color": "$Brand-Primary"
+        },
+        "Background - Primary": {
+          "background-color": "$Brand-Primary--transparent"
+        },
+        "Background - Sand": {
+          "background-color": "$Sand"
+        },
+        "Background - Transparent": {
+          "background-color": "$White"
+        },
+        "Background - White": {
+          "background-color": "$White"
+        }
       },
-      "pattern FIT": {
-        "background-position": "center",
-        "background-size": "contain",
-        "background-repeat": "no-repeat",
-        "background-image": "images/853732577995ec08625706620b0235b0184b90e8.pdf"
+      "Shadows": {
+        "Background - Highlight": {
+          "background-color": "$Brand-Primary",
+          "shadow": "$shadow-1",
+          "shadow-2": "$shadow-2"
+        },
+        "Background - Primary": {
+          "background-color": "$Brand-Primary--transparent",
+          "shadow": "$shadow-1",
+          "shadow-2": "$shadow-2"
+        },
+        "Background - Sand": {
+          "background-color": "$Sand",
+          "shadow": "$shadow-1",
+          "shadow-2": "$shadow-2"
+        },
+        "Background - White": {
+          "background-color": "$White",
+          "shadow": "$shadow-1",
+          "shadow-2": "$shadow-2"
+        }
+      }
+    },
+    "Brand - Primary": {
+      "background-color": "$Brand-Primary"
+    },
+    "Brand - Secondary": {
+      "background-color": "$Brand-Interaction"
+    },
+    "Field": {
+      "Default": {
+        "background-color": "$White",
+        "border-color": "a88e8eff",
+        "border-position": "Center",
+        "border-size": "1px",
+        "inner-shadow": "$inner-shadow-1"
       },
-      "pattern STRETCH": {
-        "background-position": "center",
-        "background-size": "cover",
-        "background-repeat": "no-repeat",
-        "background-image": "images/853732577995ec08625706620b0235b0184b90e8.pdf"
+      "Focus": {
+        "background-color": "$White",
+        "border-color": "$Brand-Interaction",
+        "border-position": "Center",
+        "border-size": "1px"
       },
-      "pattern TILE": {
-        "background-position": "center",
-        "background-size": "200%",
-        "background-repeat": "repeat",
-        "background-image": "images/853732577995ec08625706620b0235b0184b90e8.pdf"
+      "Selection": {
+        "background-color": "$White",
+        "shadow": "$shadow-3"
       }
     },
     "Icons": {
-      "background-color": "$Black",
-      "border-color": "$Black",
-      "border-position": "Inside",
-      "border-size": "4px",
-      "shadow": "$shadow-1",
-      "inner-shadow": "$inner-shadow-1"
+      "Inverted": {
+        "background-color": "$White"
+      },
+      "Primary": {
+        "background-color": "$Brand-Primary"
+      },
+      "Text": {
+        "background-color": "$Text"
+      },
+      "Text - Error": {
+        "background-color": "$Error"
+      },
+      "Text - Lighter": {
+        "background-color": "$Text--lighter"
+      },
+      "Text - Success": {
+        "background-color": "$Success"
+      }
     },
-    "Orange Fill": {
-      "background-color": "$Orange"
+    "Interactive": {
+      "Interactive Background--default": {
+        "background-color": "$Brand-Interaction"
+      },
+      "Interactive Background--hover": {
+        "background-color": "$Brand-Interaction--hover"
+      },
+      "Interactive Border--default": {
+        "border-color": "$Brand-Interaction",
+        "border-position": "Center",
+        "border-size": "2px"
+      },
+      "Interactive Border--hover": {
+        "border-color": "$Brand-Interaction--hover",
+        "border-position": "Center",
+        "border-size": "2px"
+      }
     },
-    "Primary": {
-      "background-color": "$Red",
-      "border-color": "$Black",
-      "border-position": "Inside",
-      "border-size": "3px",
-      "shadow": "$shadow-1",
-      "inner-shadow": "$inner-shadow-1"
+    "Progress Bars and Graphs": {
+      "Autumn Fresh": {
+        "background-color": "$Autumn-Fresh"
+      },
+      "Primary": {
+        "background-color": "$Brand-Primary"
+      },
+      "Spring Clean": {
+        "background-color": "$Spring-Clean"
+      },
+      "Summer Haze": {
+        "background-color": "$Summer-Haze"
+      },
+      "Summer Light": {
+        "background-color": "$Summer-Light"
+      },
+      "Winter Bliss": {
+        "background-color": "$Winter-Bliss"
+      },
+      "Winter Forest": {
+        "background-color": "$Winter-Forest"
+      }
     }
   },
   "text-styles": {
-    "Body": {
+    "Inverted": {
       "Body": {
-        "font-family": "$font-family-Helvetica",
-        "font-family-name": "Helvetica",
-        "font-weight": "Regular",
-        "font-size": "$font-size-2",
-        "text-color": "$Black",
-        "text-align": "$text-align-left"
-      },
-      "Body - small": {
-        "font-family": "$font-family-OpenSans-SemiboldItalic",
-        "font-family-name": "OpenSans",
-        "font-weight": "SemiboldItalic",
-        "font-size": "$font-size-1",
-        "text-color": "$Black",
-        "text-align": "$text-align-right"
-      }
-    },
-    "Heading": {
-      "H1": {
-        "H1": {
-          "font-family": "$font-family-HelveticaNeue-Bold",
-          "font-family-name": "HelveticaNeue",
-          "font-weight": "Bold",
-          "font-size": "$font-size-4",
-          "text-color": "$Red",
+        "Body - Center": {
+          "font-family": "OpenSans",
+          "font-family-name": "OpenSans",
+          "font-weight": "Regular",
+          "font-size": "$font-size-5",
+          "text-color": "$color-1",
           "text-align": "$text-align-center"
         },
-        "h1 Style": {
-          "font-family": "$font-family-Helvetica-Light",
-          "font-family-name": "Helvetica",
-          "font-weight": "Light",
-          "font-size": "$font-size-6",
-          "text-color": "$Orange",
+        "Body - Left": {
+          "font-family": "OpenSans",
+          "font-family-name": "OpenSans",
+          "font-weight": "Regular",
+          "font-size": "$font-size-5",
+          "text-color": "$color-1",
           "text-align": "$text-align-left"
+        },
+        "Body - Right": {
+          "font-family": "OpenSans",
+          "font-family-name": "OpenSans",
+          "font-weight": "Regular",
+          "font-size": "$font-size-5",
+          "text-color": "$color-1",
+          "text-align": "$text-align-right"
+        },
+        "Large Body - Center": {
+          "font-family": "OpenSans",
+          "font-family-name": "OpenSans",
+          "font-weight": "Regular",
+          "font-size": "$font-size-6",
+          "text-color": "$color-1",
+          "text-align": "$text-align-center"
+        },
+        "Large Body - Left": {
+          "font-family": "OpenSans",
+          "font-family-name": "OpenSans",
+          "font-weight": "Regular",
+          "font-size": "$font-size-6",
+          "text-color": "$color-1",
+          "text-align": "$text-align-left"
+        },
+        "Large Body - Right": {
+          "font-family": "OpenSans",
+          "font-family-name": "OpenSans",
+          "font-weight": "Regular",
+          "font-size": "$font-size-6",
+          "text-color": "$color-1",
+          "text-align": "$text-align-right"
+        },
+        "Small Body - Center": {
+          "font-family": "OpenSans",
+          "font-family-name": "OpenSans",
+          "font-weight": "Regular",
+          "font-size": "$font-size-3",
+          "text-color": "$color-1",
+          "text-align": "$text-align-center"
+        },
+        "Small Body - Left": {
+          "font-family": "OpenSans",
+          "font-family-name": "OpenSans",
+          "font-weight": "Regular",
+          "font-size": "$font-size-3",
+          "text-color": "$color-1",
+          "text-align": "$text-align-left"
+        },
+        "Small Body - Right": {
+          "font-family": "OpenSans",
+          "font-family-name": "OpenSans",
+          "font-weight": "Regular",
+          "font-size": "$font-size-3",
+          "text-color": "$color-1",
+          "text-align": "$text-align-right"
+        }
+      },
+      "Buttons": {
+        "Button Label": {
+          "font-family": "OpenSans-Bold",
+          "font-family-name": "OpenSans",
+          "font-weight": "Bold",
+          "font-size": "$font-size-4",
+          "text-color": "$color-10",
+          "text-align": "$text-align-center"
+        },
+        "Button Label - Filled": {
+          "font-family": "OpenSans-Bold",
+          "font-family-name": "OpenSans",
+          "font-weight": "Bold",
+          "font-size": "$font-size-4",
+          "text-color": "$color-11",
+          "text-align": "$text-align-center"
+        },
+        "Controls - Option": {
+          "font-family": "OpenSans-Semibold",
+          "font-family-name": "OpenSans",
+          "font-weight": "Semibold",
+          "font-size": "$font-size-2",
+          "text-color": "$color-12",
+          "text-align": "$text-align-center"
+        }
+      },
+      "Codes": {
+        "Code Center": {
+          "font-family": "Inconsolata-Regular",
+          "font-family-name": "Inconsolata",
+          "font-weight": "Regular",
+          "font-size": "$font-size-5",
+          "text-color": "$color-1",
+          "text-align": "$text-align-center"
+        },
+        "Code Left": {
+          "font-family": "Inconsolata-Regular",
+          "font-family-name": "Inconsolata",
+          "font-weight": "Regular",
+          "font-size": "$font-size-5",
+          "text-color": "$color-1",
+          "text-align": "$text-align-left"
+        },
+        "Code Right": {
+          "font-family": "Inconsolata-Regular",
+          "font-family-name": "Inconsolata",
+          "font-weight": "Regular",
+          "font-size": "$font-size-5",
+          "text-color": "$color-1",
+          "text-align": "$text-align-right"
+        }
+      },
+      "H1": {
+        "Display": {
+          "Hero - Center": {
+            "font-family": "OpenSans-Bold",
+            "font-family-name": "OpenSans",
+            "font-weight": "Bold",
+            "font-size": "$font-size-10",
+            "text-color": "$color-1",
+            "text-align": "$text-align-center"
+          },
+          "Hero - Left": {
+            "font-family": "OpenSans-Bold",
+            "font-family-name": "OpenSans",
+            "font-weight": "Bold",
+            "font-size": "$font-size-10",
+            "text-color": "$color-1",
+            "text-align": "$text-align-left"
+          }
+        },
+        "H1 - Center": {
+          "font-family": "OpenSans-Bold",
+          "font-family-name": "OpenSans",
+          "font-weight": "Bold",
+          "font-size": "$font-size-9",
+          "text-color": "$color-1",
+          "text-align": "$text-align-center"
+        },
+        "H1 - Left": {
+          "font-family": "OpenSans-Bold",
+          "font-family-name": "OpenSans",
+          "font-weight": "Bold",
+          "font-size": "$font-size-9",
+          "text-color": "$color-1",
+          "text-align": "$text-align-left"
+        },
+        "Primary": {
+          "H1 - Center": {
+            "font-family": "OpenSans-Bold",
+            "font-family-name": "OpenSans",
+            "font-weight": "Bold",
+            "font-size": "$font-size-9",
+            "text-color": "$color-20",
+            "text-align": "$text-align-center"
+          },
+          "H1 - Left": {
+            "font-family": "OpenSans-Bold",
+            "font-family-name": "OpenSans",
+            "font-weight": "Bold",
+            "font-size": "$font-size-9",
+            "text-color": "$color-20",
+            "text-align": "$text-align-left"
+          }
+        },
+        "Secondary": {
+          "H1 - Center": {
+            "font-family": "OpenSans-Bold",
+            "font-family-name": "OpenSans",
+            "font-weight": "Bold",
+            "font-size": "$font-size-9",
+            "text-color": "$color-10",
+            "text-align": "$text-align-center"
+          },
+          "H1 - Left": {
+            "font-family": "OpenSans-Bold",
+            "font-family-name": "OpenSans",
+            "font-weight": "Bold",
+            "font-size": "$font-size-9",
+            "text-color": "$color-10",
+            "text-align": "$text-align-left"
+          }
         }
       },
       "H2": {
-        "font-family": "$font-family-Helvetica",
-        "font-family-name": "Helvetica",
+        "H2 - Center": {
+          "font-family": "OpenSans-Semibold",
+          "font-family-name": "OpenSans",
+          "font-weight": "Semibold",
+          "font-size": "$font-size-8",
+          "text-color": "$color-1",
+          "text-align": "$text-align-center"
+        },
+        "H2 - Left": {
+          "font-family": "OpenSans-Semibold",
+          "font-family-name": "OpenSans",
+          "font-weight": "Semibold",
+          "font-size": "$font-size-8",
+          "text-color": "$color-1",
+          "text-align": "$text-align-left"
+        },
+        "Primary": {
+          "H2 - Center": {
+            "font-family": "OpenSans-Semibold",
+            "font-family-name": "OpenSans",
+            "font-weight": "Semibold",
+            "font-size": "$font-size-8",
+            "text-color": "$color-20",
+            "text-align": "$text-align-center"
+          },
+          "H2 - Left": {
+            "font-family": "OpenSans-Semibold",
+            "font-family-name": "OpenSans",
+            "font-weight": "Semibold",
+            "font-size": "$font-size-8",
+            "text-color": "$color-20",
+            "text-align": "$text-align-left"
+          }
+        },
+        "Secondary": {
+          "H2 - Center": {
+            "font-family": "OpenSans-Semibold",
+            "font-family-name": "OpenSans",
+            "font-weight": "Semibold",
+            "font-size": "$font-size-8",
+            "text-color": "$color-10",
+            "text-align": "$text-align-center"
+          },
+          "H2 - Left": {
+            "font-family": "OpenSans-Semibold",
+            "font-family-name": "OpenSans",
+            "font-weight": "Semibold",
+            "font-size": "$font-size-8",
+            "text-color": "$color-10",
+            "text-align": "$text-align-left"
+          }
+        }
+      },
+      "H3": {
+        "H3 - Center": {
+          "font-family": "OpenSans-Semibold",
+          "font-family-name": "OpenSans",
+          "font-weight": "Semibold",
+          "font-size": "$font-size-7",
+          "text-color": "$color-1",
+          "text-align": "$text-align-center"
+        },
+        "H3 - Left": {
+          "font-family": "OpenSans-Semibold",
+          "font-family-name": "OpenSans",
+          "font-weight": "Semibold",
+          "font-size": "$font-size-7",
+          "text-color": "$color-1",
+          "text-align": "$text-align-left"
+        },
+        "Primary": {
+          "H3 - Center": {
+            "font-family": "OpenSans-Semibold",
+            "font-family-name": "OpenSans",
+            "font-weight": "Semibold",
+            "font-size": "$font-size-7",
+            "text-color": "$color-20",
+            "text-align": "$text-align-center"
+          },
+          "H3 - Left": {
+            "font-family": "OpenSans-Semibold",
+            "font-family-name": "OpenSans",
+            "font-weight": "Semibold",
+            "font-size": "$font-size-7",
+            "text-color": "$color-20",
+            "text-align": "$text-align-left"
+          }
+        },
+        "Secondary": {
+          "H3 - Center": {
+            "font-family": "OpenSans-Semibold",
+            "font-family-name": "OpenSans",
+            "font-weight": "Semibold",
+            "font-size": "$font-size-7",
+            "text-color": "$color-10",
+            "text-align": "$text-align-center"
+          },
+          "H3 - Left": {
+            "font-family": "OpenSans-Semibold",
+            "font-family-name": "OpenSans",
+            "font-weight": "Semibold",
+            "font-size": "$font-size-7",
+            "text-color": "$color-10",
+            "text-align": "$text-align-left"
+          }
+        }
+      },
+      "H4": {
+        "H4 - Center": {
+          "font-family": "OpenSans-Semibold",
+          "font-family-name": "OpenSans",
+          "font-weight": "Semibold",
+          "font-size": "$font-size-6",
+          "text-color": "$color-1",
+          "text-align": "$text-align-center"
+        },
+        "H4 - Left": {
+          "font-family": "OpenSans-Semibold",
+          "font-family-name": "OpenSans",
+          "font-weight": "Semibold",
+          "font-size": "$font-size-6",
+          "text-color": "$color-1",
+          "text-align": "$text-align-left"
+        },
+        "H4 - Right": {
+          "font-family": "OpenSans-Semibold",
+          "font-family-name": "OpenSans",
+          "font-weight": "Semibold",
+          "font-size": "$font-size-6",
+          "text-color": "$color-1",
+          "text-align": "$text-align-right"
+        },
+        "Primary": {
+          "H4 - Center": {
+            "font-family": "OpenSans-Semibold",
+            "font-family-name": "OpenSans",
+            "font-weight": "Semibold",
+            "font-size": "$font-size-6",
+            "text-color": "$color-20",
+            "text-align": "$text-align-center"
+          },
+          "H4 - Left": {
+            "font-family": "OpenSans-Semibold",
+            "font-family-name": "OpenSans",
+            "font-weight": "Semibold",
+            "font-size": "$font-size-6",
+            "text-color": "$color-20",
+            "text-align": "$text-align-left"
+          },
+          "H4 - Right": {
+            "font-family": "OpenSans-Semibold",
+            "font-family-name": "OpenSans",
+            "font-weight": "Semibold",
+            "font-size": "$font-size-6",
+            "text-color": "$color-20",
+            "text-align": "$text-align-right"
+          }
+        },
+        "Secondary": {
+          "H4 - Center": {
+            "font-family": "OpenSans-Semibold",
+            "font-family-name": "OpenSans",
+            "font-weight": "Semibold",
+            "font-size": "$font-size-6",
+            "text-color": "$color-10",
+            "text-align": "$text-align-center"
+          },
+          "H4 - Left": {
+            "font-family": "OpenSans-Semibold",
+            "font-family-name": "OpenSans",
+            "font-weight": "Semibold",
+            "font-size": "$font-size-6",
+            "text-color": "$color-10",
+            "text-align": "$text-align-left"
+          },
+          "H4 - Right": {
+            "font-family": "OpenSans-Semibold",
+            "font-family-name": "OpenSans",
+            "font-weight": "Semibold",
+            "font-size": "$font-size-6",
+            "text-color": "$color-10",
+            "text-align": "$text-align-right"
+          }
+        }
+      },
+      "H5": {
+        "H5 - Center": {
+          "font-family": "OpenSans-Bold",
+          "font-family-name": "OpenSans",
+          "font-weight": "Bold",
+          "font-size": "$font-size-5",
+          "text-color": "$color-1",
+          "text-align": "$text-align-center"
+        },
+        "H5 - Left": {
+          "font-family": "OpenSans-Bold",
+          "font-family-name": "OpenSans",
+          "font-weight": "Bold",
+          "font-size": "$font-size-5",
+          "text-color": "$color-1",
+          "text-align": "$text-align-left"
+        },
+        "H5 - Right": {
+          "font-family": "OpenSans-Bold",
+          "font-family-name": "OpenSans",
+          "font-weight": "Bold",
+          "font-size": "$font-size-5",
+          "text-color": "$color-1",
+          "text-align": "$text-align-center"
+        },
+        "Primary": {
+          "H5 - Center": {
+            "font-family": "OpenSans-Bold",
+            "font-family-name": "OpenSans",
+            "font-weight": "Bold",
+            "font-size": "$font-size-5",
+            "text-color": "$color-20",
+            "text-align": "$text-align-center"
+          },
+          "H5 - Left": {
+            "font-family": "OpenSans-Bold",
+            "font-family-name": "OpenSans",
+            "font-weight": "Bold",
+            "font-size": "$font-size-5",
+            "text-color": "$color-20",
+            "text-align": "$text-align-left"
+          }
+        },
+        "Secondary": {
+          "H5 - Center": {
+            "font-family": "OpenSans-Bold",
+            "font-family-name": "OpenSans",
+            "font-weight": "Bold",
+            "font-size": "$font-size-5",
+            "text-color": "$color-10",
+            "text-align": "$text-align-center"
+          },
+          "H5 - Left": {
+            "font-family": "OpenSans-Bold",
+            "font-family-name": "OpenSans",
+            "font-weight": "Bold",
+            "font-size": "$font-size-5",
+            "text-color": "$color-10",
+            "text-align": "$text-align-left"
+          }
+        }
+      },
+      "H6": {
+        "H6 - Center": {
+          "font-family": "OpenSans-Semibold",
+          "font-family-name": "OpenSans",
+          "font-weight": "Semibold",
+          "font-size": "$font-size-1",
+          "text-color": "$color-20",
+          "text-align": "$text-align-center"
+        },
+        "H6 - Left": {
+          "font-family": "OpenSans-Semibold",
+          "font-family-name": "OpenSans",
+          "font-weight": "Semibold",
+          "font-size": "$font-size-1",
+          "text-color": "$color-20",
+          "text-align": "$text-align-left"
+        }
+      },
+      "Labels": {
+        "Center": {
+          "font-family": "OpenSans-Semibold",
+          "font-family-name": "OpenSans",
+          "font-weight": "Semibold",
+          "font-size": "$font-size-2",
+          "text-color": "$color-1",
+          "text-align": "$text-align-center"
+        },
+        "Left": {
+          "font-family": "OpenSans-Semibold",
+          "font-family-name": "OpenSans",
+          "font-weight": "Semibold",
+          "font-size": "$font-size-2",
+          "text-color": "$color-1",
+          "text-align": "$text-align-left"
+        }
+      },
+      "Links": {
+        "Link": {
+          "font-family": "OpenSans-Semibold",
+          "font-family-name": "OpenSans",
+          "font-weight": "Semibold",
+          "font-size": "$font-size-4",
+          "text-color": "$color-1",
+          "text-align": "$text-align-left"
+        },
+        "Link - hover": {
+          "font-family": "OpenSans-Semibold",
+          "font-family-name": "OpenSans",
+          "font-weight": "Semibold",
+          "font-size": "$font-size-4",
+          "text-color": "$color-1",
+          "text-align": "$text-align-left"
+        }
+      },
+      "Nav": {
+        "NavItem": {
+          "font-family": "OpenSans",
+          "font-family-name": "OpenSans",
+          "font-weight": "Regular",
+          "font-size": "$font-size-7",
+          "text-color": "$color-1",
+          "text-align": "$text-align-left"
+        },
+        "NavItem - Active": {
+          "font-family": "OpenSans",
+          "font-family-name": "OpenSans",
+          "font-weight": "Regular",
+          "font-size": "$font-size-7",
+          "text-color": "$color-20",
+          "text-align": "$text-align-left"
+        }
+      }
+    },
+    "Nav": {
+      "Element Describer": {
+        "font-family": "OpenSans",
+        "font-family-name": "OpenSans",
         "font-weight": "Regular",
-        "font-size": "$font-size-3",
-        "text-color": "$Black",
+        "font-size": "$font-size-6",
+        "text-color": "$color-60",
         "text-align": "$text-align-left"
+      }
+    },
+    "Primary": {
+      "Body": {
+        "Body - Center": {
+          "font-family": "OpenSans",
+          "font-family-name": "OpenSans",
+          "font-weight": "Regular",
+          "font-size": "$font-size-5",
+          "text-color": "$color-11",
+          "text-align": "$text-align-center"
+        },
+        "Body - Left": {
+          "font-family": "OpenSans",
+          "font-family-name": "OpenSans",
+          "font-weight": "Regular",
+          "font-size": "$font-size-5",
+          "text-color": "$color-11",
+          "text-align": "$text-align-left"
+        },
+        "Body - Right": {
+          "font-family": "OpenSans",
+          "font-family-name": "OpenSans",
+          "font-weight": "Regular",
+          "font-size": "$font-size-5",
+          "text-color": "$color-11",
+          "text-align": "$text-align-right"
+        },
+        "Large Body - Center": {
+          "font-family": "OpenSans",
+          "font-family-name": "OpenSans",
+          "font-weight": "Regular",
+          "font-size": "$font-size-6",
+          "text-color": "$color-11",
+          "text-align": "$text-align-center"
+        },
+        "Large Body - Left": {
+          "font-family": "OpenSans",
+          "font-family-name": "OpenSans",
+          "font-weight": "Regular",
+          "font-size": "$font-size-6",
+          "text-color": "$color-11",
+          "text-align": "$text-align-left"
+        },
+        "Large Body - Right": {
+          "font-family": "OpenSans",
+          "font-family-name": "OpenSans",
+          "font-weight": "Regular",
+          "font-size": "$font-size-6",
+          "text-color": "$color-11",
+          "text-align": "$text-align-right"
+        },
+        "Small Body - Center": {
+          "font-family": "OpenSans",
+          "font-family-name": "OpenSans",
+          "font-weight": "Regular",
+          "font-size": "$font-size-3",
+          "text-color": "$color-60",
+          "text-align": "$text-align-center"
+        },
+        "Small Body - Left": {
+          "font-family": "OpenSans",
+          "font-family-name": "OpenSans",
+          "font-weight": "Regular",
+          "font-size": "$font-size-3",
+          "text-color": "$color-60",
+          "text-align": "$text-align-left"
+        },
+        "Small Body - Right": {
+          "font-family": "OpenSans",
+          "font-family-name": "OpenSans",
+          "font-weight": "Regular",
+          "font-size": "$font-size-3",
+          "text-color": "$color-60",
+          "text-align": "$text-align-right"
+        }
       },
-      "h2 Style": {
-        "font-family": "$font-family-Helvetica-Light",
-        "font-family-name": "Helvetica",
-        "font-weight": "Light",
-        "font-size": "$font-size-5",
-        "text-color": "$Orange",
-        "text-align": "$text-align-left"
+      "Buttons": {
+        "Button Label": {
+          "font-family": "OpenSans-Bold",
+          "font-family-name": "OpenSans",
+          "font-weight": "Bold",
+          "font-size": "$font-size-4",
+          "text-color": "$color-10",
+          "text-align": "$text-align-center"
+        },
+        "Button Label - Inverted": {
+          "font-family": "OpenSans-Bold",
+          "font-family-name": "OpenSans",
+          "font-weight": "Bold",
+          "font-size": "$font-size-4",
+          "text-color": "$color-1",
+          "text-align": "$text-align-center"
+        },
+        "Text Link": {
+          "font-family": "OpenSans-Bold",
+          "font-family-name": "OpenSans",
+          "font-weight": "Bold",
+          "font-size": "$font-size-4",
+          "text-color": "$color-10",
+          "text-align": "$text-align-center"
+        },
+        "Text Link - Inverted": {
+          "font-family": "OpenSans-Bold",
+          "font-family-name": "OpenSans",
+          "font-weight": "Bold",
+          "font-size": "$font-size-4",
+          "text-color": "$color-1",
+          "text-align": "$text-align-center"
+        }
       },
-      "h3 Style": {
-        "font-family": "$font-family-Helvetica-Light",
-        "font-family-name": "Helvetica",
-        "font-weight": "Light",
-        "font-size": "$font-size-3",
-        "text-color": "$Orange",
-        "text-align": "$text-align-left"
+      "Codes": {
+        "Code Center": {
+          "font-family": "Inconsolata-Regular",
+          "font-family-name": "Inconsolata",
+          "font-weight": "Regular",
+          "font-size": "$font-size-5",
+          "text-color": "$color-11",
+          "text-align": "$text-align-center"
+        },
+        "Code Left": {
+          "font-family": "Inconsolata-Regular",
+          "font-family-name": "Inconsolata",
+          "font-weight": "Regular",
+          "font-size": "$font-size-5",
+          "text-color": "$color-11",
+          "text-align": "$text-align-left"
+        },
+        "Code Right": {
+          "font-family": "Inconsolata-Regular",
+          "font-family-name": "Inconsolata",
+          "font-weight": "Regular",
+          "font-size": "$font-size-5",
+          "text-color": "$color-11",
+          "text-align": "$text-align-right"
+        }
+      },
+      "Controls": {
+        "Controls - Option": {
+          "font-family": "OpenSans-Semibold",
+          "font-family-name": "OpenSans",
+          "font-weight": "Semibold",
+          "font-size": "$font-size-2",
+          "text-color": "$color-20",
+          "text-align": "$text-align-center"
+        }
+      },
+      "H1": {
+        "Display": {
+          "Hero - Center": {
+            "font-family": "OpenSans-Bold",
+            "font-family-name": "OpenSans",
+            "font-weight": "Bold",
+            "font-size": "$font-size-10",
+            "text-color": "$color-78",
+            "text-align": "$text-align-center"
+          },
+          "Hero - Left": {
+            "font-family": "OpenSans-Bold",
+            "font-family-name": "OpenSans",
+            "font-weight": "Bold",
+            "font-size": "$font-size-10",
+            "text-color": "$color-78",
+            "text-align": "$text-align-left"
+          }
+        },
+        "H1 - Center": {
+          "font-family": "OpenSans-Bold",
+          "font-family-name": "OpenSans",
+          "font-weight": "Bold",
+          "font-size": "$font-size-9",
+          "text-color": "$color-11",
+          "text-align": "$text-align-center"
+        },
+        "H1 - Left": {
+          "font-family": "OpenSans-Bold",
+          "font-family-name": "OpenSans",
+          "font-weight": "Bold",
+          "font-size": "$font-size-9",
+          "text-color": "$color-11",
+          "text-align": "$text-align-left"
+        },
+        "Primary": {
+          "H1 - Center": {
+            "font-family": "OpenSans-Bold",
+            "font-family-name": "OpenSans",
+            "font-weight": "Bold",
+            "font-size": "$font-size-9",
+            "text-color": "$color-78",
+            "text-align": "$text-align-center"
+          },
+          "H1 - Left": {
+            "font-family": "OpenSans-Bold",
+            "font-family-name": "OpenSans",
+            "font-weight": "Bold",
+            "font-size": "$font-size-9",
+            "text-color": "$color-78",
+            "text-align": "$text-align-left"
+          }
+        },
+        "Secondary": {
+          "H1 - Center": {
+            "font-family": "OpenSans-Bold",
+            "font-family-name": "OpenSans",
+            "font-weight": "Bold",
+            "font-size": "$font-size-9",
+            "text-color": "$color-10",
+            "text-align": "$text-align-center"
+          },
+          "H1 - Left": {
+            "font-family": "OpenSans-Bold",
+            "font-family-name": "OpenSans",
+            "font-weight": "Bold",
+            "font-size": "$font-size-9",
+            "text-color": "$color-10",
+            "text-align": "$text-align-left"
+          }
+        }
+      },
+      "H2": {
+        "H2 - Center": {
+          "font-family": "OpenSans-Semibold",
+          "font-family-name": "OpenSans",
+          "font-weight": "Semibold",
+          "font-size": "$font-size-8",
+          "text-color": "$color-11",
+          "text-align": "$text-align-center"
+        },
+        "H2 - Left": {
+          "font-family": "OpenSans-Semibold",
+          "font-family-name": "OpenSans",
+          "font-weight": "Semibold",
+          "font-size": "$font-size-8",
+          "text-color": "$color-11",
+          "text-align": "$text-align-left"
+        },
+        "Primary": {
+          "H2 - Center": {
+            "font-family": "OpenSans-Semibold",
+            "font-family-name": "OpenSans",
+            "font-weight": "Semibold",
+            "font-size": "$font-size-8",
+            "text-color": "$color-78",
+            "text-align": "$text-align-center"
+          },
+          "H2 - Left": {
+            "font-family": "OpenSans-Semibold",
+            "font-family-name": "OpenSans",
+            "font-weight": "Semibold",
+            "font-size": "$font-size-8",
+            "text-color": "$color-78",
+            "text-align": "$text-align-left"
+          }
+        },
+        "Secondary": {
+          "H2 - Center": {
+            "font-family": "OpenSans-Semibold",
+            "font-family-name": "OpenSans",
+            "font-weight": "Semibold",
+            "font-size": "$font-size-8",
+            "text-color": "$color-10",
+            "text-align": "$text-align-center"
+          },
+          "H2 - Left": {
+            "font-family": "OpenSans-Semibold",
+            "font-family-name": "OpenSans",
+            "font-weight": "Semibold",
+            "font-size": "$font-size-8",
+            "text-color": "$color-10",
+            "text-align": "$text-align-left"
+          }
+        }
+      },
+      "H3": {
+        "H3 - Center": {
+          "font-family": "OpenSans-Semibold",
+          "font-family-name": "OpenSans",
+          "font-weight": "Semibold",
+          "font-size": "$font-size-7",
+          "text-color": "$color-11",
+          "text-align": "$text-align-center"
+        },
+        "H3 - Left": {
+          "font-family": "OpenSans-Semibold",
+          "font-family-name": "OpenSans",
+          "font-weight": "Semibold",
+          "font-size": "$font-size-7",
+          "text-color": "$color-11",
+          "text-align": "$text-align-left"
+        },
+        "Primary": {
+          "H3 - Center": {
+            "font-family": "OpenSans-Semibold",
+            "font-family-name": "OpenSans",
+            "font-weight": "Semibold",
+            "font-size": "$font-size-7",
+            "text-color": "$color-78",
+            "text-align": "$text-align-center"
+          },
+          "H3 - Left": {
+            "font-family": "OpenSans-Semibold",
+            "font-family-name": "OpenSans",
+            "font-weight": "Semibold",
+            "font-size": "$font-size-7",
+            "text-color": "$color-78",
+            "text-align": "$text-align-left"
+          }
+        },
+        "Secondary": {
+          "H3 - Center": {
+            "font-family": "OpenSans-Semibold",
+            "font-family-name": "OpenSans",
+            "font-weight": "Semibold",
+            "font-size": "$font-size-7",
+            "text-color": "$color-10",
+            "text-align": "$text-align-center"
+          },
+          "H3 - Left": {
+            "font-family": "OpenSans-Semibold",
+            "font-family-name": "OpenSans",
+            "font-weight": "Semibold",
+            "font-size": "$font-size-7",
+            "text-color": "$color-10",
+            "text-align": "$text-align-left"
+          }
+        }
+      },
+      "H4": {
+        "H4 - Center": {
+          "font-family": "OpenSans-Semibold",
+          "font-family-name": "OpenSans",
+          "font-weight": "Semibold",
+          "font-size": "$font-size-6",
+          "text-color": "$color-60",
+          "text-align": "$text-align-center"
+        },
+        "H4 - Left": {
+          "font-family": "OpenSans-Semibold",
+          "font-family-name": "OpenSans",
+          "font-weight": "Semibold",
+          "font-size": "$font-size-6",
+          "text-color": "$color-60",
+          "text-align": "$text-align-left"
+        },
+        "H4 - Right": {
+          "font-family": "OpenSans-Semibold",
+          "font-family-name": "OpenSans",
+          "font-weight": "Semibold",
+          "font-size": "$font-size-6",
+          "text-color": "$color-60",
+          "text-align": "$text-align-right"
+        },
+        "Primary": {
+          "H4 - Center": {
+            "font-family": "OpenSans-Semibold",
+            "font-family-name": "OpenSans",
+            "font-weight": "Semibold",
+            "font-size": "$font-size-6",
+            "text-color": "$color-78",
+            "text-align": "$text-align-center"
+          },
+          "H4 - Left": {
+            "font-family": "OpenSans-Semibold",
+            "font-family-name": "OpenSans",
+            "font-weight": "Semibold",
+            "font-size": "$font-size-6",
+            "text-color": "$color-78",
+            "text-align": "$text-align-left"
+          },
+          "H4 - Right": {
+            "font-family": "OpenSans-Semibold",
+            "font-family-name": "OpenSans",
+            "font-weight": "Semibold",
+            "font-size": "$font-size-6",
+            "text-color": "$color-78",
+            "text-align": "$text-align-right"
+          }
+        },
+        "Secondary": {
+          "H4 - Center": {
+            "font-family": "OpenSans-Semibold",
+            "font-family-name": "OpenSans",
+            "font-weight": "Semibold",
+            "font-size": "$font-size-6",
+            "text-color": "$color-10",
+            "text-align": "$text-align-center"
+          },
+          "H4 - Left": {
+            "font-family": "OpenSans-Semibold",
+            "font-family-name": "OpenSans",
+            "font-weight": "Semibold",
+            "font-size": "$font-size-6",
+            "text-color": "$color-10",
+            "text-align": "$text-align-left"
+          },
+          "H4 - Right": {
+            "font-family": "OpenSans-Semibold",
+            "font-family-name": "OpenSans",
+            "font-weight": "Semibold",
+            "font-size": "$font-size-6",
+            "text-color": "$color-10",
+            "text-align": "$text-align-right"
+          }
+        }
+      },
+      "H5": {
+        "H5 - Center": {
+          "font-family": "OpenSans-Bold",
+          "font-family-name": "OpenSans",
+          "font-weight": "Bold",
+          "font-size": "$font-size-5",
+          "text-color": "$color-60",
+          "text-align": "$text-align-center"
+        },
+        "H5 - Left": {
+          "font-family": "OpenSans-Bold",
+          "font-family-name": "OpenSans",
+          "font-weight": "Bold",
+          "font-size": "$font-size-5",
+          "text-color": "$color-60",
+          "text-align": "$text-align-left"
+        },
+        "H5 - Right": {
+          "font-family": "OpenSans-Bold",
+          "font-family-name": "OpenSans",
+          "font-weight": "Bold",
+          "font-size": "$font-size-5",
+          "text-color": "$color-60",
+          "text-align": "$text-align-center"
+        },
+        "Primary": {
+          "H5 - Center": {
+            "font-family": "OpenSans-Bold",
+            "font-family-name": "OpenSans",
+            "font-weight": "Bold",
+            "font-size": "$font-size-5",
+            "text-color": "$color-78",
+            "text-align": "$text-align-center"
+          },
+          "H5 - Left": {
+            "font-family": "OpenSans-Bold",
+            "font-family-name": "OpenSans",
+            "font-weight": "Bold",
+            "font-size": "$font-size-5",
+            "text-color": "$color-78",
+            "text-align": "$text-align-left"
+          }
+        },
+        "Secondary": {
+          "H5 - Center": {
+            "font-family": "OpenSans-Bold",
+            "font-family-name": "OpenSans",
+            "font-weight": "Bold",
+            "font-size": "$font-size-5",
+            "text-color": "$color-10",
+            "text-align": "$text-align-center"
+          },
+          "H5 - Left": {
+            "font-family": "OpenSans-Bold",
+            "font-family-name": "OpenSans",
+            "font-weight": "Bold",
+            "font-size": "$font-size-5",
+            "text-color": "$color-10",
+            "text-align": "$text-align-left"
+          }
+        }
+      },
+      "H6": {
+        "H6 - Left": {
+          "font-family": "OpenSans-Bold",
+          "font-family-name": "OpenSans",
+          "font-weight": "Bold",
+          "font-size": "$font-size-1",
+          "text-color": "$color-11",
+          "text-align": "$text-align-left"
+        },
+        "Primary": {
+          "H6 - Center": {
+            "font-family": "OpenSans-Semibold",
+            "font-family-name": "OpenSans",
+            "font-weight": "Semibold",
+            "font-size": "$font-size-1",
+            "text-color": "$color-78",
+            "text-align": "$text-align-center"
+          },
+          "H6 - Left": {
+            "font-family": "OpenSans-Bold",
+            "font-family-name": "OpenSans",
+            "font-weight": "Bold",
+            "font-size": "$font-size-1",
+            "text-color": "$color-78",
+            "text-align": "$text-align-left"
+          }
+        }
+      },
+      "Labels": {
+        "Center": {
+          "font-family": "OpenSans-Semibold",
+          "font-family-name": "OpenSans",
+          "font-weight": "Semibold",
+          "font-size": "$font-size-2",
+          "text-color": "$color-11",
+          "text-align": "$text-align-left"
+        },
+        "Left": {
+          "font-family": "OpenSans-Semibold",
+          "font-family-name": "OpenSans",
+          "font-weight": "Semibold",
+          "font-size": "$font-size-2",
+          "text-color": "$color-11",
+          "text-align": "$text-align-left"
+        }
+      },
+      "Links": {
+        "Link": {
+          "font-family": "OpenSans-Semibold",
+          "font-family-name": "OpenSans",
+          "font-weight": "Semibold",
+          "font-size": "$font-size-4",
+          "text-color": "$color-10",
+          "text-align": "$text-align-left"
+        },
+        "Link - hover": {
+          "font-family": "OpenSans-Semibold",
+          "font-family-name": "OpenSans",
+          "font-weight": "Semibold",
+          "font-size": "$font-size-4",
+          "text-color": "$color-120",
+          "text-align": "$text-align-left"
+        }
+      },
+      "Nav": {
+        "NavItem": {
+          "font-family": "OpenSans",
+          "font-family-name": "OpenSans",
+          "font-weight": "Regular",
+          "font-size": "$font-size-7",
+          "text-color": "$color-11",
+          "text-align": "$text-align-left"
+        },
+        "NavItem - Active": {
+          "font-family": "OpenSans",
+          "font-family-name": "OpenSans",
+          "font-weight": "Regular",
+          "font-size": "$font-size-7",
+          "text-color": "$color-20",
+          "text-align": "$text-align-left"
+        }
       }
     }
   }

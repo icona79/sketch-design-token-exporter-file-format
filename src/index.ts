@@ -4,8 +4,20 @@ import { resolve } from 'path'
 import * as fs from 'fs'
 import rgbHex from 'rgb-hex'
 import { isDeepStrictEqual } from 'util'
+import { getDefaultCompilerOptions } from 'typescript'
 
-const sketchDocumentPath = '../sample-file.sketch'
+// const sketchDocumentPath = '../sample-file.sketch'
+const sketchDocumentPath = '../testKit.sketch'
+
+// General variables
+const variablePrefix = '$'
+const keyToDelete = 'length'
+const separator = '-'
+var result = ''
+var colors = []
+var externalShadows = []
+var internalShadows = []
+var gradients = []
 
 // #region Default constants
 // filltType
@@ -36,9 +48,7 @@ fromFile(resolve(__dirname, sketchDocumentPath)).then(
     if (!document.sharedSwatches) return
 
     // Default variables
-    const variablePrefix = '$'
-    const keyToDelete = 'length'
-    const separator = '-'
+
     let designTokensList = {}
 
     // #region Color Variables
@@ -55,6 +65,10 @@ fromFile(resolve(__dirname, sketchDocumentPath)).then(
         swatch.value.blue * 255,
         swatch.value.alpha
       )
+      colors.push([
+        swatch.name.substring(swatch.name.lastIndexOf('/') + 1),
+        swatchColor,
+      ])
       if (swatch.name.indexOf('/') > -1) {
         createNestedObject(colorTokens, swatch.name.split('/'), swatchColor)
       } else {
@@ -75,11 +89,13 @@ fromFile(resolve(__dirname, sketchDocumentPath)).then(
 
     // #region Shadow styles
     let shadowStyles = {}
+    let shadowCounter = 1
     for (const style of layerStyles) {
       let shadows = style.value.shadows
-      let shadowCounter = 1
+
       for (const shadow of shadows) {
         let currentShadow = {}
+
         if (shadow.isEnabled) {
           let color = shadow.color
           let currentColor = rgbHex(
@@ -88,28 +104,32 @@ fromFile(resolve(__dirname, sketchDocumentPath)).then(
             color.blue * 255,
             color.alpha
           )
-          if (checkToken(colorTokens, currentColor) === false) {
-            currentShadow['shadow-color'] = currentColor
-          } else {
+
+          if (checkColor(colors, currentColor)) {
             currentShadow['shadow-color'] =
-              variablePrefix +
-              getKeyByValue(colorTokens, currentColor, variablePrefix)
+              variablePrefix + getColor(colors, currentColor)
+          } else {
+            currentShadow['shadow-color'] = currentColor
           }
+
           currentShadow['shadow-blur-radius'] = shadow.blurRadius
           currentShadow['shadow-offset-x'] = shadow.offsetX
           currentShadow['shadow-offset-y'] = shadow.offsetY
           currentShadow['shadow-spread'] = shadow.spread
 
-          if (!checkToken(currentShadow, shadowStyles)) {
+          if (!checkTokenValue(shadowStyles, currentShadow)) {
             let currentShadowName = 'shadow-' + shadowCounter
             createCouples(shadowStyles, currentShadow, currentShadowName, '', 0)
+            externalShadows.push([currentShadowName, currentShadow])
             shadowCounter++
           }
         }
       }
-      shadowCounter = 1
     }
     // #endregion
+
+    // reset generic variables
+    result = ''
 
     // #region Inner Shadow styles
     let innerShadowStyles = {}
@@ -127,19 +147,19 @@ fromFile(resolve(__dirname, sketchDocumentPath)).then(
             color.alpha
           )
 
-          if (checkToken(colorTokens, currentColor) === false) {
-            currentShadow['inner-shadow-color'] = currentColor
-          } else {
+          if (checkColor(colors, currentColor)) {
             currentShadow['inner-shadow-color'] =
-              variablePrefix +
-              getKeyByValue(colorTokens, currentColor, variablePrefix)
+              variablePrefix + getColor(colors, currentColor)
+          } else {
+            currentShadow['inner-shadow-color'] = currentColor
           }
+
           currentShadow['inner-shadow-blur-radius'] = shadow.blurRadius
           currentShadow['inner-shadow-offset-x'] = shadow.offsetX
           currentShadow['inner-shadow-offset-y'] = shadow.offsetY
           currentShadow['inner-shadow-spread'] = shadow.spread
 
-          if (!checkToken(currentShadow, innerShadowStyles)) {
+          if (!checkTokenValue(currentShadow, innerShadowStyles)) {
             let currentShadowName = 'inner-shadow-' + shadowCounter
             createCouples(
               innerShadowStyles,
@@ -148,6 +168,7 @@ fromFile(resolve(__dirname, sketchDocumentPath)).then(
               '',
               0
             )
+            internalShadows.push([currentShadowName, currentShadow])
             shadowCounter++
           }
         }
@@ -156,9 +177,11 @@ fromFile(resolve(__dirname, sketchDocumentPath)).then(
     }
     // #endregion
 
+    // reset generic variables
+    result = ''
+
     // #region gradients
     let gradientStyles = {}
-    let gradientStylesForComparison = {}
     let counterLinear = 0
     let counterRadial = 0
     let counterAngular = 0
@@ -198,13 +221,6 @@ fromFile(resolve(__dirname, sketchDocumentPath)).then(
             '',
             0
           )
-          // checks
-          // console.log('Current Gradient')
-          // console.log(gradientStylesCheck)
-          // console.log('Gradient List')
-          // console.log(gradientStyles)
-          // console.log(isDeepStrictEqual(gradientStyles, gradientStylesCheck))
-          //
 
           if (!checkToken(currentGradient, gradientStyles)) {
             createCouples(
@@ -214,11 +230,15 @@ fromFile(resolve(__dirname, sketchDocumentPath)).then(
               '',
               0
             )
+            gradients.push([currentGradientName, currentGradient])
           }
         }
       }
     }
     // #endregion
+
+    // reset generic variables
+    result = ''
 
     for (const style of layerStyles) {
       let currentStyle = style.name
@@ -307,12 +327,11 @@ fromFile(resolve(__dirname, sketchDocumentPath)).then(
               color.blue * 255,
               color.alpha
             )
-            if (checkToken(colorTokens, currentColor) === false) {
-              // createCouples(colorTokens, currentColor, "color", i);
-              styleColors['background' + fillCount + '-color'] = currentColor
-            } else {
+            if (checkColor(colors, currentColor)) {
               styleColors['background' + fillCount + '-color'] =
-                variablePrefix + getKeyByValue(colorTokens, currentColor)
+                variablePrefix + getColor(colors, currentColor)
+            } else {
+              styleColors['background' + fillCount + '-color'] = currentColor
             }
           }
           // #endregion
@@ -374,8 +393,9 @@ fromFile(resolve(__dirname, sketchDocumentPath)).then(
       }
       // #endregion
 
-      //reset the counter
+      // reset generic variables
       counter = 1
+      result = ''
 
       // #region Borders check
       let borders = style.value.borders
@@ -394,11 +414,18 @@ fromFile(resolve(__dirname, sketchDocumentPath)).then(
             color.blue * 255,
             color.alpha
           )
-          if (checkToken(colorTokens, currentColor) === false) {
-            styleBorderColors['border' + fillCount + '-color'] = currentColor
-          } else {
+          let check = 0
+          if (style.name === 'Field/Default') {
+            // console.log(currentColor)
+            // console.log(colorTokens)
+            check = 1
+          }
+
+          if (checkColor(colors, currentColor)) {
             styleBorderColors['border' + fillCount + '-color'] =
-              variablePrefix + getKeyByValue(colorTokens, currentColor)
+              variablePrefix + getColor(colors, currentColor)
+          } else {
+            styleBorderColors['border' + fillCount + '-color'] = currentColor
           }
 
           // Position
@@ -414,8 +441,10 @@ fromFile(resolve(__dirname, sketchDocumentPath)).then(
       }
       // #endregion
 
-      //reset the counter
+      // reset generic variables
       counter = 1
+      result = ''
+
       // #region Shadows check
       let shadows = style.value.shadows
       for (const shadow of shadows) {
@@ -433,22 +462,21 @@ fromFile(resolve(__dirname, sketchDocumentPath)).then(
             color.alpha
           )
 
-          if (!checkToken(colorTokens, currentColor)) {
-            currentShadow['shadow-color'] = currentColor
+          if (checkColor(colors, currentColor)) {
+            currentShadow['shadow-color'] =
+              variablePrefix + getColor(colors, currentColor)
           } else {
-            currentShadow['shadow-color'] = getKeyByValue(
-              colorTokens,
-              currentColor
-            )
+            currentShadow['shadow-color'] = currentColor
           }
+
           currentShadow['shadow-blur-radius'] = shadow.blurRadius
           currentShadow['shadow-offset-x'] = shadow.offsetX
           currentShadow['shadow-offset-y'] = shadow.offsetY
           currentShadow['shadow-spread'] = shadow.spread
-          if (!checkToken(currentShadow, shadowStyles)) {
+
+          if (checkShadows(externalShadows, currentShadow)) {
             styleShadow['shadow' + shadowCount] =
-              variablePrefix +
-              getKeyByValueObj(shadowStyles, currentShadow, variablePrefix)
+              variablePrefix + getShadow(externalShadows, currentShadow)
           }
 
           counter++
@@ -456,8 +484,9 @@ fromFile(resolve(__dirname, sketchDocumentPath)).then(
       }
       // #endregion
 
-      //reset the counter
+      // reset generic variables
       counter = 1
+      result = ''
 
       // #region Inner Shadows check
       let innerShadows = style.value.innerShadows
@@ -476,13 +505,11 @@ fromFile(resolve(__dirname, sketchDocumentPath)).then(
             color.alpha
           )
 
-          if (!checkToken(colorTokens, currentColor)) {
-            currentShadow['inner-shadow-color'] = currentColor
+          if (checkColor(colors, currentColor)) {
+            currentShadow['inner-shadow-color'] =
+              variablePrefix + getColor(colors, currentColor)
           } else {
-            currentShadow['inner-shadow-color'] = getKeyByValue(
-              colorTokens,
-              currentColor
-            )
+            currentShadow['inner-shadow-color'] = currentColor
           }
 
           currentShadow['inner-shadow-blur-radius'] = shadow.blurRadius
@@ -490,10 +517,9 @@ fromFile(resolve(__dirname, sketchDocumentPath)).then(
           currentShadow['inner-shadow-offset-y'] = shadow.offsetY
           currentShadow['inner-shadow-spread'] = shadow.spread
 
-          if (!checkToken(currentShadow, innerShadowStyles)) {
-            styleInnerShadows['inner-shadow' + shadowCount] =
-              variablePrefix +
-              getKeyByValueObj(innerShadowStyles, currentShadow, variablePrefix)
+          if (checkShadows(internalShadows, currentShadow)) {
+            styleShadow['inner-shadow' + shadowCount] =
+              variablePrefix + getShadow(internalShadows, currentShadow)
           }
 
           counter++
@@ -501,8 +527,9 @@ fromFile(resolve(__dirname, sketchDocumentPath)).then(
       }
       // #endregion
 
-      //reset the counter
+      // reset generic variables
       counter = 1
+      result = ''
 
       // manage the entire layer style
       layerStylesTokensList = Object.assign(
@@ -616,8 +643,8 @@ fromFile(resolve(__dirname, sketchDocumentPath)).then(
       fontFamily = currentStyleFont.split('-')
       createCouples(
         fonts,
-        currentStyleFont,
-        '$font-family',
+        variablePrefix + currentStyleFont,
+        'font-family',
         currentStyleFontKey
       )
       styleFontFamily = setStyleToken(fonts, currentStyleFont, 'font-family')
@@ -923,6 +950,56 @@ function checkToken(object, currentItem) {
   return check
 }
 
+function checkColor(array, currentItem) {
+  for (let i = 0; i < array.length; i++) {
+    if (array[i][1] === currentItem) {
+      return true
+    }
+  }
+}
+
+function getColor(array, currentItem) {
+  for (let i = 0; i < array.length; i++) {
+    if (array[i][1] === currentItem) {
+      return array[i][0]
+    }
+  }
+}
+
+function checkShadows(array, currentItem) {
+  for (let i = 0; i < array.length; i++) {
+    if (isDeepStrictEqual(array[i][1], currentItem)) {
+      return true
+    }
+  }
+}
+
+function getShadow(array, currentItem) {
+  for (let i = 0; i < array.length; i++) {
+    if (isDeepStrictEqual(array[i][1], currentItem)) {
+      return array[i][0]
+    }
+  }
+}
+
+function checkTokenValue(object, currentItem) {
+  result = ''
+  let check = false
+
+  if (Object.keys(object).length > 0) {
+    for (var i in object) {
+      if (isDeepStrictEqual(object[i], currentItem)) {
+        check = true
+        return check
+      }
+      if (object[i] !== null && typeof object[i] == 'object') {
+        //going one step down in the object tree!!
+        checkToken(object[i], currentItem)
+      }
+    }
+  }
+}
+
 function getKeyByValue(object, value, discard = '') {
   if (typeof value === 'string') {
     value = value.replace(discard, '')
@@ -930,13 +1007,34 @@ function getKeyByValue(object, value, discard = '') {
   return Object.keys(object).find(key => object[key] === value)
 }
 
-function getKeyByValueObj(object, value, discard = '') {
-  return Object.keys(object).find(key => {
-    return (
-      JSON.stringify(object[key]).replace(discard, '') ===
-      JSON.stringify(value).replace(discard, '')
-    )
-  })
+/**
+ * Returns the key of an Object recurively deeping into nested objects
+ */
+function getKeyByValueRecursive(object, search, discard = '', checkValue = 0) {
+  result = ''
+  let objectLength = Object.keys(object).length
+  if (checkValue === 1) {
+    console.log(search)
+  }
+  if (objectLength > 0) {
+    for (let i in object) {
+      let key = i
+      let value = object[i]
+
+      if (checkValue === 1) {
+        console.log(key)
+        console.log(value)
+      }
+
+      if (isDeepStrictEqual(value, search)) {
+        result = key
+      }
+
+      if (object[i] !== null && typeof object[i] == 'object') {
+        getKeyByValueRecursive(object[i], search, discard)
+      }
+    }
+  }
 }
 
 function createCouples(
@@ -980,6 +1078,17 @@ function setStyleToken(object, currentItem, key = '', prefix = '') {
   return token
 }
 
+/**
+ * Generate nested Objects by splitting a sting
+ * Usages:
+ * createNestedObject(window, ['shapes', 'circle'])
+ *   Now window.shapes.circle is an empty object, ready to be used.
+ * var object = {} // Works with any object other that window too
+ * createNestedObject(object, ['shapes', 'rectangle', 'width'], 300)
+ *   Now we have: object.shapes.rectangle.width === 300
+ * createNestedObject(object, 'shapes.rectangle.height'.split('.'), 400)
+ *   Now we have: object.shapes.rectangle.height === 400
+ */
 function createNestedObject(object, keys, value) {
   // If a value is given, remove the last name and keep it for later:
   var lastKey = arguments.length === 3 ? keys.pop() : false
@@ -995,14 +1104,6 @@ function createNestedObject(object, keys, value) {
   // Return the last object in the hierarchy:
   return object
 }
-// Usages:
-// createNestedObject(window, ['shapes', 'circle'])
-// // Now window.shapes.circle is an empty object, ready to be used.
-// var object = {} // Works with any object other that window too
-// createNestedObject(object, ['shapes', 'rectangle', 'width'], 300)
-// // Now we have: object.shapes.rectangle.width === 300
-// createNestedObject(object, 'shapes.rectangle.height'.split('.'), 400)
-// Now we have: object.shapes.rectangle.height === 400
 
 function getKey(object, val) {
   Object.keys(object).find(key => object[key] === val)
@@ -1083,13 +1184,15 @@ function setGradientDetails(object, currentItem, type = 0, prefix = '') {
       color.alpha
     )
     currentPosition = Math.round(stop.position * 100) / 100
-    if (checkToken(colorTokens, currentColor) === false) {
-      currentStop = Object.assign(currentStop, { color: currentColor })
-    } else {
+
+    if (checkColor(colors, currentColor)) {
       currentStop = Object.assign(currentStop, {
-        color: prefix + getKeyByValue(colorTokens, currentColor),
+        color: prefix + getColor(colors, currentColor),
       })
+    } else {
+      currentStop = Object.assign(currentStop, { color: currentColor })
     }
+
     currentStop = Object.assign(currentStop, {
       position: currentPosition,
     })
