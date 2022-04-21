@@ -3,92 +3,92 @@
     "Brand": {
       "Branding": {
         "Brand-Primary": {
-          "value": "e3017eff"
+          "value": "rgba(227 ,1 ,126 ,1)"
         },
         "Brand-Primary--darker": {
-          "value": "b00162ff"
+          "value": "rgba(176 ,1 ,98 ,1)"
         },
         "Brand-Primary--lighter": {
-          "value": "fc1b97ff"
+          "value": "rgba(252 ,27 ,151 ,1)"
         },
         "Brand-Primary--transparent": {
-          "value": "e3017e1f"
+          "value": "rgba(227 ,1 ,126 ,0.12)"
         }
       },
       "Interactions": {
         "Brand-Interaction": {
-          "value": "5112b6ff"
+          "value": "rgba(81 ,18 ,182 ,1)"
         },
         "Brand-Interaction--hover": {
-          "value": "00220fff"
+          "value": "rgba(0 ,34 ,15 ,1)"
         }
       }
     },
     "General": {
       "Backgrounds": {
         "Sand": {
-          "value": "fff1f9ff"
+          "value": "rgba(255 ,241 ,249 ,1)"
         },
         "White": {
-          "value": "ffffffff"
+          "value": "rgba(255 ,255 ,255 ,1)"
         }
       },
       "Text": {
         "Text": {
-          "value": "1b1b1bff"
+          "value": "rgba(27 ,27 ,27 ,1)"
         },
         "Text--darker": {
-          "value": "090909ff"
+          "value": "rgba(9 ,9 ,9 ,1)"
         },
         "Text--inverted": {
-          "value": "ffffffff"
+          "value": "rgba(255 ,255 ,255 ,1)"
         },
         "Text--lighter": {
-          "value": "585858ff"
+          "value": "rgba(88 ,88 ,88 ,1)"
         }
       },
       "Utility": {
         "Error": {
-          "value": "ab0200ff"
+          "value": "rgba(171 ,2 ,0 ,1)"
         },
         "Success": {
-          "value": "00ab15ff"
+          "value": "rgba(0 ,171 ,21 ,1)"
         }
       }
     },
     "Products": {
       "Autumn-Fresh": {
-        "value": "b83367ff"
+        "value": "rgba(184 ,51 ,103 ,1)"
       },
       "Spring-Clean": {
-        "value": "991f6eff"
+        "value": "rgba(153 ,31 ,110 ,1)"
       },
       "Summer-Haze": {
-        "value": "eb6e1bff"
+        "value": "rgba(235 ,110 ,27 ,1)"
       },
       "Summer-Light": {
-        "value": "f2af00ff"
+        "value": "rgba(242 ,175 ,0 ,1)"
       },
       "Winter-Bliss": {
-        "value": "46aae1ff"
+        "value": "rgba(70 ,170 ,225 ,1)"
       },
       "Winter-Forest": {
-        "value": "004f01ff"
+        "value": "rgba(0 ,79 ,1 ,1)"
       }
     },
     "Shadows": {
       "Shadow - 8": {
-        "value": "00000014"
+        "value": "rgba(0 ,0 ,0 ,0.08)"
       },
       "Shadow - 12": {
-        "value": "0000001f"
+        "value": "rgba(0 ,0 ,0 ,0.12)"
       },
       "Shadow - 24": {
-        "value": "0000003d"
+        "value": "rgba(0 ,0 ,0 ,0.24)"
       }
     },
     "color-1": {
-      "value": "b13636ff"
+      "value": "rgba(177 ,54 ,54 ,1)"
     }
   },
   "gradients": {
@@ -99,7 +99,7 @@
       "stops": {
         "1": {
           "color": {
-            "value": "f304b4ff"
+            "value": "rgba(243 ,4 ,180 ,1)"
           },
           "position": {
             "value": 0
@@ -107,7 +107,7 @@
         },
         "2": {
           "color": {
-            "value": "49f144ff"
+            "value": "rgba(73 ,241 ,68 ,1)"
           },
           "position": {
             "value": 0.3
@@ -115,7 +115,7 @@
         },
         "3": {
           "color": {
-            "value": "6257b6ff"
+            "value": "rgba(98 ,87 ,182 ,1)"
           },
           "position": {
             "value": 0.7
@@ -123,7 +123,7 @@
         },
         "4": {
           "color": {
-            "value": "edacd0ff"
+            "value": "rgba(237 ,172 ,208 ,1)"
           },
           "position": {
             "value": 1
@@ -187,19 +187,19 @@
   },
   "inner-shadows": {
     "inner-shadow-1": {
-      "shadow-color": {
+      "inner-shadow-color": {
         "value": "$Shadow - 8"
       },
-      "shadow-blur-radius": {
+      "inner-shadow-blur-radius": {
         "value": 8
       },
-      "shadow-offset-x": {
+      "inner-shadow-offset-x": {
         "value": 0
       },
-      "shadow-offset-y": {
+      "inner-shadow-offset-y": {
         "value": 2
       },
-      "shadow-spread": {
+      "inner-shadow-spread": {
         "value": 0
       }
     }
@@ -354,7 +354,7 @@
           "value": "$White"
         },
         "border-color": {
-          "value": "a88e8eff"
+          "value": "rgba(168 ,142 ,142 ,1)"
         },
         "border-position": {
           "value": "Center"

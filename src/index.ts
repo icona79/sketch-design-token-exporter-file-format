@@ -60,7 +60,7 @@ fromFile(resolve(__dirname, sketchDocumentPath)).then(
     )
 
     swatches.forEach(swatch => {
-      let swatchColor = setColor(swatch, 'hex')
+      let swatchColor = setColor(swatch.value, 'rgba')
       colors.push([
         swatch.name.substring(swatch.name.lastIndexOf('/') + 1),
         swatchColor,
@@ -95,7 +95,7 @@ fromFile(resolve(__dirname, sketchDocumentPath)).then(
         let currentShadow = {}
 
         if (shadow.isEnabled) {
-          setInternalShadowDetails(currentShadow, shadow)
+          setShadowDetails(currentShadow, shadow, 'shadow')
 
           if (!checkTokenValue(shadowStyles, currentShadow)) {
             let currentShadowName = 'shadow-' + shadowCounter
@@ -119,7 +119,7 @@ fromFile(resolve(__dirname, sketchDocumentPath)).then(
       for (const shadow of shadows) {
         let currentShadow = {}
         if (shadow.isEnabled) {
-          setInternalShadowDetails(currentShadow, shadow)
+          setShadowDetails(currentShadow, shadow, 'inner-shadow')
 
           if (!checkTokenValue(currentShadow, innerShadowStyles)) {
             let currentShadowName = 'inner-shadow-' + shadowCounter
@@ -283,12 +283,7 @@ fromFile(resolve(__dirname, sketchDocumentPath)).then(
           // #region fill monochrome
           if (fillType === 0) {
             let color = fill.color
-            let currentColor = rgbHex(
-              color.red * 255,
-              color.green * 255,
-              color.blue * 255,
-              color.alpha
-            )
+            let currentColor = setColor(color, 'rgba')
             if (checkColor(colors, currentColor)) {
               styleColors['background' + fillCount + '-color'] = {
                 value: variablePrefix + getColor(colors, currentColor),
@@ -374,13 +369,7 @@ fromFile(resolve(__dirname, sketchDocumentPath)).then(
           }
           // Colors
           let color = border.color
-          // console.log(border)
-          let currentColor = rgbHex(
-            color.red * 255,
-            color.green * 255,
-            color.blue * 255,
-            color.alpha
-          )
+          let currentColor = setColor(color, 'rgba')
 
           if (checkColor(colors, currentColor)) {
             styleBorderColors['border' + fillCount + '-color'] = {
@@ -421,7 +410,7 @@ fromFile(resolve(__dirname, sketchDocumentPath)).then(
             shadowCount = '-' + counter.toString()
           }
 
-          setInternalShadowDetails(currentShadow, shadow)
+          setShadowDetails(currentShadow, shadow, 'shadow')
 
           if (checkShadows(externalShadows, currentShadow)) {
             styleShadow['shadow' + shadowCount] = {
@@ -447,7 +436,8 @@ fromFile(resolve(__dirname, sketchDocumentPath)).then(
           if (counter > 1) {
             shadowCount = counter.toString()
           }
-          setInternalShadowDetails(currentShadow, shadow)
+
+          setShadowDetails(currentShadow, shadow, 'inner-shadow')
 
           if (checkShadows(internalShadows, currentShadow)) {
             styleShadow['inner-shadow' + shadowCount] =
@@ -609,12 +599,7 @@ fromFile(resolve(__dirname, sketchDocumentPath)).then(
       let currentStyleFontColor =
         textStyle.value.textStyle.encodedAttributes
           .MSAttributedStringColorAttribute
-      let currentColor = rgbHex(
-        currentStyleFontColor.red * 255,
-        currentStyleFontColor.green * 255,
-        currentStyleFontColor.blue * 255,
-        currentStyleFontColor.alpha
-      )
+      let currentColor = setColor(currentStyleFontColor, 'rgba')
       // If the color already exist as a Color Variable, it should not be added
       if (checkColor(colors, currentColor)) {
         styleFontColor['text-color'] = {
@@ -901,28 +886,27 @@ function getColor(array, currentItem) {
 }
 
 function setColor(swatch, type = 'hex') {
-  let swatchColorHEX
-  let swatchColorRGBA
-  swatchColorHEX = rgbHex(
-    swatch.value.red * 255,
-    swatch.value.green * 255,
-    swatch.value.blue * 255,
-    swatch.value.alpha
-  )
-  swatchColorRGBA =
-    'rgba(' +
-    Math.floor(swatch.value.red * 255) +
-    ' ,' +
-    Math.floor(swatch.value.green * 255) +
-    ' ,' +
-    Math.floor(swatch.value.blue * 255) +
-    ' ,' +
-    Math.floor(swatch.value.alpha * 100) / 100 +
-    ')'
-
   if (type === 'hex') {
+    let swatchColorHEX = rgbHex(
+      swatch.red * 255,
+      swatch.green * 255,
+      swatch.blue * 255,
+      swatch.alpha
+    )
+
     return swatchColorHEX
   } else {
+    let swatchColorRGBA =
+      'rgba(' +
+      Math.floor(swatch.red * 255) +
+      ' ,' +
+      Math.floor(swatch.green * 255) +
+      ' ,' +
+      Math.floor(swatch.blue * 255) +
+      ' ,' +
+      Math.floor(swatch.alpha * 100) / 100 +
+      ')'
+
     return swatchColorRGBA
   }
 }
@@ -1078,88 +1062,24 @@ function getKey(object, val) {
   Object.keys(object).find(key => object[key] === val)
 }
 
-function getAngleDeg(ax, ay, bx, by) {
-  var angleRad = Math.atan((ay - by) / (ax - bx))
-  var angleDeg = (angleRad * 180) / Math.PI
-
-  return angleDeg
-}
-
 // Internal functions
-// Set Color Token
-function setColorToken(object, currentItem, key, internalObject = undefined) {
-  let color = currentItem.color
-  let currentColor = rgbHex(
-    color.red * 255,
-    color.green * 255,
-    color.blue * 255,
-    color.alpha
-  )
-  let currentObject = {}
-  if (internalObject !== undefined) {
-    currentObject = internalObject
-  }
-  if (checkToken(colorTokens, currentColor) === false) {
-    createCouples(currentObject, currentColor, 'color', '', 0)
-    object[key] = currentObject
-  } else {
-    createCouples(
-      currentObject,
-      getKeyByValue(colorTokens, currentColor),
-      'color',
-      '',
-      0
-    )
-    object[key] = currentObject
-  }
-}
-
 // Set Shadows
-function setInternalShadowDetails(object, currentItem) {
+function setShadowDetails(object, currentItem, shadowType = '') {
   let color = currentItem.color
-  let currentColor = rgbHex(
-    color.red * 255,
-    color.green * 255,
-    color.blue * 255,
-    color.alpha
-  )
+  let currentColor = setColor(color, 'rgba')
 
   if (checkColor(colors, currentColor)) {
-    object['shadow-color'] = {
+    object[shadowType + '-color'] = {
       value: variablePrefix + getColor(colors, currentColor),
     }
   } else {
-    object['shadow-color'] = { value: currentColor }
+    object[shadowType + '-color'] = { value: currentColor }
   }
 
-  object['shadow-blur-radius'] = { value: currentItem.blurRadius }
-  object['shadow-offset-x'] = { value: currentItem.offsetX }
-  object['shadow-offset-y'] = { value: currentItem.offsetY }
-  object['shadow-spread'] = { value: currentItem.spread }
-  return object
-}
-
-function setExternalShadowDetails(object, currentItem) {
-  let color = currentItem.color
-  let currentColor = rgbHex(
-    color.red * 255,
-    color.green * 255,
-    color.blue * 255,
-    color.alpha
-  )
-
-  if (checkColor(colors, currentColor)) {
-    object['inner-shadow-color'] = {
-      value: variablePrefix + getColor(colors, currentColor),
-    }
-  } else {
-    object['inner-shadow-color'] = { value: currentColor }
-  }
-
-  object['inner-shadow-blur-radius'] = { value: currentItem.blurRadius }
-  object['inner-shadow-offset-x'] = { value: currentItem.offsetX }
-  object['inner-shadow-offset-y'] = { value: currentItem.offsetY }
-  object['inner-shadow-spread'] = { value: currentItem.spread }
+  object[shadowType + '-blur-radius'] = { value: currentItem.blurRadius }
+  object[shadowType + '-offset-x'] = { value: currentItem.offsetX }
+  object[shadowType + '-offset-y'] = { value: currentItem.offsetY }
+  object[shadowType + '-spread'] = { value: currentItem.spread }
 
   return object
 }
@@ -1192,17 +1112,11 @@ function setGradientDetails(object, currentItem, type = 0, prefix = '') {
   for (const stop of stops) {
     let currentStop = {}
     let stopName = stopCounter.toString()
-    let currentColor = ''
-    let currentPosition = 0
-    // Define Color -> Not use the Function, as we need to set a bigger object for steps
+
     let color = stop.color
-    currentColor = rgbHex(
-      color.red * 255,
-      color.green * 255,
-      color.blue * 255,
-      color.alpha
-    )
-    currentPosition = Math.round(stop.position * 100) / 100
+    let currentColor = setColor(color, 'rgba')
+
+    let currentPosition = Math.round(stop.position * 100) / 100
 
     if (checkColor(colors, currentColor)) {
       currentStop = Object.assign(currentStop, {
@@ -1222,4 +1136,11 @@ function setGradientDetails(object, currentItem, type = 0, prefix = '') {
   }
   createCouples(currentObject, stopList, 'stops', '', 0)
   return currentObject
+}
+
+function getAngleDeg(ax, ay, bx, by) {
+  var angleRad = Math.atan((ay - by) / (ax - bx))
+  var angleDeg = (angleRad * 180) / Math.PI
+
+  return angleDeg
 }
