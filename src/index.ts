@@ -4,7 +4,7 @@ import { resolve } from 'path'
 import * as fs from 'fs'
 import rgbHex from 'rgb-hex'
 import { isDeepStrictEqual } from 'util'
-import { getDefaultCompilerOptions } from 'typescript'
+import { getDefaultCompilerOptions, isConstructorTypeNode } from 'typescript'
 
 // const sketchDocumentPath = '../sample-file.sketch'
 const sketchDocumentPath = '../testKit.sketch'
@@ -18,6 +18,7 @@ var colors = []
 var externalShadows = []
 var internalShadows = []
 var gradients = []
+var fontSizes = []
 
 // #region Default constants
 // filltType
@@ -59,20 +60,34 @@ fromFile(resolve(__dirname, sketchDocumentPath)).then(
     )
 
     swatches.forEach(swatch => {
-      let swatchColor = rgbHex(
-        swatch.value.red * 255,
-        swatch.value.green * 255,
-        swatch.value.blue * 255,
-        swatch.value.alpha
-      )
+      let swatchColor = setColor(swatch, 'hex')
+      // swatchColor = rgbHex(
+      //   swatch.value.red * 255,
+      //   swatch.value.green * 255,
+      //   swatch.value.blue * 255,
+      //   swatch.value.alpha
+      // )
+      // "rgba(227, 2, 126, 1)"
+      // swatchColorRGBA =
+      //   'rgba(' +
+      //   Math.floor(swatch.value.red * 255) +
+      //   ' ,' +
+      //   Math.floor(swatch.value.green * 255) +
+      //   ' ,' +
+      //   Math.floor(swatch.value.blue * 255) +
+      //   ' ,' +
+      //   Math.floor(swatch.value.alpha * 100) / 100 +
+      //   ')'
       colors.push([
         swatch.name.substring(swatch.name.lastIndexOf('/') + 1),
         swatchColor,
       ])
       if (swatch.name.indexOf('/') > -1) {
-        createNestedObject(colorTokens, swatch.name.split('/'), swatchColor)
+        createNestedObject(colorTokens, swatch.name.split('/'), {
+          value: swatchColor,
+        })
       } else {
-        colorTokens[swatch.name] = swatchColor
+        colorTokens[swatch.name] = { value: swatchColor }
       }
     })
     // #endregion
@@ -87,7 +102,7 @@ fromFile(resolve(__dirname, sketchDocumentPath)).then(
 
     let layerStylesComplete = false
 
-    // #region Shadow styles
+    // #region Shadow tokens
     let shadowStyles = {}
     let shadowCounter = 1
     for (const style of layerStyles) {
@@ -97,25 +112,7 @@ fromFile(resolve(__dirname, sketchDocumentPath)).then(
         let currentShadow = {}
 
         if (shadow.isEnabled) {
-          let color = shadow.color
-          let currentColor = rgbHex(
-            color.red * 255,
-            color.green * 255,
-            color.blue * 255,
-            color.alpha
-          )
-
-          if (checkColor(colors, currentColor)) {
-            currentShadow['shadow-color'] =
-              variablePrefix + getColor(colors, currentColor)
-          } else {
-            currentShadow['shadow-color'] = currentColor
-          }
-
-          currentShadow['shadow-blur-radius'] = shadow.blurRadius
-          currentShadow['shadow-offset-x'] = shadow.offsetX
-          currentShadow['shadow-offset-y'] = shadow.offsetY
-          currentShadow['shadow-spread'] = shadow.spread
+          setInternalShadowDetails(currentShadow, shadow)
 
           if (!checkTokenValue(shadowStyles, currentShadow)) {
             let currentShadowName = 'shadow-' + shadowCounter
@@ -131,7 +128,7 @@ fromFile(resolve(__dirname, sketchDocumentPath)).then(
     // reset generic variables
     result = ''
 
-    // #region Inner Shadow styles
+    // #region Inner Shadow tokens
     let innerShadowStyles = {}
     for (const style of layerStyles) {
       let shadows = style.value.innerShadows
@@ -139,25 +136,7 @@ fromFile(resolve(__dirname, sketchDocumentPath)).then(
       for (const shadow of shadows) {
         let currentShadow = {}
         if (shadow.isEnabled) {
-          let color = shadow.color
-          let currentColor = rgbHex(
-            color.red * 255,
-            color.green * 255,
-            color.blue * 255,
-            color.alpha
-          )
-
-          if (checkColor(colors, currentColor)) {
-            currentShadow['inner-shadow-color'] =
-              variablePrefix + getColor(colors, currentColor)
-          } else {
-            currentShadow['inner-shadow-color'] = currentColor
-          }
-
-          currentShadow['inner-shadow-blur-radius'] = shadow.blurRadius
-          currentShadow['inner-shadow-offset-x'] = shadow.offsetX
-          currentShadow['inner-shadow-offset-y'] = shadow.offsetY
-          currentShadow['inner-shadow-spread'] = shadow.spread
+          setInternalShadowDetails(currentShadow, shadow)
 
           if (!checkTokenValue(currentShadow, innerShadowStyles)) {
             let currentShadowName = 'inner-shadow-' + shadowCounter
@@ -328,10 +307,13 @@ fromFile(resolve(__dirname, sketchDocumentPath)).then(
               color.alpha
             )
             if (checkColor(colors, currentColor)) {
-              styleColors['background' + fillCount + '-color'] =
-                variablePrefix + getColor(colors, currentColor)
+              styleColors['background' + fillCount + '-color'] = {
+                value: variablePrefix + getColor(colors, currentColor),
+              }
             } else {
-              styleColors['background' + fillCount + '-color'] = currentColor
+              styleColors['background' + fillCount + '-color'] = {
+                value: currentColor,
+              }
             }
           }
           // #endregion
@@ -357,8 +339,9 @@ fromFile(resolve(__dirname, sketchDocumentPath)).then(
                 isDeepStrictEqual(currentGradient, gradient) &&
                 gradientName.includes(currentGradientName)
               ) {
-                styleColors['background' + fillCount + '-color'] =
-                  variablePrefix + gradientName
+                styleColors['background' + fillCount + '-color'] = {
+                  value: variablePrefix + gradientName,
+                }
               }
             }
           }
@@ -371,21 +354,22 @@ fromFile(resolve(__dirname, sketchDocumentPath)).then(
             let patternType = imageFillType[fill.patternFillType]
             let patternScale = fill.patternTileScale
 
-            styleColors['background-position'] = 'center'
+            styleColors['background-position'] = { value: 'center' }
             if (patternType === 'tile' && patternScale !== 1) {
-              styleColors['background-size'] =
-                (patternScale * 100).toString() + '%'
+              styleColors['background-size'] = {
+                value: (patternScale * 100).toString() + '%',
+              }
             } else if (patternType === 'stretch') {
-              styleColors['background-size'] = 'cover'
+              styleColors['background-size'] = { value: 'cover' }
             } else if (patternType === 'fit') {
-              styleColors['background-size'] = 'contain'
+              styleColors['background-size'] = { value: 'contain' }
             }
             if (fill.patternFillType === 0) {
-              styleColors['background-repeat'] = 'repeat'
+              styleColors['background-repeat'] = { value: 'repeat' }
             } else {
-              styleColors['background-repeat'] = 'no-repeat'
+              styleColors['background-repeat'] = { value: 'no-repeat' }
             }
-            styleColors['background-image'] = fill.image._ref
+            styleColors['background-image'] = { value: fill.image._ref }
           }
           // #endregion
           counter++
@@ -414,27 +398,26 @@ fromFile(resolve(__dirname, sketchDocumentPath)).then(
             color.blue * 255,
             color.alpha
           )
-          let check = 0
-          if (style.name === 'Field/Default') {
-            // console.log(currentColor)
-            // console.log(colorTokens)
-            check = 1
-          }
 
           if (checkColor(colors, currentColor)) {
-            styleBorderColors['border' + fillCount + '-color'] =
-              variablePrefix + getColor(colors, currentColor)
+            styleBorderColors['border' + fillCount + '-color'] = {
+              value: variablePrefix + getColor(colors, currentColor),
+            }
           } else {
-            styleBorderColors['border' + fillCount + '-color'] = currentColor
+            styleBorderColors['border' + fillCount + '-color'] = {
+              value: currentColor,
+            }
           }
 
           // Position
-          styleBorderPosition['border' + fillCount + '-position'] =
-            borderPosition[border.position]
+          styleBorderPosition['border' + fillCount + '-position'] = {
+            value: borderPosition[border.position],
+          }
 
           // Size
-          styleBorderSize['border' + fillCount + '-size'] =
-            border.thickness.toString() + 'px'
+          styleBorderSize['border' + fillCount + '-size'] = {
+            value: border.thickness.toString() + 'px',
+          }
 
           counter++
         }
@@ -454,29 +437,13 @@ fromFile(resolve(__dirname, sketchDocumentPath)).then(
           if (counter > 1) {
             shadowCount = '-' + counter.toString()
           }
-          let color = shadow.color
-          let currentColor = rgbHex(
-            color.red * 255,
-            color.green * 255,
-            color.blue * 255,
-            color.alpha
-          )
 
-          if (checkColor(colors, currentColor)) {
-            currentShadow['shadow-color'] =
-              variablePrefix + getColor(colors, currentColor)
-          } else {
-            currentShadow['shadow-color'] = currentColor
-          }
-
-          currentShadow['shadow-blur-radius'] = shadow.blurRadius
-          currentShadow['shadow-offset-x'] = shadow.offsetX
-          currentShadow['shadow-offset-y'] = shadow.offsetY
-          currentShadow['shadow-spread'] = shadow.spread
+          setInternalShadowDetails(currentShadow, shadow)
 
           if (checkShadows(externalShadows, currentShadow)) {
-            styleShadow['shadow' + shadowCount] =
-              variablePrefix + getShadow(externalShadows, currentShadow)
+            styleShadow['shadow' + shadowCount] = {
+              value: variablePrefix + getShadow(externalShadows, currentShadow),
+            }
           }
 
           counter++
@@ -497,25 +464,7 @@ fromFile(resolve(__dirname, sketchDocumentPath)).then(
           if (counter > 1) {
             shadowCount = counter.toString()
           }
-          let color = shadow.color
-          let currentColor = rgbHex(
-            color.red * 255,
-            color.green * 255,
-            color.blue * 255,
-            color.alpha
-          )
-
-          if (checkColor(colors, currentColor)) {
-            currentShadow['inner-shadow-color'] =
-              variablePrefix + getColor(colors, currentColor)
-          } else {
-            currentShadow['inner-shadow-color'] = currentColor
-          }
-
-          currentShadow['inner-shadow-blur-radius'] = shadow.blurRadius
-          currentShadow['inner-shadow-offset-x'] = shadow.offsetX
-          currentShadow['inner-shadow-offset-y'] = shadow.offsetY
-          currentShadow['inner-shadow-spread'] = shadow.spread
+          setInternalShadowDetails(currentShadow, shadow)
 
           if (checkShadows(internalShadows, currentShadow)) {
             styleShadow['inner-shadow' + shadowCount] =
@@ -603,7 +552,14 @@ fromFile(resolve(__dirname, sketchDocumentPath)).then(
       })
       for (let i = 0; i < sizeValues.length; i++) {
         let counter = i + 1
-        createCouples(fontSize, sizeValues[i], 'font-size', counter.toString())
+        createCouples(
+          fontSize,
+          { value: sizeValues[i] },
+          'font-size',
+          counter.toString()
+        )
+        let fontSizeName = 'font-size-' + counter.toString()
+        fontSizes.push([fontSizeName, sizeValues[i]])
       }
     }
     // #endregion
@@ -616,7 +572,7 @@ fromFile(resolve(__dirname, sketchDocumentPath)).then(
       let styleFontFamilyName = {}
       let styleFontSize = {}
       let styleFontForcedStyle
-      let styleFontColor
+      let styleFontColor = {}
       let styleFontWeight = {}
       let styleFontAlignment
       let styleFontVAlignment
@@ -643,26 +599,27 @@ fromFile(resolve(__dirname, sketchDocumentPath)).then(
       fontFamily = currentStyleFont.split('-')
       createCouples(
         fonts,
-        variablePrefix + currentStyleFont,
+        { value: currentStyleFont },
         'font-family',
         currentStyleFontKey
       )
-      styleFontFamily = setStyleToken(fonts, currentStyleFont, 'font-family')
-      styleFontFamilyName['font-family-name'] = fontFamily[0]
-      //console.log(styleFontFamily)
+      styleFontFamily = setStyleToken(
+        fonts,
+        variablePrefix + currentStyleFont,
+        'font-family'
+      )
+      styleFontFamilyName['font-family-name'] = { value: fontFamily[0] }
       // #endregion
 
       // #region Font Size
       let currentStyleFontSize =
         textStyle.value.textStyle.encodedAttributes
           .MSAttributedStringFontAttribute.attributes.size
-      styleFontSize = setStyleToken(
-        fontSize,
-        currentStyleFontSize,
-        'font-size',
-        variablePrefix
-      )
-      // console.log(styleFontSize)
+      styleFontSize = {
+        fontSize: {
+          value: variablePrefix + getFontSize(fontSizes, currentStyleFontSize),
+        },
+      }
       // #endregion
 
       // #region Font Color
@@ -676,35 +633,30 @@ fromFile(resolve(__dirname, sketchDocumentPath)).then(
         currentStyleFontColor.alpha
       )
       // If the color already exist as a Color Variable, it should not be added
-      if (checkToken(colorTokens, currentColor) === false) {
-        createCouples(colorTokens, currentColor, 'color', counter.toString())
+      if (checkColor(colors, currentColor)) {
+        styleFontColor['text-color'] = {
+          value: variablePrefix + getColor(colors, currentColor),
+        }
+      } else {
+        createCouples(
+          colorTokens,
+          { value: currentColor },
+          'color',
+          counter.toString()
+        )
+        colors.push(['color' + counter.toString(), currentColor])
+        styleFontColor['text-color'] = {
+          value: variablePrefix + getColor(colors, currentColor),
+        }
+        counter++
       }
-      styleFontColor = setStyleToken(
-        colorTokens,
-        currentColor,
-        'text-color',
-        variablePrefix
-      )
       // #endregion
 
       // #region Font Weight
-      // // todo: manage the tokenization of names (XS, S, M, L, XL)
-      // let currentStyleFontWeight = textStyle.fontWeight * 100
-      // createCouples(
-      //   fontWeight,
-      //   currentStyleFontWeight,
-      //   'font-weight',
-      //   currentStyleFontWeight
-      // )
-      // styleFontWeight = setStyleToken(
-      //   fontWeight,
-      //   currentStyleFontWeight,
-      //   'font-weight'
-      // )
       if (fontFamily[1] !== undefined) {
-        styleFontWeight['font-weight'] = fontFamily[1]
+        styleFontWeight['font-weight'] = { value: fontFamily[1] }
       } else {
-        styleFontWeight['font-weight'] = 'Regular'
+        styleFontWeight['font-weight'] = { value: 'Regular' }
       }
       // #endregion
 
@@ -856,7 +808,6 @@ fromFile(resolve(__dirname, sketchDocumentPath)).then(
       } else {
         textStyleTokens[currentStyle] = textStylesTokensList
       }
-      counter++
     }
     // #endregion
 
@@ -952,7 +903,7 @@ function checkToken(object, currentItem) {
 
 function checkColor(array, currentItem) {
   for (let i = 0; i < array.length; i++) {
-    if (array[i][1] === currentItem) {
+    if (isDeepStrictEqual(array[i][1], currentItem)) {
       return true
     }
   }
@@ -960,9 +911,36 @@ function checkColor(array, currentItem) {
 
 function getColor(array, currentItem) {
   for (let i = 0; i < array.length; i++) {
-    if (array[i][1] === currentItem) {
+    if (isDeepStrictEqual(array[i][1], currentItem)) {
       return array[i][0]
     }
+  }
+}
+
+function setColor(swatch, type = 'hex') {
+  let swatchColorHEX
+  let swatchColorRGBA
+  swatchColorHEX = rgbHex(
+    swatch.value.red * 255,
+    swatch.value.green * 255,
+    swatch.value.blue * 255,
+    swatch.value.alpha
+  )
+  swatchColorRGBA =
+    'rgba(' +
+    Math.floor(swatch.value.red * 255) +
+    ' ,' +
+    Math.floor(swatch.value.green * 255) +
+    ' ,' +
+    Math.floor(swatch.value.blue * 255) +
+    ' ,' +
+    Math.floor(swatch.value.alpha * 100) / 100 +
+    ')'
+
+  if (type === 'hex') {
+    return swatchColorHEX
+  } else {
+    return swatchColorRGBA
   }
 }
 
@@ -975,6 +953,14 @@ function checkShadows(array, currentItem) {
 }
 
 function getShadow(array, currentItem) {
+  for (let i = 0; i < array.length; i++) {
+    if (isDeepStrictEqual(array[i][1], currentItem)) {
+      return array[i][0]
+    }
+  }
+}
+
+function getFontSize(array, currentItem) {
   for (let i = 0; i < array.length; i++) {
     if (isDeepStrictEqual(array[i][1], currentItem)) {
       return array[i][0]
@@ -1071,9 +1057,9 @@ function createCouples(
 function setStyleToken(object, currentItem, key = '', prefix = '') {
   let token = {}
   if (checkToken(object, currentItem)) {
-    token[key] = prefix + getKeyByValue(object, currentItem)
+    token[key] = { value: prefix + getKeyByValue(object, currentItem) }
   } else {
-    token[key] = prefix + currentItem
+    token[key] = { value: prefix + currentItem }
   }
   return token
 }
@@ -1145,6 +1131,56 @@ function setColorToken(object, currentItem, key, internalObject = undefined) {
   }
 }
 
+// Set Shadows
+function setInternalShadowDetails(object, currentItem) {
+  let color = currentItem.color
+  let currentColor = rgbHex(
+    color.red * 255,
+    color.green * 255,
+    color.blue * 255,
+    color.alpha
+  )
+
+  if (checkColor(colors, currentColor)) {
+    object['shadow-color'] = {
+      value: variablePrefix + getColor(colors, currentColor),
+    }
+  } else {
+    object['shadow-color'] = { value: currentColor }
+  }
+
+  object['shadow-blur-radius'] = { value: currentItem.blurRadius }
+  object['shadow-offset-x'] = { value: currentItem.offsetX }
+  object['shadow-offset-y'] = { value: currentItem.offsetY }
+  object['shadow-spread'] = { value: currentItem.spread }
+  return object
+}
+
+function setExternalShadowDetails(object, currentItem) {
+  let color = currentItem.color
+  let currentColor = rgbHex(
+    color.red * 255,
+    color.green * 255,
+    color.blue * 255,
+    color.alpha
+  )
+
+  if (checkColor(colors, currentColor)) {
+    object['inner-shadow-color'] = {
+      value: variablePrefix + getColor(colors, currentColor),
+    }
+  } else {
+    object['inner-shadow-color'] = { value: currentColor }
+  }
+
+  object['inner-shadow-blur-radius'] = { value: currentItem.blurRadius }
+  object['inner-shadow-offset-x'] = { value: currentItem.offsetX }
+  object['inner-shadow-offset-y'] = { value: currentItem.offsetY }
+  object['inner-shadow-spread'] = { value: currentItem.spread }
+
+  return object
+}
+
 // Set Gradients
 function setGradientDetails(object, currentItem, type = 0, prefix = '') {
   let currentObject = {}
@@ -1165,7 +1201,7 @@ function setGradientDetails(object, currentItem, type = 0, prefix = '') {
       fill.gradient.to.split(',')[1].replace('}', '')
     )
   ).toString()
-  currentObject['degree'] = degree
+  currentObject['degree'] = { value: degree }
 
   let stops = fill.gradient.stops
   let stopCounter = 1
@@ -1187,14 +1223,16 @@ function setGradientDetails(object, currentItem, type = 0, prefix = '') {
 
     if (checkColor(colors, currentColor)) {
       currentStop = Object.assign(currentStop, {
-        color: prefix + getColor(colors, currentColor),
+        color: { value: prefix + getColor(colors, currentColor) },
       })
     } else {
-      currentStop = Object.assign(currentStop, { color: currentColor })
+      currentStop = Object.assign(currentStop, {
+        color: { value: currentColor },
+      })
     }
 
     currentStop = Object.assign(currentStop, {
-      position: currentPosition,
+      position: { value: currentPosition },
     })
     createNestedObject(stopList, [stopName], currentStop)
     stopCounter++

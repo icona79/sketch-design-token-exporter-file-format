@@ -2,104 +2,253 @@
   "colors": {
     "Brand": {
       "Branding": {
-        "Brand-Primary": "e3017eff",
-        "Brand-Primary--darker": "b00162ff",
-        "Brand-Primary--lighter": "fc1b97ff",
-        "Brand-Primary--transparent": "e3017e1f"
+        "Brand-Primary": {
+          "value": "e3017eff"
+        },
+        "Brand-Primary--darker": {
+          "value": "b00162ff"
+        },
+        "Brand-Primary--lighter": {
+          "value": "fc1b97ff"
+        },
+        "Brand-Primary--transparent": {
+          "value": "e3017e1f"
+        }
       },
       "Interactions": {
-        "Brand-Interaction": "5112b6ff",
-        "Brand-Interaction--hover": "00220fff"
+        "Brand-Interaction": {
+          "value": "5112b6ff"
+        },
+        "Brand-Interaction--hover": {
+          "value": "00220fff"
+        }
       }
     },
     "General": {
       "Backgrounds": {
-        "Sand": "fff1f9ff",
-        "White": "ffffffff"
+        "Sand": {
+          "value": "fff1f9ff"
+        },
+        "White": {
+          "value": "ffffffff"
+        }
       },
       "Text": {
-        "Text": "1b1b1bff",
-        "Text--darker": "090909ff",
-        "Text--inverted": "ffffffff",
-        "Text--lighter": "585858ff"
+        "Text": {
+          "value": "1b1b1bff"
+        },
+        "Text--darker": {
+          "value": "090909ff"
+        },
+        "Text--inverted": {
+          "value": "ffffffff"
+        },
+        "Text--lighter": {
+          "value": "585858ff"
+        }
       },
       "Utility": {
-        "Error": "ab0200ff",
-        "Success": "00ab15ff"
+        "Error": {
+          "value": "ab0200ff"
+        },
+        "Success": {
+          "value": "00ab15ff"
+        }
       }
     },
     "Products": {
-      "Autumn-Fresh": "b83367ff",
-      "Spring-Clean": "991f6eff",
-      "Summer-Haze": "eb6e1bff",
-      "Summer-Light": "f2af00ff",
-      "Winter-Bliss": "46aae1ff",
-      "Winter-Forest": "004f01ff"
+      "Autumn-Fresh": {
+        "value": "b83367ff"
+      },
+      "Spring-Clean": {
+        "value": "991f6eff"
+      },
+      "Summer-Haze": {
+        "value": "eb6e1bff"
+      },
+      "Summer-Light": {
+        "value": "f2af00ff"
+      },
+      "Winter-Bliss": {
+        "value": "46aae1ff"
+      },
+      "Winter-Forest": {
+        "value": "004f01ff"
+      }
     },
     "Shadows": {
-      "Shadow - 8": "00000014",
-      "Shadow - 12": "0000001f",
-      "Shadow - 24": "0000003d"
+      "Shadow - 8": {
+        "value": "00000014"
+      },
+      "Shadow - 12": {
+        "value": "0000001f"
+      },
+      "Shadow - 24": {
+        "value": "0000003d"
+      }
     },
-    "color-1": "ffffffff",
-    "color-10": "5112b6ff",
-    "color-11": "1b1b1bff",
-    "color-12": "b00162ff",
-    "color-20": "fc1b97ff",
-    "color-60": "585858ff",
-    "color-78": "e3017eff",
-    "color-120": "00220fff"
+    "color-1": {
+      "value": "b13636ff"
+    }
   },
-  "gradients": {},
+  "gradients": {
+    "linear-gradient-1": {
+      "degree": {
+        "value": "-90"
+      },
+      "stops": {
+        "1": {
+          "color": {
+            "value": "f304b4ff"
+          },
+          "position": {
+            "value": 0
+          }
+        },
+        "2": {
+          "color": {
+            "value": "49f144ff"
+          },
+          "position": {
+            "value": 0.3
+          }
+        },
+        "3": {
+          "color": {
+            "value": "6257b6ff"
+          },
+          "position": {
+            "value": 0.7
+          }
+        },
+        "4": {
+          "color": {
+            "value": "edacd0ff"
+          },
+          "position": {
+            "value": 1
+          }
+        }
+      }
+    }
+  },
   "shadows": {
     "shadow-1": {
-      "shadow-color": "$Shadow - 8",
-      "shadow-blur-radius": 8,
-      "shadow-offset-x": 0,
-      "shadow-offset-y": 2,
-      "shadow-spread": 0
+      "shadow-color": {
+        "value": "$Shadow - 8"
+      },
+      "shadow-blur-radius": {
+        "value": 8
+      },
+      "shadow-offset-x": {
+        "value": 0
+      },
+      "shadow-offset-y": {
+        "value": 2
+      },
+      "shadow-spread": {
+        "value": 0
+      }
     },
     "shadow-2": {
-      "shadow-color": "$Shadow - 12",
-      "shadow-blur-radius": 4,
-      "shadow-offset-x": 0,
-      "shadow-offset-y": 2,
-      "shadow-spread": 0
+      "shadow-color": {
+        "value": "$Shadow - 12"
+      },
+      "shadow-blur-radius": {
+        "value": 4
+      },
+      "shadow-offset-x": {
+        "value": 0
+      },
+      "shadow-offset-y": {
+        "value": 2
+      },
+      "shadow-spread": {
+        "value": 0
+      }
     },
     "shadow-3": {
-      "shadow-color": "$Brand-Interaction",
-      "shadow-blur-radius": 4,
-      "shadow-offset-x": 0,
-      "shadow-offset-y": 2,
-      "shadow-spread": -2.5
+      "shadow-color": {
+        "value": "$Brand-Interaction"
+      },
+      "shadow-blur-radius": {
+        "value": 4
+      },
+      "shadow-offset-x": {
+        "value": 0
+      },
+      "shadow-offset-y": {
+        "value": 2
+      },
+      "shadow-spread": {
+        "value": -2.5
+      }
     }
   },
   "inner-shadows": {
     "inner-shadow-1": {
-      "inner-shadow-color": "$Shadow - 8",
-      "inner-shadow-blur-radius": 8,
-      "inner-shadow-offset-x": 0,
-      "inner-shadow-offset-y": 2,
-      "inner-shadow-spread": 0
+      "shadow-color": {
+        "value": "$Shadow - 8"
+      },
+      "shadow-blur-radius": {
+        "value": 8
+      },
+      "shadow-offset-x": {
+        "value": 0
+      },
+      "shadow-offset-y": {
+        "value": 2
+      },
+      "shadow-spread": {
+        "value": 0
+      }
     }
   },
   "fonts": {
-    "font-family-OpenSans": "$OpenSans",
-    "font-family-OpenSans-Bold": "$OpenSans-Bold",
-    "font-family-OpenSans-Semibold": "$OpenSans-Semibold",
-    "font-family-Inconsolata-Regular": "$Inconsolata-Regular"
+    "font-family-OpenSans": {
+      "value": "OpenSans"
+    },
+    "font-family-OpenSans-Bold": {
+      "value": "OpenSans-Bold"
+    },
+    "font-family-OpenSans-Semibold": {
+      "value": "OpenSans-Semibold"
+    },
+    "font-family-Inconsolata-Regular": {
+      "value": "Inconsolata-Regular"
+    }
   },
   "font-sizes": {
-    "font-size-1": 11,
-    "font-size-2": 13,
-    "font-size-3": 14,
-    "font-size-4": 15,
-    "font-size-5": 16,
-    "font-size-6": 18,
-    "font-size-7": 24,
-    "font-size-8": 32,
-    "font-size-9": 48,
-    "font-size-10": 80
+    "font-size-1": {
+      "value": 11
+    },
+    "font-size-2": {
+      "value": 13
+    },
+    "font-size-3": {
+      "value": 14
+    },
+    "font-size-4": {
+      "value": 15
+    },
+    "font-size-5": {
+      "value": 16
+    },
+    "font-size-6": {
+      "value": 18
+    },
+    "font-size-7": {
+      "value": 24
+    },
+    "font-size-8": {
+      "value": 32
+    },
+    "font-size-9": {
+      "value": 48
+    },
+    "font-size-10": {
+      "value": 80
+    }
   },
   "font-weights": {},
   "text-alignments": {
@@ -112,131 +261,240 @@
     "Backgrounds": {
       "Plain": {
         "Background - Black": {
-          "background-color": "$Text--darker"
+          "background-color": {
+            "value": "$Text--darker"
+          }
         },
         "Background - Highlight": {
-          "background-color": "$Brand-Primary"
+          "background-color": {
+            "value": "$Brand-Primary"
+          }
         },
         "Background - Primary": {
-          "background-color": "$Brand-Primary--transparent"
+          "background-color": {
+            "value": "$Brand-Primary--transparent"
+          }
         },
         "Background - Sand": {
-          "background-color": "$Sand"
+          "background-color": {
+            "value": "$Sand"
+          }
         },
         "Background - Transparent": {
-          "background-color": "$White"
+          "background-color": {
+            "value": "$White"
+          }
         },
         "Background - White": {
-          "background-color": "$White"
+          "background-color": {
+            "value": "$White"
+          }
         }
       },
       "Shadows": {
         "Background - Highlight": {
-          "background-color": "$Brand-Primary",
-          "shadow": "$shadow-1",
-          "shadow-2": "$shadow-2"
+          "background-color": {
+            "value": "$Brand-Primary"
+          },
+          "shadow": {
+            "value": "$shadow-1"
+          },
+          "shadow-2": {
+            "value": "$shadow-2"
+          }
         },
         "Background - Primary": {
-          "background-color": "$Brand-Primary--transparent",
-          "shadow": "$shadow-1",
-          "shadow-2": "$shadow-2"
+          "background-color": {
+            "value": "$Brand-Primary--transparent"
+          },
+          "shadow": {
+            "value": "$shadow-1"
+          },
+          "shadow-2": {
+            "value": "$shadow-2"
+          }
         },
         "Background - Sand": {
-          "background-color": "$Sand",
-          "shadow": "$shadow-1",
-          "shadow-2": "$shadow-2"
+          "background-color": {
+            "value": "$Sand"
+          },
+          "shadow": {
+            "value": "$shadow-1"
+          },
+          "shadow-2": {
+            "value": "$shadow-2"
+          }
         },
         "Background - White": {
-          "background-color": "$White",
-          "shadow": "$shadow-1",
-          "shadow-2": "$shadow-2"
+          "background-color": {
+            "value": "$White"
+          },
+          "shadow": {
+            "value": "$shadow-1"
+          },
+          "shadow-2": {
+            "value": "$shadow-2"
+          }
         }
       }
     },
     "Brand - Primary": {
-      "background-color": "$Brand-Primary"
+      "background-color": {
+        "value": "$Brand-Primary"
+      }
     },
     "Brand - Secondary": {
-      "background-color": "$Brand-Interaction"
+      "background-color": {
+        "value": "$Brand-Interaction"
+      }
     },
     "Field": {
       "Default": {
-        "background-color": "$White",
-        "border-color": "a88e8eff",
-        "border-position": "Center",
-        "border-size": "1px",
+        "background-color": {
+          "value": "$White"
+        },
+        "border-color": {
+          "value": "a88e8eff"
+        },
+        "border-position": {
+          "value": "Center"
+        },
+        "border-size": {
+          "value": "1px"
+        },
         "inner-shadow": "$inner-shadow-1"
       },
       "Focus": {
-        "background-color": "$White",
-        "border-color": "$Brand-Interaction",
-        "border-position": "Center",
-        "border-size": "1px"
+        "background-color": {
+          "value": "$White"
+        },
+        "border-color": {
+          "value": "$Brand-Interaction"
+        },
+        "border-position": {
+          "value": "Center"
+        },
+        "border-size": {
+          "value": "1px"
+        }
       },
       "Selection": {
-        "background-color": "$White",
-        "shadow": "$shadow-3"
+        "background-color": {
+          "value": "$White"
+        },
+        "shadow": {
+          "value": "$shadow-3"
+        }
+      }
+    },
+    "Gradients": {
+      "Primary Gradient": {
+        "background-color": {
+          "value": "$linear-gradient-1"
+        }
       }
     },
     "Icons": {
       "Inverted": {
-        "background-color": "$White"
+        "background-color": {
+          "value": "$White"
+        }
       },
       "Primary": {
-        "background-color": "$Brand-Primary"
+        "background-color": {
+          "value": "$Brand-Primary"
+        }
       },
       "Text": {
-        "background-color": "$Text"
+        "background-color": {
+          "value": "$Text"
+        }
       },
       "Text - Error": {
-        "background-color": "$Error"
+        "background-color": {
+          "value": "$Error"
+        }
       },
       "Text - Lighter": {
-        "background-color": "$Text--lighter"
+        "background-color": {
+          "value": "$Text--lighter"
+        }
       },
       "Text - Success": {
-        "background-color": "$Success"
+        "background-color": {
+          "value": "$Success"
+        }
       }
     },
     "Interactive": {
       "Interactive Background--default": {
-        "background-color": "$Brand-Interaction"
+        "background-color": {
+          "value": "$Brand-Interaction"
+        }
       },
       "Interactive Background--hover": {
-        "background-color": "$Brand-Interaction--hover"
+        "background-color": {
+          "value": "$Brand-Interaction--hover"
+        }
       },
       "Interactive Border--default": {
-        "border-color": "$Brand-Interaction",
-        "border-position": "Center",
-        "border-size": "2px"
+        "border-color": {
+          "value": "$Brand-Interaction"
+        },
+        "border-position": {
+          "value": "Center"
+        },
+        "border-size": {
+          "value": "2px"
+        }
       },
       "Interactive Border--hover": {
-        "border-color": "$Brand-Interaction--hover",
-        "border-position": "Center",
-        "border-size": "2px"
+        "border-color": {
+          "value": "$Brand-Interaction--hover"
+        },
+        "border-position": {
+          "value": "Center"
+        },
+        "border-size": {
+          "value": "2px"
+        }
       }
     },
     "Progress Bars and Graphs": {
       "Autumn Fresh": {
-        "background-color": "$Autumn-Fresh"
+        "background-color": {
+          "value": "$Autumn-Fresh"
+        }
       },
       "Primary": {
-        "background-color": "$Brand-Primary"
+        "background-color": {
+          "value": "$Brand-Primary"
+        }
       },
       "Spring Clean": {
-        "background-color": "$Spring-Clean"
+        "background-color": {
+          "value": "$Spring-Clean"
+        }
       },
       "Summer Haze": {
-        "background-color": "$Summer-Haze"
+        "background-color": {
+          "value": "$Summer-Haze"
+        }
       },
       "Summer Light": {
-        "background-color": "$Summer-Light"
+        "background-color": {
+          "value": "$Summer-Light"
+        }
       },
       "Winter Bliss": {
-        "background-color": "$Winter-Bliss"
+        "background-color": {
+          "value": "$Winter-Bliss"
+        }
       },
       "Winter Forest": {
-        "background-color": "$Winter-Forest"
+        "background-color": {
+          "value": "$Winter-Forest"
+        }
       }
     }
   },
@@ -244,1078 +502,2562 @@
     "Inverted": {
       "Body": {
         "Body - Center": {
-          "font-family": "OpenSans",
-          "font-family-name": "OpenSans",
-          "font-weight": "Regular",
-          "font-size": "$font-size-5",
-          "text-color": "$color-1",
-          "text-align": "$text-align-center"
+          "font-family": {
+            "value": "$OpenSans"
+          },
+          "font-family-name": {
+            "value": "OpenSans"
+          },
+          "font-weight": {
+            "value": "Regular"
+          },
+          "fontSize": {
+            "value": "$font-size-5"
+          },
+          "text-color": {
+            "value": "$White"
+          },
+          "text-align": {
+            "value": "$text-align-center"
+          }
+        },
+        "Body - Center 2": {
+          "font-family": {
+            "value": "$OpenSans"
+          },
+          "font-family-name": {
+            "value": "OpenSans"
+          },
+          "font-weight": {
+            "value": "Regular"
+          },
+          "fontSize": {
+            "value": "$font-size-5"
+          },
+          "text-color": {
+            "value": "$color1"
+          },
+          "text-align": {
+            "value": "$text-align-center"
+          }
         },
         "Body - Left": {
-          "font-family": "OpenSans",
-          "font-family-name": "OpenSans",
-          "font-weight": "Regular",
-          "font-size": "$font-size-5",
-          "text-color": "$color-1",
-          "text-align": "$text-align-left"
+          "font-family": {
+            "value": "$OpenSans"
+          },
+          "font-family-name": {
+            "value": "OpenSans"
+          },
+          "font-weight": {
+            "value": "Regular"
+          },
+          "fontSize": {
+            "value": "$font-size-5"
+          },
+          "text-color": {
+            "value": "$White"
+          },
+          "text-align": {
+            "value": "$text-align-left"
+          }
         },
         "Body - Right": {
-          "font-family": "OpenSans",
-          "font-family-name": "OpenSans",
-          "font-weight": "Regular",
-          "font-size": "$font-size-5",
-          "text-color": "$color-1",
-          "text-align": "$text-align-right"
+          "font-family": {
+            "value": "$OpenSans"
+          },
+          "font-family-name": {
+            "value": "OpenSans"
+          },
+          "font-weight": {
+            "value": "Regular"
+          },
+          "fontSize": {
+            "value": "$font-size-5"
+          },
+          "text-color": {
+            "value": "$White"
+          },
+          "text-align": {
+            "value": "$text-align-right"
+          }
         },
         "Large Body - Center": {
-          "font-family": "OpenSans",
-          "font-family-name": "OpenSans",
-          "font-weight": "Regular",
-          "font-size": "$font-size-6",
-          "text-color": "$color-1",
-          "text-align": "$text-align-center"
+          "font-family": {
+            "value": "$OpenSans"
+          },
+          "font-family-name": {
+            "value": "OpenSans"
+          },
+          "font-weight": {
+            "value": "Regular"
+          },
+          "fontSize": {
+            "value": "$font-size-6"
+          },
+          "text-color": {
+            "value": "$White"
+          },
+          "text-align": {
+            "value": "$text-align-center"
+          }
         },
         "Large Body - Left": {
-          "font-family": "OpenSans",
-          "font-family-name": "OpenSans",
-          "font-weight": "Regular",
-          "font-size": "$font-size-6",
-          "text-color": "$color-1",
-          "text-align": "$text-align-left"
+          "font-family": {
+            "value": "$OpenSans"
+          },
+          "font-family-name": {
+            "value": "OpenSans"
+          },
+          "font-weight": {
+            "value": "Regular"
+          },
+          "fontSize": {
+            "value": "$font-size-6"
+          },
+          "text-color": {
+            "value": "$White"
+          },
+          "text-align": {
+            "value": "$text-align-left"
+          }
         },
         "Large Body - Right": {
-          "font-family": "OpenSans",
-          "font-family-name": "OpenSans",
-          "font-weight": "Regular",
-          "font-size": "$font-size-6",
-          "text-color": "$color-1",
-          "text-align": "$text-align-right"
+          "font-family": {
+            "value": "$OpenSans"
+          },
+          "font-family-name": {
+            "value": "OpenSans"
+          },
+          "font-weight": {
+            "value": "Regular"
+          },
+          "fontSize": {
+            "value": "$font-size-6"
+          },
+          "text-color": {
+            "value": "$White"
+          },
+          "text-align": {
+            "value": "$text-align-right"
+          }
         },
         "Small Body - Center": {
-          "font-family": "OpenSans",
-          "font-family-name": "OpenSans",
-          "font-weight": "Regular",
-          "font-size": "$font-size-3",
-          "text-color": "$color-1",
-          "text-align": "$text-align-center"
+          "font-family": {
+            "value": "$OpenSans"
+          },
+          "font-family-name": {
+            "value": "OpenSans"
+          },
+          "font-weight": {
+            "value": "Regular"
+          },
+          "fontSize": {
+            "value": "$font-size-3"
+          },
+          "text-color": {
+            "value": "$White"
+          },
+          "text-align": {
+            "value": "$text-align-center"
+          }
         },
         "Small Body - Left": {
-          "font-family": "OpenSans",
-          "font-family-name": "OpenSans",
-          "font-weight": "Regular",
-          "font-size": "$font-size-3",
-          "text-color": "$color-1",
-          "text-align": "$text-align-left"
+          "font-family": {
+            "value": "$OpenSans"
+          },
+          "font-family-name": {
+            "value": "OpenSans"
+          },
+          "font-weight": {
+            "value": "Regular"
+          },
+          "fontSize": {
+            "value": "$font-size-3"
+          },
+          "text-color": {
+            "value": "$White"
+          },
+          "text-align": {
+            "value": "$text-align-left"
+          }
         },
         "Small Body - Right": {
-          "font-family": "OpenSans",
-          "font-family-name": "OpenSans",
-          "font-weight": "Regular",
-          "font-size": "$font-size-3",
-          "text-color": "$color-1",
-          "text-align": "$text-align-right"
+          "font-family": {
+            "value": "$OpenSans"
+          },
+          "font-family-name": {
+            "value": "OpenSans"
+          },
+          "font-weight": {
+            "value": "Regular"
+          },
+          "fontSize": {
+            "value": "$font-size-3"
+          },
+          "text-color": {
+            "value": "$White"
+          },
+          "text-align": {
+            "value": "$text-align-right"
+          }
         }
       },
       "Buttons": {
         "Button Label": {
-          "font-family": "OpenSans-Bold",
-          "font-family-name": "OpenSans",
-          "font-weight": "Bold",
-          "font-size": "$font-size-4",
-          "text-color": "$color-10",
-          "text-align": "$text-align-center"
+          "font-family": {
+            "value": "$OpenSans-Bold"
+          },
+          "font-family-name": {
+            "value": "OpenSans"
+          },
+          "font-weight": {
+            "value": "Bold"
+          },
+          "fontSize": {
+            "value": "$font-size-4"
+          },
+          "text-color": {
+            "value": "$Brand-Interaction"
+          },
+          "text-align": {
+            "value": "$text-align-center"
+          }
         },
         "Button Label - Filled": {
-          "font-family": "OpenSans-Bold",
-          "font-family-name": "OpenSans",
-          "font-weight": "Bold",
-          "font-size": "$font-size-4",
-          "text-color": "$color-11",
-          "text-align": "$text-align-center"
+          "font-family": {
+            "value": "$OpenSans-Bold"
+          },
+          "font-family-name": {
+            "value": "OpenSans"
+          },
+          "font-weight": {
+            "value": "Bold"
+          },
+          "fontSize": {
+            "value": "$font-size-4"
+          },
+          "text-color": {
+            "value": "$Text"
+          },
+          "text-align": {
+            "value": "$text-align-center"
+          }
         },
         "Controls - Option": {
-          "font-family": "OpenSans-Semibold",
-          "font-family-name": "OpenSans",
-          "font-weight": "Semibold",
-          "font-size": "$font-size-2",
-          "text-color": "$color-12",
-          "text-align": "$text-align-center"
+          "font-family": {
+            "value": "$OpenSans-Semibold"
+          },
+          "font-family-name": {
+            "value": "OpenSans"
+          },
+          "font-weight": {
+            "value": "Semibold"
+          },
+          "fontSize": {
+            "value": "$font-size-2"
+          },
+          "text-color": {
+            "value": "$Brand-Primary--darker"
+          },
+          "text-align": {
+            "value": "$text-align-center"
+          }
         }
       },
       "Codes": {
         "Code Center": {
-          "font-family": "Inconsolata-Regular",
-          "font-family-name": "Inconsolata",
-          "font-weight": "Regular",
-          "font-size": "$font-size-5",
-          "text-color": "$color-1",
-          "text-align": "$text-align-center"
+          "font-family": {
+            "value": "$Inconsolata-Regular"
+          },
+          "font-family-name": {
+            "value": "Inconsolata"
+          },
+          "font-weight": {
+            "value": "Regular"
+          },
+          "fontSize": {
+            "value": "$font-size-5"
+          },
+          "text-color": {
+            "value": "$White"
+          },
+          "text-align": {
+            "value": "$text-align-center"
+          }
         },
         "Code Left": {
-          "font-family": "Inconsolata-Regular",
-          "font-family-name": "Inconsolata",
-          "font-weight": "Regular",
-          "font-size": "$font-size-5",
-          "text-color": "$color-1",
-          "text-align": "$text-align-left"
+          "font-family": {
+            "value": "$Inconsolata-Regular"
+          },
+          "font-family-name": {
+            "value": "Inconsolata"
+          },
+          "font-weight": {
+            "value": "Regular"
+          },
+          "fontSize": {
+            "value": "$font-size-5"
+          },
+          "text-color": {
+            "value": "$White"
+          },
+          "text-align": {
+            "value": "$text-align-left"
+          }
         },
         "Code Right": {
-          "font-family": "Inconsolata-Regular",
-          "font-family-name": "Inconsolata",
-          "font-weight": "Regular",
-          "font-size": "$font-size-5",
-          "text-color": "$color-1",
-          "text-align": "$text-align-right"
+          "font-family": {
+            "value": "$Inconsolata-Regular"
+          },
+          "font-family-name": {
+            "value": "Inconsolata"
+          },
+          "font-weight": {
+            "value": "Regular"
+          },
+          "fontSize": {
+            "value": "$font-size-5"
+          },
+          "text-color": {
+            "value": "$White"
+          },
+          "text-align": {
+            "value": "$text-align-right"
+          }
         }
       },
       "H1": {
         "Display": {
           "Hero - Center": {
-            "font-family": "OpenSans-Bold",
-            "font-family-name": "OpenSans",
-            "font-weight": "Bold",
-            "font-size": "$font-size-10",
-            "text-color": "$color-1",
-            "text-align": "$text-align-center"
+            "font-family": {
+              "value": "$OpenSans-Bold"
+            },
+            "font-family-name": {
+              "value": "OpenSans"
+            },
+            "font-weight": {
+              "value": "Bold"
+            },
+            "fontSize": {
+              "value": "$font-size-10"
+            },
+            "text-color": {
+              "value": "$White"
+            },
+            "text-align": {
+              "value": "$text-align-center"
+            }
           },
           "Hero - Left": {
-            "font-family": "OpenSans-Bold",
-            "font-family-name": "OpenSans",
-            "font-weight": "Bold",
-            "font-size": "$font-size-10",
-            "text-color": "$color-1",
-            "text-align": "$text-align-left"
+            "font-family": {
+              "value": "$OpenSans-Bold"
+            },
+            "font-family-name": {
+              "value": "OpenSans"
+            },
+            "font-weight": {
+              "value": "Bold"
+            },
+            "fontSize": {
+              "value": "$font-size-10"
+            },
+            "text-color": {
+              "value": "$White"
+            },
+            "text-align": {
+              "value": "$text-align-left"
+            }
           }
         },
         "H1 - Center": {
-          "font-family": "OpenSans-Bold",
-          "font-family-name": "OpenSans",
-          "font-weight": "Bold",
-          "font-size": "$font-size-9",
-          "text-color": "$color-1",
-          "text-align": "$text-align-center"
+          "font-family": {
+            "value": "$OpenSans-Bold"
+          },
+          "font-family-name": {
+            "value": "OpenSans"
+          },
+          "font-weight": {
+            "value": "Bold"
+          },
+          "fontSize": {
+            "value": "$font-size-9"
+          },
+          "text-color": {
+            "value": "$White"
+          },
+          "text-align": {
+            "value": "$text-align-center"
+          }
         },
         "H1 - Left": {
-          "font-family": "OpenSans-Bold",
-          "font-family-name": "OpenSans",
-          "font-weight": "Bold",
-          "font-size": "$font-size-9",
-          "text-color": "$color-1",
-          "text-align": "$text-align-left"
+          "font-family": {
+            "value": "$OpenSans-Bold"
+          },
+          "font-family-name": {
+            "value": "OpenSans"
+          },
+          "font-weight": {
+            "value": "Bold"
+          },
+          "fontSize": {
+            "value": "$font-size-9"
+          },
+          "text-color": {
+            "value": "$White"
+          },
+          "text-align": {
+            "value": "$text-align-left"
+          }
         },
         "Primary": {
           "H1 - Center": {
-            "font-family": "OpenSans-Bold",
-            "font-family-name": "OpenSans",
-            "font-weight": "Bold",
-            "font-size": "$font-size-9",
-            "text-color": "$color-20",
-            "text-align": "$text-align-center"
+            "font-family": {
+              "value": "$OpenSans-Bold"
+            },
+            "font-family-name": {
+              "value": "OpenSans"
+            },
+            "font-weight": {
+              "value": "Bold"
+            },
+            "fontSize": {
+              "value": "$font-size-9"
+            },
+            "text-color": {
+              "value": "$Brand-Primary--lighter"
+            },
+            "text-align": {
+              "value": "$text-align-center"
+            }
           },
           "H1 - Left": {
-            "font-family": "OpenSans-Bold",
-            "font-family-name": "OpenSans",
-            "font-weight": "Bold",
-            "font-size": "$font-size-9",
-            "text-color": "$color-20",
-            "text-align": "$text-align-left"
+            "font-family": {
+              "value": "$OpenSans-Bold"
+            },
+            "font-family-name": {
+              "value": "OpenSans"
+            },
+            "font-weight": {
+              "value": "Bold"
+            },
+            "fontSize": {
+              "value": "$font-size-9"
+            },
+            "text-color": {
+              "value": "$Brand-Primary--lighter"
+            },
+            "text-align": {
+              "value": "$text-align-left"
+            }
           }
         },
         "Secondary": {
           "H1 - Center": {
-            "font-family": "OpenSans-Bold",
-            "font-family-name": "OpenSans",
-            "font-weight": "Bold",
-            "font-size": "$font-size-9",
-            "text-color": "$color-10",
-            "text-align": "$text-align-center"
+            "font-family": {
+              "value": "$OpenSans-Bold"
+            },
+            "font-family-name": {
+              "value": "OpenSans"
+            },
+            "font-weight": {
+              "value": "Bold"
+            },
+            "fontSize": {
+              "value": "$font-size-9"
+            },
+            "text-color": {
+              "value": "$Brand-Interaction"
+            },
+            "text-align": {
+              "value": "$text-align-center"
+            }
           },
           "H1 - Left": {
-            "font-family": "OpenSans-Bold",
-            "font-family-name": "OpenSans",
-            "font-weight": "Bold",
-            "font-size": "$font-size-9",
-            "text-color": "$color-10",
-            "text-align": "$text-align-left"
+            "font-family": {
+              "value": "$OpenSans-Bold"
+            },
+            "font-family-name": {
+              "value": "OpenSans"
+            },
+            "font-weight": {
+              "value": "Bold"
+            },
+            "fontSize": {
+              "value": "$font-size-9"
+            },
+            "text-color": {
+              "value": "$Brand-Interaction"
+            },
+            "text-align": {
+              "value": "$text-align-left"
+            }
           }
         }
       },
       "H2": {
         "H2 - Center": {
-          "font-family": "OpenSans-Semibold",
-          "font-family-name": "OpenSans",
-          "font-weight": "Semibold",
-          "font-size": "$font-size-8",
-          "text-color": "$color-1",
-          "text-align": "$text-align-center"
+          "font-family": {
+            "value": "$OpenSans-Semibold"
+          },
+          "font-family-name": {
+            "value": "OpenSans"
+          },
+          "font-weight": {
+            "value": "Semibold"
+          },
+          "fontSize": {
+            "value": "$font-size-8"
+          },
+          "text-color": {
+            "value": "$White"
+          },
+          "text-align": {
+            "value": "$text-align-center"
+          }
         },
         "H2 - Left": {
-          "font-family": "OpenSans-Semibold",
-          "font-family-name": "OpenSans",
-          "font-weight": "Semibold",
-          "font-size": "$font-size-8",
-          "text-color": "$color-1",
-          "text-align": "$text-align-left"
+          "font-family": {
+            "value": "$OpenSans-Semibold"
+          },
+          "font-family-name": {
+            "value": "OpenSans"
+          },
+          "font-weight": {
+            "value": "Semibold"
+          },
+          "fontSize": {
+            "value": "$font-size-8"
+          },
+          "text-color": {
+            "value": "$White"
+          },
+          "text-align": {
+            "value": "$text-align-left"
+          }
         },
         "Primary": {
           "H2 - Center": {
-            "font-family": "OpenSans-Semibold",
-            "font-family-name": "OpenSans",
-            "font-weight": "Semibold",
-            "font-size": "$font-size-8",
-            "text-color": "$color-20",
-            "text-align": "$text-align-center"
+            "font-family": {
+              "value": "$OpenSans-Semibold"
+            },
+            "font-family-name": {
+              "value": "OpenSans"
+            },
+            "font-weight": {
+              "value": "Semibold"
+            },
+            "fontSize": {
+              "value": "$font-size-8"
+            },
+            "text-color": {
+              "value": "$Brand-Primary--lighter"
+            },
+            "text-align": {
+              "value": "$text-align-center"
+            }
           },
           "H2 - Left": {
-            "font-family": "OpenSans-Semibold",
-            "font-family-name": "OpenSans",
-            "font-weight": "Semibold",
-            "font-size": "$font-size-8",
-            "text-color": "$color-20",
-            "text-align": "$text-align-left"
+            "font-family": {
+              "value": "$OpenSans-Semibold"
+            },
+            "font-family-name": {
+              "value": "OpenSans"
+            },
+            "font-weight": {
+              "value": "Semibold"
+            },
+            "fontSize": {
+              "value": "$font-size-8"
+            },
+            "text-color": {
+              "value": "$Brand-Primary--lighter"
+            },
+            "text-align": {
+              "value": "$text-align-left"
+            }
           }
         },
         "Secondary": {
           "H2 - Center": {
-            "font-family": "OpenSans-Semibold",
-            "font-family-name": "OpenSans",
-            "font-weight": "Semibold",
-            "font-size": "$font-size-8",
-            "text-color": "$color-10",
-            "text-align": "$text-align-center"
+            "font-family": {
+              "value": "$OpenSans-Semibold"
+            },
+            "font-family-name": {
+              "value": "OpenSans"
+            },
+            "font-weight": {
+              "value": "Semibold"
+            },
+            "fontSize": {
+              "value": "$font-size-8"
+            },
+            "text-color": {
+              "value": "$Brand-Interaction"
+            },
+            "text-align": {
+              "value": "$text-align-center"
+            }
           },
           "H2 - Left": {
-            "font-family": "OpenSans-Semibold",
-            "font-family-name": "OpenSans",
-            "font-weight": "Semibold",
-            "font-size": "$font-size-8",
-            "text-color": "$color-10",
-            "text-align": "$text-align-left"
+            "font-family": {
+              "value": "$OpenSans-Semibold"
+            },
+            "font-family-name": {
+              "value": "OpenSans"
+            },
+            "font-weight": {
+              "value": "Semibold"
+            },
+            "fontSize": {
+              "value": "$font-size-8"
+            },
+            "text-color": {
+              "value": "$Brand-Interaction"
+            },
+            "text-align": {
+              "value": "$text-align-left"
+            }
           }
         }
       },
       "H3": {
         "H3 - Center": {
-          "font-family": "OpenSans-Semibold",
-          "font-family-name": "OpenSans",
-          "font-weight": "Semibold",
-          "font-size": "$font-size-7",
-          "text-color": "$color-1",
-          "text-align": "$text-align-center"
+          "font-family": {
+            "value": "$OpenSans-Semibold"
+          },
+          "font-family-name": {
+            "value": "OpenSans"
+          },
+          "font-weight": {
+            "value": "Semibold"
+          },
+          "fontSize": {
+            "value": "$font-size-7"
+          },
+          "text-color": {
+            "value": "$White"
+          },
+          "text-align": {
+            "value": "$text-align-center"
+          }
         },
         "H3 - Left": {
-          "font-family": "OpenSans-Semibold",
-          "font-family-name": "OpenSans",
-          "font-weight": "Semibold",
-          "font-size": "$font-size-7",
-          "text-color": "$color-1",
-          "text-align": "$text-align-left"
+          "font-family": {
+            "value": "$OpenSans-Semibold"
+          },
+          "font-family-name": {
+            "value": "OpenSans"
+          },
+          "font-weight": {
+            "value": "Semibold"
+          },
+          "fontSize": {
+            "value": "$font-size-7"
+          },
+          "text-color": {
+            "value": "$White"
+          },
+          "text-align": {
+            "value": "$text-align-left"
+          }
         },
         "Primary": {
           "H3 - Center": {
-            "font-family": "OpenSans-Semibold",
-            "font-family-name": "OpenSans",
-            "font-weight": "Semibold",
-            "font-size": "$font-size-7",
-            "text-color": "$color-20",
-            "text-align": "$text-align-center"
+            "font-family": {
+              "value": "$OpenSans-Semibold"
+            },
+            "font-family-name": {
+              "value": "OpenSans"
+            },
+            "font-weight": {
+              "value": "Semibold"
+            },
+            "fontSize": {
+              "value": "$font-size-7"
+            },
+            "text-color": {
+              "value": "$Brand-Primary--lighter"
+            },
+            "text-align": {
+              "value": "$text-align-center"
+            }
           },
           "H3 - Left": {
-            "font-family": "OpenSans-Semibold",
-            "font-family-name": "OpenSans",
-            "font-weight": "Semibold",
-            "font-size": "$font-size-7",
-            "text-color": "$color-20",
-            "text-align": "$text-align-left"
+            "font-family": {
+              "value": "$OpenSans-Semibold"
+            },
+            "font-family-name": {
+              "value": "OpenSans"
+            },
+            "font-weight": {
+              "value": "Semibold"
+            },
+            "fontSize": {
+              "value": "$font-size-7"
+            },
+            "text-color": {
+              "value": "$Brand-Primary--lighter"
+            },
+            "text-align": {
+              "value": "$text-align-left"
+            }
           }
         },
         "Secondary": {
           "H3 - Center": {
-            "font-family": "OpenSans-Semibold",
-            "font-family-name": "OpenSans",
-            "font-weight": "Semibold",
-            "font-size": "$font-size-7",
-            "text-color": "$color-10",
-            "text-align": "$text-align-center"
+            "font-family": {
+              "value": "$OpenSans-Semibold"
+            },
+            "font-family-name": {
+              "value": "OpenSans"
+            },
+            "font-weight": {
+              "value": "Semibold"
+            },
+            "fontSize": {
+              "value": "$font-size-7"
+            },
+            "text-color": {
+              "value": "$Brand-Interaction"
+            },
+            "text-align": {
+              "value": "$text-align-center"
+            }
           },
           "H3 - Left": {
-            "font-family": "OpenSans-Semibold",
-            "font-family-name": "OpenSans",
-            "font-weight": "Semibold",
-            "font-size": "$font-size-7",
-            "text-color": "$color-10",
-            "text-align": "$text-align-left"
+            "font-family": {
+              "value": "$OpenSans-Semibold"
+            },
+            "font-family-name": {
+              "value": "OpenSans"
+            },
+            "font-weight": {
+              "value": "Semibold"
+            },
+            "fontSize": {
+              "value": "$font-size-7"
+            },
+            "text-color": {
+              "value": "$Brand-Interaction"
+            },
+            "text-align": {
+              "value": "$text-align-left"
+            }
           }
         }
       },
       "H4": {
         "H4 - Center": {
-          "font-family": "OpenSans-Semibold",
-          "font-family-name": "OpenSans",
-          "font-weight": "Semibold",
-          "font-size": "$font-size-6",
-          "text-color": "$color-1",
-          "text-align": "$text-align-center"
+          "font-family": {
+            "value": "$OpenSans-Semibold"
+          },
+          "font-family-name": {
+            "value": "OpenSans"
+          },
+          "font-weight": {
+            "value": "Semibold"
+          },
+          "fontSize": {
+            "value": "$font-size-6"
+          },
+          "text-color": {
+            "value": "$White"
+          },
+          "text-align": {
+            "value": "$text-align-center"
+          }
         },
         "H4 - Left": {
-          "font-family": "OpenSans-Semibold",
-          "font-family-name": "OpenSans",
-          "font-weight": "Semibold",
-          "font-size": "$font-size-6",
-          "text-color": "$color-1",
-          "text-align": "$text-align-left"
+          "font-family": {
+            "value": "$OpenSans-Semibold"
+          },
+          "font-family-name": {
+            "value": "OpenSans"
+          },
+          "font-weight": {
+            "value": "Semibold"
+          },
+          "fontSize": {
+            "value": "$font-size-6"
+          },
+          "text-color": {
+            "value": "$White"
+          },
+          "text-align": {
+            "value": "$text-align-left"
+          }
         },
         "H4 - Right": {
-          "font-family": "OpenSans-Semibold",
-          "font-family-name": "OpenSans",
-          "font-weight": "Semibold",
-          "font-size": "$font-size-6",
-          "text-color": "$color-1",
-          "text-align": "$text-align-right"
+          "font-family": {
+            "value": "$OpenSans-Semibold"
+          },
+          "font-family-name": {
+            "value": "OpenSans"
+          },
+          "font-weight": {
+            "value": "Semibold"
+          },
+          "fontSize": {
+            "value": "$font-size-6"
+          },
+          "text-color": {
+            "value": "$White"
+          },
+          "text-align": {
+            "value": "$text-align-right"
+          }
         },
         "Primary": {
           "H4 - Center": {
-            "font-family": "OpenSans-Semibold",
-            "font-family-name": "OpenSans",
-            "font-weight": "Semibold",
-            "font-size": "$font-size-6",
-            "text-color": "$color-20",
-            "text-align": "$text-align-center"
+            "font-family": {
+              "value": "$OpenSans-Semibold"
+            },
+            "font-family-name": {
+              "value": "OpenSans"
+            },
+            "font-weight": {
+              "value": "Semibold"
+            },
+            "fontSize": {
+              "value": "$font-size-6"
+            },
+            "text-color": {
+              "value": "$Brand-Primary--lighter"
+            },
+            "text-align": {
+              "value": "$text-align-center"
+            }
           },
           "H4 - Left": {
-            "font-family": "OpenSans-Semibold",
-            "font-family-name": "OpenSans",
-            "font-weight": "Semibold",
-            "font-size": "$font-size-6",
-            "text-color": "$color-20",
-            "text-align": "$text-align-left"
+            "font-family": {
+              "value": "$OpenSans-Semibold"
+            },
+            "font-family-name": {
+              "value": "OpenSans"
+            },
+            "font-weight": {
+              "value": "Semibold"
+            },
+            "fontSize": {
+              "value": "$font-size-6"
+            },
+            "text-color": {
+              "value": "$Brand-Primary--lighter"
+            },
+            "text-align": {
+              "value": "$text-align-left"
+            }
           },
           "H4 - Right": {
-            "font-family": "OpenSans-Semibold",
-            "font-family-name": "OpenSans",
-            "font-weight": "Semibold",
-            "font-size": "$font-size-6",
-            "text-color": "$color-20",
-            "text-align": "$text-align-right"
+            "font-family": {
+              "value": "$OpenSans-Semibold"
+            },
+            "font-family-name": {
+              "value": "OpenSans"
+            },
+            "font-weight": {
+              "value": "Semibold"
+            },
+            "fontSize": {
+              "value": "$font-size-6"
+            },
+            "text-color": {
+              "value": "$Brand-Primary--lighter"
+            },
+            "text-align": {
+              "value": "$text-align-right"
+            }
           }
         },
         "Secondary": {
           "H4 - Center": {
-            "font-family": "OpenSans-Semibold",
-            "font-family-name": "OpenSans",
-            "font-weight": "Semibold",
-            "font-size": "$font-size-6",
-            "text-color": "$color-10",
-            "text-align": "$text-align-center"
+            "font-family": {
+              "value": "$OpenSans-Semibold"
+            },
+            "font-family-name": {
+              "value": "OpenSans"
+            },
+            "font-weight": {
+              "value": "Semibold"
+            },
+            "fontSize": {
+              "value": "$font-size-6"
+            },
+            "text-color": {
+              "value": "$Brand-Interaction"
+            },
+            "text-align": {
+              "value": "$text-align-center"
+            }
           },
           "H4 - Left": {
-            "font-family": "OpenSans-Semibold",
-            "font-family-name": "OpenSans",
-            "font-weight": "Semibold",
-            "font-size": "$font-size-6",
-            "text-color": "$color-10",
-            "text-align": "$text-align-left"
+            "font-family": {
+              "value": "$OpenSans-Semibold"
+            },
+            "font-family-name": {
+              "value": "OpenSans"
+            },
+            "font-weight": {
+              "value": "Semibold"
+            },
+            "fontSize": {
+              "value": "$font-size-6"
+            },
+            "text-color": {
+              "value": "$Brand-Interaction"
+            },
+            "text-align": {
+              "value": "$text-align-left"
+            }
           },
           "H4 - Right": {
-            "font-family": "OpenSans-Semibold",
-            "font-family-name": "OpenSans",
-            "font-weight": "Semibold",
-            "font-size": "$font-size-6",
-            "text-color": "$color-10",
-            "text-align": "$text-align-right"
+            "font-family": {
+              "value": "$OpenSans-Semibold"
+            },
+            "font-family-name": {
+              "value": "OpenSans"
+            },
+            "font-weight": {
+              "value": "Semibold"
+            },
+            "fontSize": {
+              "value": "$font-size-6"
+            },
+            "text-color": {
+              "value": "$Brand-Interaction"
+            },
+            "text-align": {
+              "value": "$text-align-right"
+            }
           }
         }
       },
       "H5": {
         "H5 - Center": {
-          "font-family": "OpenSans-Bold",
-          "font-family-name": "OpenSans",
-          "font-weight": "Bold",
-          "font-size": "$font-size-5",
-          "text-color": "$color-1",
-          "text-align": "$text-align-center"
+          "font-family": {
+            "value": "$OpenSans-Bold"
+          },
+          "font-family-name": {
+            "value": "OpenSans"
+          },
+          "font-weight": {
+            "value": "Bold"
+          },
+          "fontSize": {
+            "value": "$font-size-5"
+          },
+          "text-color": {
+            "value": "$White"
+          },
+          "text-align": {
+            "value": "$text-align-center"
+          }
         },
         "H5 - Left": {
-          "font-family": "OpenSans-Bold",
-          "font-family-name": "OpenSans",
-          "font-weight": "Bold",
-          "font-size": "$font-size-5",
-          "text-color": "$color-1",
-          "text-align": "$text-align-left"
+          "font-family": {
+            "value": "$OpenSans-Bold"
+          },
+          "font-family-name": {
+            "value": "OpenSans"
+          },
+          "font-weight": {
+            "value": "Bold"
+          },
+          "fontSize": {
+            "value": "$font-size-5"
+          },
+          "text-color": {
+            "value": "$White"
+          },
+          "text-align": {
+            "value": "$text-align-left"
+          }
         },
         "H5 - Right": {
-          "font-family": "OpenSans-Bold",
-          "font-family-name": "OpenSans",
-          "font-weight": "Bold",
-          "font-size": "$font-size-5",
-          "text-color": "$color-1",
-          "text-align": "$text-align-center"
+          "font-family": {
+            "value": "$OpenSans-Bold"
+          },
+          "font-family-name": {
+            "value": "OpenSans"
+          },
+          "font-weight": {
+            "value": "Bold"
+          },
+          "fontSize": {
+            "value": "$font-size-5"
+          },
+          "text-color": {
+            "value": "$White"
+          },
+          "text-align": {
+            "value": "$text-align-center"
+          }
         },
         "Primary": {
           "H5 - Center": {
-            "font-family": "OpenSans-Bold",
-            "font-family-name": "OpenSans",
-            "font-weight": "Bold",
-            "font-size": "$font-size-5",
-            "text-color": "$color-20",
-            "text-align": "$text-align-center"
+            "font-family": {
+              "value": "$OpenSans-Bold"
+            },
+            "font-family-name": {
+              "value": "OpenSans"
+            },
+            "font-weight": {
+              "value": "Bold"
+            },
+            "fontSize": {
+              "value": "$font-size-5"
+            },
+            "text-color": {
+              "value": "$Brand-Primary--lighter"
+            },
+            "text-align": {
+              "value": "$text-align-center"
+            }
           },
           "H5 - Left": {
-            "font-family": "OpenSans-Bold",
-            "font-family-name": "OpenSans",
-            "font-weight": "Bold",
-            "font-size": "$font-size-5",
-            "text-color": "$color-20",
-            "text-align": "$text-align-left"
+            "font-family": {
+              "value": "$OpenSans-Bold"
+            },
+            "font-family-name": {
+              "value": "OpenSans"
+            },
+            "font-weight": {
+              "value": "Bold"
+            },
+            "fontSize": {
+              "value": "$font-size-5"
+            },
+            "text-color": {
+              "value": "$Brand-Primary--lighter"
+            },
+            "text-align": {
+              "value": "$text-align-left"
+            }
           }
         },
         "Secondary": {
           "H5 - Center": {
-            "font-family": "OpenSans-Bold",
-            "font-family-name": "OpenSans",
-            "font-weight": "Bold",
-            "font-size": "$font-size-5",
-            "text-color": "$color-10",
-            "text-align": "$text-align-center"
+            "font-family": {
+              "value": "$OpenSans-Bold"
+            },
+            "font-family-name": {
+              "value": "OpenSans"
+            },
+            "font-weight": {
+              "value": "Bold"
+            },
+            "fontSize": {
+              "value": "$font-size-5"
+            },
+            "text-color": {
+              "value": "$Brand-Interaction"
+            },
+            "text-align": {
+              "value": "$text-align-center"
+            }
           },
           "H5 - Left": {
-            "font-family": "OpenSans-Bold",
-            "font-family-name": "OpenSans",
-            "font-weight": "Bold",
-            "font-size": "$font-size-5",
-            "text-color": "$color-10",
-            "text-align": "$text-align-left"
+            "font-family": {
+              "value": "$OpenSans-Bold"
+            },
+            "font-family-name": {
+              "value": "OpenSans"
+            },
+            "font-weight": {
+              "value": "Bold"
+            },
+            "fontSize": {
+              "value": "$font-size-5"
+            },
+            "text-color": {
+              "value": "$Brand-Interaction"
+            },
+            "text-align": {
+              "value": "$text-align-left"
+            }
           }
         }
       },
       "H6": {
         "H6 - Center": {
-          "font-family": "OpenSans-Semibold",
-          "font-family-name": "OpenSans",
-          "font-weight": "Semibold",
-          "font-size": "$font-size-1",
-          "text-color": "$color-20",
-          "text-align": "$text-align-center"
+          "font-family": {
+            "value": "$OpenSans-Semibold"
+          },
+          "font-family-name": {
+            "value": "OpenSans"
+          },
+          "font-weight": {
+            "value": "Semibold"
+          },
+          "fontSize": {
+            "value": "$font-size-1"
+          },
+          "text-color": {
+            "value": "$Brand-Primary--lighter"
+          },
+          "text-align": {
+            "value": "$text-align-center"
+          }
         },
         "H6 - Left": {
-          "font-family": "OpenSans-Semibold",
-          "font-family-name": "OpenSans",
-          "font-weight": "Semibold",
-          "font-size": "$font-size-1",
-          "text-color": "$color-20",
-          "text-align": "$text-align-left"
+          "font-family": {
+            "value": "$OpenSans-Semibold"
+          },
+          "font-family-name": {
+            "value": "OpenSans"
+          },
+          "font-weight": {
+            "value": "Semibold"
+          },
+          "fontSize": {
+            "value": "$font-size-1"
+          },
+          "text-color": {
+            "value": "$Brand-Primary--lighter"
+          },
+          "text-align": {
+            "value": "$text-align-left"
+          }
         }
       },
       "Labels": {
         "Center": {
-          "font-family": "OpenSans-Semibold",
-          "font-family-name": "OpenSans",
-          "font-weight": "Semibold",
-          "font-size": "$font-size-2",
-          "text-color": "$color-1",
-          "text-align": "$text-align-center"
+          "font-family": {
+            "value": "$OpenSans-Semibold"
+          },
+          "font-family-name": {
+            "value": "OpenSans"
+          },
+          "font-weight": {
+            "value": "Semibold"
+          },
+          "fontSize": {
+            "value": "$font-size-2"
+          },
+          "text-color": {
+            "value": "$White"
+          },
+          "text-align": {
+            "value": "$text-align-center"
+          }
         },
         "Left": {
-          "font-family": "OpenSans-Semibold",
-          "font-family-name": "OpenSans",
-          "font-weight": "Semibold",
-          "font-size": "$font-size-2",
-          "text-color": "$color-1",
-          "text-align": "$text-align-left"
+          "font-family": {
+            "value": "$OpenSans-Semibold"
+          },
+          "font-family-name": {
+            "value": "OpenSans"
+          },
+          "font-weight": {
+            "value": "Semibold"
+          },
+          "fontSize": {
+            "value": "$font-size-2"
+          },
+          "text-color": {
+            "value": "$White"
+          },
+          "text-align": {
+            "value": "$text-align-left"
+          }
         }
       },
       "Links": {
         "Link": {
-          "font-family": "OpenSans-Semibold",
-          "font-family-name": "OpenSans",
-          "font-weight": "Semibold",
-          "font-size": "$font-size-4",
-          "text-color": "$color-1",
-          "text-align": "$text-align-left"
+          "font-family": {
+            "value": "$OpenSans-Semibold"
+          },
+          "font-family-name": {
+            "value": "OpenSans"
+          },
+          "font-weight": {
+            "value": "Semibold"
+          },
+          "fontSize": {
+            "value": "$font-size-4"
+          },
+          "text-color": {
+            "value": "$White"
+          },
+          "text-align": {
+            "value": "$text-align-left"
+          }
         },
         "Link - hover": {
-          "font-family": "OpenSans-Semibold",
-          "font-family-name": "OpenSans",
-          "font-weight": "Semibold",
-          "font-size": "$font-size-4",
-          "text-color": "$color-1",
-          "text-align": "$text-align-left"
+          "font-family": {
+            "value": "$OpenSans-Semibold"
+          },
+          "font-family-name": {
+            "value": "OpenSans"
+          },
+          "font-weight": {
+            "value": "Semibold"
+          },
+          "fontSize": {
+            "value": "$font-size-4"
+          },
+          "text-color": {
+            "value": "$White"
+          },
+          "text-align": {
+            "value": "$text-align-left"
+          }
         }
       },
       "Nav": {
         "NavItem": {
-          "font-family": "OpenSans",
-          "font-family-name": "OpenSans",
-          "font-weight": "Regular",
-          "font-size": "$font-size-7",
-          "text-color": "$color-1",
-          "text-align": "$text-align-left"
+          "font-family": {
+            "value": "$OpenSans"
+          },
+          "font-family-name": {
+            "value": "OpenSans"
+          },
+          "font-weight": {
+            "value": "Regular"
+          },
+          "fontSize": {
+            "value": "$font-size-7"
+          },
+          "text-color": {
+            "value": "$White"
+          },
+          "text-align": {
+            "value": "$text-align-left"
+          }
         },
         "NavItem - Active": {
-          "font-family": "OpenSans",
-          "font-family-name": "OpenSans",
-          "font-weight": "Regular",
-          "font-size": "$font-size-7",
-          "text-color": "$color-20",
-          "text-align": "$text-align-left"
+          "font-family": {
+            "value": "$OpenSans"
+          },
+          "font-family-name": {
+            "value": "OpenSans"
+          },
+          "font-weight": {
+            "value": "Regular"
+          },
+          "fontSize": {
+            "value": "$font-size-7"
+          },
+          "text-color": {
+            "value": "$Brand-Primary--lighter"
+          },
+          "text-align": {
+            "value": "$text-align-left"
+          }
         }
       }
     },
     "Nav": {
       "Element Describer": {
-        "font-family": "OpenSans",
-        "font-family-name": "OpenSans",
-        "font-weight": "Regular",
-        "font-size": "$font-size-6",
-        "text-color": "$color-60",
-        "text-align": "$text-align-left"
+        "font-family": {
+          "value": "$OpenSans"
+        },
+        "font-family-name": {
+          "value": "OpenSans"
+        },
+        "font-weight": {
+          "value": "Regular"
+        },
+        "fontSize": {
+          "value": "$font-size-6"
+        },
+        "text-color": {
+          "value": "$Text--lighter"
+        },
+        "text-align": {
+          "value": "$text-align-left"
+        }
       }
     },
     "Primary": {
       "Body": {
         "Body - Center": {
-          "font-family": "OpenSans",
-          "font-family-name": "OpenSans",
-          "font-weight": "Regular",
-          "font-size": "$font-size-5",
-          "text-color": "$color-11",
-          "text-align": "$text-align-center"
+          "font-family": {
+            "value": "$OpenSans"
+          },
+          "font-family-name": {
+            "value": "OpenSans"
+          },
+          "font-weight": {
+            "value": "Regular"
+          },
+          "fontSize": {
+            "value": "$font-size-5"
+          },
+          "text-color": {
+            "value": "$Text"
+          },
+          "text-align": {
+            "value": "$text-align-center"
+          }
         },
         "Body - Left": {
-          "font-family": "OpenSans",
-          "font-family-name": "OpenSans",
-          "font-weight": "Regular",
-          "font-size": "$font-size-5",
-          "text-color": "$color-11",
-          "text-align": "$text-align-left"
+          "font-family": {
+            "value": "$OpenSans"
+          },
+          "font-family-name": {
+            "value": "OpenSans"
+          },
+          "font-weight": {
+            "value": "Regular"
+          },
+          "fontSize": {
+            "value": "$font-size-5"
+          },
+          "text-color": {
+            "value": "$Text"
+          },
+          "text-align": {
+            "value": "$text-align-left"
+          }
         },
         "Body - Right": {
-          "font-family": "OpenSans",
-          "font-family-name": "OpenSans",
-          "font-weight": "Regular",
-          "font-size": "$font-size-5",
-          "text-color": "$color-11",
-          "text-align": "$text-align-right"
+          "font-family": {
+            "value": "$OpenSans"
+          },
+          "font-family-name": {
+            "value": "OpenSans"
+          },
+          "font-weight": {
+            "value": "Regular"
+          },
+          "fontSize": {
+            "value": "$font-size-5"
+          },
+          "text-color": {
+            "value": "$Text"
+          },
+          "text-align": {
+            "value": "$text-align-right"
+          }
         },
         "Large Body - Center": {
-          "font-family": "OpenSans",
-          "font-family-name": "OpenSans",
-          "font-weight": "Regular",
-          "font-size": "$font-size-6",
-          "text-color": "$color-11",
-          "text-align": "$text-align-center"
+          "font-family": {
+            "value": "$OpenSans"
+          },
+          "font-family-name": {
+            "value": "OpenSans"
+          },
+          "font-weight": {
+            "value": "Regular"
+          },
+          "fontSize": {
+            "value": "$font-size-6"
+          },
+          "text-color": {
+            "value": "$Text"
+          },
+          "text-align": {
+            "value": "$text-align-center"
+          }
         },
         "Large Body - Left": {
-          "font-family": "OpenSans",
-          "font-family-name": "OpenSans",
-          "font-weight": "Regular",
-          "font-size": "$font-size-6",
-          "text-color": "$color-11",
-          "text-align": "$text-align-left"
+          "font-family": {
+            "value": "$OpenSans"
+          },
+          "font-family-name": {
+            "value": "OpenSans"
+          },
+          "font-weight": {
+            "value": "Regular"
+          },
+          "fontSize": {
+            "value": "$font-size-6"
+          },
+          "text-color": {
+            "value": "$Text"
+          },
+          "text-align": {
+            "value": "$text-align-left"
+          }
         },
         "Large Body - Right": {
-          "font-family": "OpenSans",
-          "font-family-name": "OpenSans",
-          "font-weight": "Regular",
-          "font-size": "$font-size-6",
-          "text-color": "$color-11",
-          "text-align": "$text-align-right"
+          "font-family": {
+            "value": "$OpenSans"
+          },
+          "font-family-name": {
+            "value": "OpenSans"
+          },
+          "font-weight": {
+            "value": "Regular"
+          },
+          "fontSize": {
+            "value": "$font-size-6"
+          },
+          "text-color": {
+            "value": "$Text"
+          },
+          "text-align": {
+            "value": "$text-align-right"
+          }
         },
         "Small Body - Center": {
-          "font-family": "OpenSans",
-          "font-family-name": "OpenSans",
-          "font-weight": "Regular",
-          "font-size": "$font-size-3",
-          "text-color": "$color-60",
-          "text-align": "$text-align-center"
+          "font-family": {
+            "value": "$OpenSans"
+          },
+          "font-family-name": {
+            "value": "OpenSans"
+          },
+          "font-weight": {
+            "value": "Regular"
+          },
+          "fontSize": {
+            "value": "$font-size-3"
+          },
+          "text-color": {
+            "value": "$Text--lighter"
+          },
+          "text-align": {
+            "value": "$text-align-center"
+          }
         },
         "Small Body - Left": {
-          "font-family": "OpenSans",
-          "font-family-name": "OpenSans",
-          "font-weight": "Regular",
-          "font-size": "$font-size-3",
-          "text-color": "$color-60",
-          "text-align": "$text-align-left"
+          "font-family": {
+            "value": "$OpenSans"
+          },
+          "font-family-name": {
+            "value": "OpenSans"
+          },
+          "font-weight": {
+            "value": "Regular"
+          },
+          "fontSize": {
+            "value": "$font-size-3"
+          },
+          "text-color": {
+            "value": "$Text--lighter"
+          },
+          "text-align": {
+            "value": "$text-align-left"
+          }
         },
         "Small Body - Right": {
-          "font-family": "OpenSans",
-          "font-family-name": "OpenSans",
-          "font-weight": "Regular",
-          "font-size": "$font-size-3",
-          "text-color": "$color-60",
-          "text-align": "$text-align-right"
+          "font-family": {
+            "value": "$OpenSans"
+          },
+          "font-family-name": {
+            "value": "OpenSans"
+          },
+          "font-weight": {
+            "value": "Regular"
+          },
+          "fontSize": {
+            "value": "$font-size-3"
+          },
+          "text-color": {
+            "value": "$Text--lighter"
+          },
+          "text-align": {
+            "value": "$text-align-right"
+          }
         }
       },
       "Buttons": {
         "Button Label": {
-          "font-family": "OpenSans-Bold",
-          "font-family-name": "OpenSans",
-          "font-weight": "Bold",
-          "font-size": "$font-size-4",
-          "text-color": "$color-10",
-          "text-align": "$text-align-center"
+          "font-family": {
+            "value": "$OpenSans-Bold"
+          },
+          "font-family-name": {
+            "value": "OpenSans"
+          },
+          "font-weight": {
+            "value": "Bold"
+          },
+          "fontSize": {
+            "value": "$font-size-4"
+          },
+          "text-color": {
+            "value": "$Brand-Interaction"
+          },
+          "text-align": {
+            "value": "$text-align-center"
+          }
         },
         "Button Label - Inverted": {
-          "font-family": "OpenSans-Bold",
-          "font-family-name": "OpenSans",
-          "font-weight": "Bold",
-          "font-size": "$font-size-4",
-          "text-color": "$color-1",
-          "text-align": "$text-align-center"
+          "font-family": {
+            "value": "$OpenSans-Bold"
+          },
+          "font-family-name": {
+            "value": "OpenSans"
+          },
+          "font-weight": {
+            "value": "Bold"
+          },
+          "fontSize": {
+            "value": "$font-size-4"
+          },
+          "text-color": {
+            "value": "$White"
+          },
+          "text-align": {
+            "value": "$text-align-center"
+          }
         },
         "Text Link": {
-          "font-family": "OpenSans-Bold",
-          "font-family-name": "OpenSans",
-          "font-weight": "Bold",
-          "font-size": "$font-size-4",
-          "text-color": "$color-10",
-          "text-align": "$text-align-center"
+          "font-family": {
+            "value": "$OpenSans-Bold"
+          },
+          "font-family-name": {
+            "value": "OpenSans"
+          },
+          "font-weight": {
+            "value": "Bold"
+          },
+          "fontSize": {
+            "value": "$font-size-4"
+          },
+          "text-color": {
+            "value": "$Brand-Interaction"
+          },
+          "text-align": {
+            "value": "$text-align-center"
+          }
         },
         "Text Link - Inverted": {
-          "font-family": "OpenSans-Bold",
-          "font-family-name": "OpenSans",
-          "font-weight": "Bold",
-          "font-size": "$font-size-4",
-          "text-color": "$color-1",
-          "text-align": "$text-align-center"
+          "font-family": {
+            "value": "$OpenSans-Bold"
+          },
+          "font-family-name": {
+            "value": "OpenSans"
+          },
+          "font-weight": {
+            "value": "Bold"
+          },
+          "fontSize": {
+            "value": "$font-size-4"
+          },
+          "text-color": {
+            "value": "$White"
+          },
+          "text-align": {
+            "value": "$text-align-center"
+          }
         }
       },
       "Codes": {
         "Code Center": {
-          "font-family": "Inconsolata-Regular",
-          "font-family-name": "Inconsolata",
-          "font-weight": "Regular",
-          "font-size": "$font-size-5",
-          "text-color": "$color-11",
-          "text-align": "$text-align-center"
+          "font-family": {
+            "value": "$Inconsolata-Regular"
+          },
+          "font-family-name": {
+            "value": "Inconsolata"
+          },
+          "font-weight": {
+            "value": "Regular"
+          },
+          "fontSize": {
+            "value": "$font-size-5"
+          },
+          "text-color": {
+            "value": "$Text"
+          },
+          "text-align": {
+            "value": "$text-align-center"
+          }
         },
         "Code Left": {
-          "font-family": "Inconsolata-Regular",
-          "font-family-name": "Inconsolata",
-          "font-weight": "Regular",
-          "font-size": "$font-size-5",
-          "text-color": "$color-11",
-          "text-align": "$text-align-left"
+          "font-family": {
+            "value": "$Inconsolata-Regular"
+          },
+          "font-family-name": {
+            "value": "Inconsolata"
+          },
+          "font-weight": {
+            "value": "Regular"
+          },
+          "fontSize": {
+            "value": "$font-size-5"
+          },
+          "text-color": {
+            "value": "$Text"
+          },
+          "text-align": {
+            "value": "$text-align-left"
+          }
         },
         "Code Right": {
-          "font-family": "Inconsolata-Regular",
-          "font-family-name": "Inconsolata",
-          "font-weight": "Regular",
-          "font-size": "$font-size-5",
-          "text-color": "$color-11",
-          "text-align": "$text-align-right"
+          "font-family": {
+            "value": "$Inconsolata-Regular"
+          },
+          "font-family-name": {
+            "value": "Inconsolata"
+          },
+          "font-weight": {
+            "value": "Regular"
+          },
+          "fontSize": {
+            "value": "$font-size-5"
+          },
+          "text-color": {
+            "value": "$Text"
+          },
+          "text-align": {
+            "value": "$text-align-right"
+          }
         }
       },
       "Controls": {
         "Controls - Option": {
-          "font-family": "OpenSans-Semibold",
-          "font-family-name": "OpenSans",
-          "font-weight": "Semibold",
-          "font-size": "$font-size-2",
-          "text-color": "$color-20",
-          "text-align": "$text-align-center"
+          "font-family": {
+            "value": "$OpenSans-Semibold"
+          },
+          "font-family-name": {
+            "value": "OpenSans"
+          },
+          "font-weight": {
+            "value": "Semibold"
+          },
+          "fontSize": {
+            "value": "$font-size-2"
+          },
+          "text-color": {
+            "value": "$Brand-Primary--lighter"
+          },
+          "text-align": {
+            "value": "$text-align-center"
+          }
         }
       },
       "H1": {
         "Display": {
           "Hero - Center": {
-            "font-family": "OpenSans-Bold",
-            "font-family-name": "OpenSans",
-            "font-weight": "Bold",
-            "font-size": "$font-size-10",
-            "text-color": "$color-78",
-            "text-align": "$text-align-center"
+            "font-family": {
+              "value": "$OpenSans-Bold"
+            },
+            "font-family-name": {
+              "value": "OpenSans"
+            },
+            "font-weight": {
+              "value": "Bold"
+            },
+            "fontSize": {
+              "value": "$font-size-10"
+            },
+            "text-color": {
+              "value": "$Brand-Primary"
+            },
+            "text-align": {
+              "value": "$text-align-center"
+            }
           },
           "Hero - Left": {
-            "font-family": "OpenSans-Bold",
-            "font-family-name": "OpenSans",
-            "font-weight": "Bold",
-            "font-size": "$font-size-10",
-            "text-color": "$color-78",
-            "text-align": "$text-align-left"
+            "font-family": {
+              "value": "$OpenSans-Bold"
+            },
+            "font-family-name": {
+              "value": "OpenSans"
+            },
+            "font-weight": {
+              "value": "Bold"
+            },
+            "fontSize": {
+              "value": "$font-size-10"
+            },
+            "text-color": {
+              "value": "$Brand-Primary"
+            },
+            "text-align": {
+              "value": "$text-align-left"
+            }
           }
         },
         "H1 - Center": {
-          "font-family": "OpenSans-Bold",
-          "font-family-name": "OpenSans",
-          "font-weight": "Bold",
-          "font-size": "$font-size-9",
-          "text-color": "$color-11",
-          "text-align": "$text-align-center"
+          "font-family": {
+            "value": "$OpenSans-Bold"
+          },
+          "font-family-name": {
+            "value": "OpenSans"
+          },
+          "font-weight": {
+            "value": "Bold"
+          },
+          "fontSize": {
+            "value": "$font-size-9"
+          },
+          "text-color": {
+            "value": "$Text"
+          },
+          "text-align": {
+            "value": "$text-align-center"
+          }
         },
         "H1 - Left": {
-          "font-family": "OpenSans-Bold",
-          "font-family-name": "OpenSans",
-          "font-weight": "Bold",
-          "font-size": "$font-size-9",
-          "text-color": "$color-11",
-          "text-align": "$text-align-left"
+          "font-family": {
+            "value": "$OpenSans-Bold"
+          },
+          "font-family-name": {
+            "value": "OpenSans"
+          },
+          "font-weight": {
+            "value": "Bold"
+          },
+          "fontSize": {
+            "value": "$font-size-9"
+          },
+          "text-color": {
+            "value": "$Text"
+          },
+          "text-align": {
+            "value": "$text-align-left"
+          }
         },
         "Primary": {
           "H1 - Center": {
-            "font-family": "OpenSans-Bold",
-            "font-family-name": "OpenSans",
-            "font-weight": "Bold",
-            "font-size": "$font-size-9",
-            "text-color": "$color-78",
-            "text-align": "$text-align-center"
+            "font-family": {
+              "value": "$OpenSans-Bold"
+            },
+            "font-family-name": {
+              "value": "OpenSans"
+            },
+            "font-weight": {
+              "value": "Bold"
+            },
+            "fontSize": {
+              "value": "$font-size-9"
+            },
+            "text-color": {
+              "value": "$Brand-Primary"
+            },
+            "text-align": {
+              "value": "$text-align-center"
+            }
           },
           "H1 - Left": {
-            "font-family": "OpenSans-Bold",
-            "font-family-name": "OpenSans",
-            "font-weight": "Bold",
-            "font-size": "$font-size-9",
-            "text-color": "$color-78",
-            "text-align": "$text-align-left"
+            "font-family": {
+              "value": "$OpenSans-Bold"
+            },
+            "font-family-name": {
+              "value": "OpenSans"
+            },
+            "font-weight": {
+              "value": "Bold"
+            },
+            "fontSize": {
+              "value": "$font-size-9"
+            },
+            "text-color": {
+              "value": "$Brand-Primary"
+            },
+            "text-align": {
+              "value": "$text-align-left"
+            }
           }
         },
         "Secondary": {
           "H1 - Center": {
-            "font-family": "OpenSans-Bold",
-            "font-family-name": "OpenSans",
-            "font-weight": "Bold",
-            "font-size": "$font-size-9",
-            "text-color": "$color-10",
-            "text-align": "$text-align-center"
+            "font-family": {
+              "value": "$OpenSans-Bold"
+            },
+            "font-family-name": {
+              "value": "OpenSans"
+            },
+            "font-weight": {
+              "value": "Bold"
+            },
+            "fontSize": {
+              "value": "$font-size-9"
+            },
+            "text-color": {
+              "value": "$Brand-Interaction"
+            },
+            "text-align": {
+              "value": "$text-align-center"
+            }
           },
           "H1 - Left": {
-            "font-family": "OpenSans-Bold",
-            "font-family-name": "OpenSans",
-            "font-weight": "Bold",
-            "font-size": "$font-size-9",
-            "text-color": "$color-10",
-            "text-align": "$text-align-left"
+            "font-family": {
+              "value": "$OpenSans-Bold"
+            },
+            "font-family-name": {
+              "value": "OpenSans"
+            },
+            "font-weight": {
+              "value": "Bold"
+            },
+            "fontSize": {
+              "value": "$font-size-9"
+            },
+            "text-color": {
+              "value": "$Brand-Interaction"
+            },
+            "text-align": {
+              "value": "$text-align-left"
+            }
           }
         }
       },
       "H2": {
         "H2 - Center": {
-          "font-family": "OpenSans-Semibold",
-          "font-family-name": "OpenSans",
-          "font-weight": "Semibold",
-          "font-size": "$font-size-8",
-          "text-color": "$color-11",
-          "text-align": "$text-align-center"
+          "font-family": {
+            "value": "$OpenSans-Semibold"
+          },
+          "font-family-name": {
+            "value": "OpenSans"
+          },
+          "font-weight": {
+            "value": "Semibold"
+          },
+          "fontSize": {
+            "value": "$font-size-8"
+          },
+          "text-color": {
+            "value": "$Text"
+          },
+          "text-align": {
+            "value": "$text-align-center"
+          }
         },
         "H2 - Left": {
-          "font-family": "OpenSans-Semibold",
-          "font-family-name": "OpenSans",
-          "font-weight": "Semibold",
-          "font-size": "$font-size-8",
-          "text-color": "$color-11",
-          "text-align": "$text-align-left"
+          "font-family": {
+            "value": "$OpenSans-Semibold"
+          },
+          "font-family-name": {
+            "value": "OpenSans"
+          },
+          "font-weight": {
+            "value": "Semibold"
+          },
+          "fontSize": {
+            "value": "$font-size-8"
+          },
+          "text-color": {
+            "value": "$Text"
+          },
+          "text-align": {
+            "value": "$text-align-left"
+          }
         },
         "Primary": {
           "H2 - Center": {
-            "font-family": "OpenSans-Semibold",
-            "font-family-name": "OpenSans",
-            "font-weight": "Semibold",
-            "font-size": "$font-size-8",
-            "text-color": "$color-78",
-            "text-align": "$text-align-center"
+            "font-family": {
+              "value": "$OpenSans-Semibold"
+            },
+            "font-family-name": {
+              "value": "OpenSans"
+            },
+            "font-weight": {
+              "value": "Semibold"
+            },
+            "fontSize": {
+              "value": "$font-size-8"
+            },
+            "text-color": {
+              "value": "$Brand-Primary"
+            },
+            "text-align": {
+              "value": "$text-align-center"
+            }
           },
           "H2 - Left": {
-            "font-family": "OpenSans-Semibold",
-            "font-family-name": "OpenSans",
-            "font-weight": "Semibold",
-            "font-size": "$font-size-8",
-            "text-color": "$color-78",
-            "text-align": "$text-align-left"
+            "font-family": {
+              "value": "$OpenSans-Semibold"
+            },
+            "font-family-name": {
+              "value": "OpenSans"
+            },
+            "font-weight": {
+              "value": "Semibold"
+            },
+            "fontSize": {
+              "value": "$font-size-8"
+            },
+            "text-color": {
+              "value": "$Brand-Primary"
+            },
+            "text-align": {
+              "value": "$text-align-left"
+            }
           }
         },
         "Secondary": {
           "H2 - Center": {
-            "font-family": "OpenSans-Semibold",
-            "font-family-name": "OpenSans",
-            "font-weight": "Semibold",
-            "font-size": "$font-size-8",
-            "text-color": "$color-10",
-            "text-align": "$text-align-center"
+            "font-family": {
+              "value": "$OpenSans-Semibold"
+            },
+            "font-family-name": {
+              "value": "OpenSans"
+            },
+            "font-weight": {
+              "value": "Semibold"
+            },
+            "fontSize": {
+              "value": "$font-size-8"
+            },
+            "text-color": {
+              "value": "$Brand-Interaction"
+            },
+            "text-align": {
+              "value": "$text-align-center"
+            }
           },
           "H2 - Left": {
-            "font-family": "OpenSans-Semibold",
-            "font-family-name": "OpenSans",
-            "font-weight": "Semibold",
-            "font-size": "$font-size-8",
-            "text-color": "$color-10",
-            "text-align": "$text-align-left"
+            "font-family": {
+              "value": "$OpenSans-Semibold"
+            },
+            "font-family-name": {
+              "value": "OpenSans"
+            },
+            "font-weight": {
+              "value": "Semibold"
+            },
+            "fontSize": {
+              "value": "$font-size-8"
+            },
+            "text-color": {
+              "value": "$Brand-Interaction"
+            },
+            "text-align": {
+              "value": "$text-align-left"
+            }
           }
         }
       },
       "H3": {
         "H3 - Center": {
-          "font-family": "OpenSans-Semibold",
-          "font-family-name": "OpenSans",
-          "font-weight": "Semibold",
-          "font-size": "$font-size-7",
-          "text-color": "$color-11",
-          "text-align": "$text-align-center"
+          "font-family": {
+            "value": "$OpenSans-Semibold"
+          },
+          "font-family-name": {
+            "value": "OpenSans"
+          },
+          "font-weight": {
+            "value": "Semibold"
+          },
+          "fontSize": {
+            "value": "$font-size-7"
+          },
+          "text-color": {
+            "value": "$Text"
+          },
+          "text-align": {
+            "value": "$text-align-center"
+          }
         },
         "H3 - Left": {
-          "font-family": "OpenSans-Semibold",
-          "font-family-name": "OpenSans",
-          "font-weight": "Semibold",
-          "font-size": "$font-size-7",
-          "text-color": "$color-11",
-          "text-align": "$text-align-left"
+          "font-family": {
+            "value": "$OpenSans-Semibold"
+          },
+          "font-family-name": {
+            "value": "OpenSans"
+          },
+          "font-weight": {
+            "value": "Semibold"
+          },
+          "fontSize": {
+            "value": "$font-size-7"
+          },
+          "text-color": {
+            "value": "$Text"
+          },
+          "text-align": {
+            "value": "$text-align-left"
+          }
         },
         "Primary": {
           "H3 - Center": {
-            "font-family": "OpenSans-Semibold",
-            "font-family-name": "OpenSans",
-            "font-weight": "Semibold",
-            "font-size": "$font-size-7",
-            "text-color": "$color-78",
-            "text-align": "$text-align-center"
+            "font-family": {
+              "value": "$OpenSans-Semibold"
+            },
+            "font-family-name": {
+              "value": "OpenSans"
+            },
+            "font-weight": {
+              "value": "Semibold"
+            },
+            "fontSize": {
+              "value": "$font-size-7"
+            },
+            "text-color": {
+              "value": "$Brand-Primary"
+            },
+            "text-align": {
+              "value": "$text-align-center"
+            }
           },
           "H3 - Left": {
-            "font-family": "OpenSans-Semibold",
-            "font-family-name": "OpenSans",
-            "font-weight": "Semibold",
-            "font-size": "$font-size-7",
-            "text-color": "$color-78",
-            "text-align": "$text-align-left"
+            "font-family": {
+              "value": "$OpenSans-Semibold"
+            },
+            "font-family-name": {
+              "value": "OpenSans"
+            },
+            "font-weight": {
+              "value": "Semibold"
+            },
+            "fontSize": {
+              "value": "$font-size-7"
+            },
+            "text-color": {
+              "value": "$Brand-Primary"
+            },
+            "text-align": {
+              "value": "$text-align-left"
+            }
           }
         },
         "Secondary": {
           "H3 - Center": {
-            "font-family": "OpenSans-Semibold",
-            "font-family-name": "OpenSans",
-            "font-weight": "Semibold",
-            "font-size": "$font-size-7",
-            "text-color": "$color-10",
-            "text-align": "$text-align-center"
+            "font-family": {
+              "value": "$OpenSans-Semibold"
+            },
+            "font-family-name": {
+              "value": "OpenSans"
+            },
+            "font-weight": {
+              "value": "Semibold"
+            },
+            "fontSize": {
+              "value": "$font-size-7"
+            },
+            "text-color": {
+              "value": "$Brand-Interaction"
+            },
+            "text-align": {
+              "value": "$text-align-center"
+            }
           },
           "H3 - Left": {
-            "font-family": "OpenSans-Semibold",
-            "font-family-name": "OpenSans",
-            "font-weight": "Semibold",
-            "font-size": "$font-size-7",
-            "text-color": "$color-10",
-            "text-align": "$text-align-left"
+            "font-family": {
+              "value": "$OpenSans-Semibold"
+            },
+            "font-family-name": {
+              "value": "OpenSans"
+            },
+            "font-weight": {
+              "value": "Semibold"
+            },
+            "fontSize": {
+              "value": "$font-size-7"
+            },
+            "text-color": {
+              "value": "$Brand-Interaction"
+            },
+            "text-align": {
+              "value": "$text-align-left"
+            }
           }
         }
       },
       "H4": {
         "H4 - Center": {
-          "font-family": "OpenSans-Semibold",
-          "font-family-name": "OpenSans",
-          "font-weight": "Semibold",
-          "font-size": "$font-size-6",
-          "text-color": "$color-60",
-          "text-align": "$text-align-center"
+          "font-family": {
+            "value": "$OpenSans-Semibold"
+          },
+          "font-family-name": {
+            "value": "OpenSans"
+          },
+          "font-weight": {
+            "value": "Semibold"
+          },
+          "fontSize": {
+            "value": "$font-size-6"
+          },
+          "text-color": {
+            "value": "$Text--lighter"
+          },
+          "text-align": {
+            "value": "$text-align-center"
+          }
         },
         "H4 - Left": {
-          "font-family": "OpenSans-Semibold",
-          "font-family-name": "OpenSans",
-          "font-weight": "Semibold",
-          "font-size": "$font-size-6",
-          "text-color": "$color-60",
-          "text-align": "$text-align-left"
+          "font-family": {
+            "value": "$OpenSans-Semibold"
+          },
+          "font-family-name": {
+            "value": "OpenSans"
+          },
+          "font-weight": {
+            "value": "Semibold"
+          },
+          "fontSize": {
+            "value": "$font-size-6"
+          },
+          "text-color": {
+            "value": "$Text--lighter"
+          },
+          "text-align": {
+            "value": "$text-align-left"
+          }
         },
         "H4 - Right": {
-          "font-family": "OpenSans-Semibold",
-          "font-family-name": "OpenSans",
-          "font-weight": "Semibold",
-          "font-size": "$font-size-6",
-          "text-color": "$color-60",
-          "text-align": "$text-align-right"
+          "font-family": {
+            "value": "$OpenSans-Semibold"
+          },
+          "font-family-name": {
+            "value": "OpenSans"
+          },
+          "font-weight": {
+            "value": "Semibold"
+          },
+          "fontSize": {
+            "value": "$font-size-6"
+          },
+          "text-color": {
+            "value": "$Text--lighter"
+          },
+          "text-align": {
+            "value": "$text-align-right"
+          }
         },
         "Primary": {
           "H4 - Center": {
-            "font-family": "OpenSans-Semibold",
-            "font-family-name": "OpenSans",
-            "font-weight": "Semibold",
-            "font-size": "$font-size-6",
-            "text-color": "$color-78",
-            "text-align": "$text-align-center"
+            "font-family": {
+              "value": "$OpenSans-Semibold"
+            },
+            "font-family-name": {
+              "value": "OpenSans"
+            },
+            "font-weight": {
+              "value": "Semibold"
+            },
+            "fontSize": {
+              "value": "$font-size-6"
+            },
+            "text-color": {
+              "value": "$Brand-Primary"
+            },
+            "text-align": {
+              "value": "$text-align-center"
+            }
           },
           "H4 - Left": {
-            "font-family": "OpenSans-Semibold",
-            "font-family-name": "OpenSans",
-            "font-weight": "Semibold",
-            "font-size": "$font-size-6",
-            "text-color": "$color-78",
-            "text-align": "$text-align-left"
+            "font-family": {
+              "value": "$OpenSans-Semibold"
+            },
+            "font-family-name": {
+              "value": "OpenSans"
+            },
+            "font-weight": {
+              "value": "Semibold"
+            },
+            "fontSize": {
+              "value": "$font-size-6"
+            },
+            "text-color": {
+              "value": "$Brand-Primary"
+            },
+            "text-align": {
+              "value": "$text-align-left"
+            }
           },
           "H4 - Right": {
-            "font-family": "OpenSans-Semibold",
-            "font-family-name": "OpenSans",
-            "font-weight": "Semibold",
-            "font-size": "$font-size-6",
-            "text-color": "$color-78",
-            "text-align": "$text-align-right"
+            "font-family": {
+              "value": "$OpenSans-Semibold"
+            },
+            "font-family-name": {
+              "value": "OpenSans"
+            },
+            "font-weight": {
+              "value": "Semibold"
+            },
+            "fontSize": {
+              "value": "$font-size-6"
+            },
+            "text-color": {
+              "value": "$Brand-Primary"
+            },
+            "text-align": {
+              "value": "$text-align-right"
+            }
           }
         },
         "Secondary": {
           "H4 - Center": {
-            "font-family": "OpenSans-Semibold",
-            "font-family-name": "OpenSans",
-            "font-weight": "Semibold",
-            "font-size": "$font-size-6",
-            "text-color": "$color-10",
-            "text-align": "$text-align-center"
+            "font-family": {
+              "value": "$OpenSans-Semibold"
+            },
+            "font-family-name": {
+              "value": "OpenSans"
+            },
+            "font-weight": {
+              "value": "Semibold"
+            },
+            "fontSize": {
+              "value": "$font-size-6"
+            },
+            "text-color": {
+              "value": "$Brand-Interaction"
+            },
+            "text-align": {
+              "value": "$text-align-center"
+            }
           },
           "H4 - Left": {
-            "font-family": "OpenSans-Semibold",
-            "font-family-name": "OpenSans",
-            "font-weight": "Semibold",
-            "font-size": "$font-size-6",
-            "text-color": "$color-10",
-            "text-align": "$text-align-left"
+            "font-family": {
+              "value": "$OpenSans-Semibold"
+            },
+            "font-family-name": {
+              "value": "OpenSans"
+            },
+            "font-weight": {
+              "value": "Semibold"
+            },
+            "fontSize": {
+              "value": "$font-size-6"
+            },
+            "text-color": {
+              "value": "$Brand-Interaction"
+            },
+            "text-align": {
+              "value": "$text-align-left"
+            }
           },
           "H4 - Right": {
-            "font-family": "OpenSans-Semibold",
-            "font-family-name": "OpenSans",
-            "font-weight": "Semibold",
-            "font-size": "$font-size-6",
-            "text-color": "$color-10",
-            "text-align": "$text-align-right"
+            "font-family": {
+              "value": "$OpenSans-Semibold"
+            },
+            "font-family-name": {
+              "value": "OpenSans"
+            },
+            "font-weight": {
+              "value": "Semibold"
+            },
+            "fontSize": {
+              "value": "$font-size-6"
+            },
+            "text-color": {
+              "value": "$Brand-Interaction"
+            },
+            "text-align": {
+              "value": "$text-align-right"
+            }
           }
         }
       },
       "H5": {
         "H5 - Center": {
-          "font-family": "OpenSans-Bold",
-          "font-family-name": "OpenSans",
-          "font-weight": "Bold",
-          "font-size": "$font-size-5",
-          "text-color": "$color-60",
-          "text-align": "$text-align-center"
+          "font-family": {
+            "value": "$OpenSans-Bold"
+          },
+          "font-family-name": {
+            "value": "OpenSans"
+          },
+          "font-weight": {
+            "value": "Bold"
+          },
+          "fontSize": {
+            "value": "$font-size-5"
+          },
+          "text-color": {
+            "value": "$Text--lighter"
+          },
+          "text-align": {
+            "value": "$text-align-center"
+          }
         },
         "H5 - Left": {
-          "font-family": "OpenSans-Bold",
-          "font-family-name": "OpenSans",
-          "font-weight": "Bold",
-          "font-size": "$font-size-5",
-          "text-color": "$color-60",
-          "text-align": "$text-align-left"
+          "font-family": {
+            "value": "$OpenSans-Bold"
+          },
+          "font-family-name": {
+            "value": "OpenSans"
+          },
+          "font-weight": {
+            "value": "Bold"
+          },
+          "fontSize": {
+            "value": "$font-size-5"
+          },
+          "text-color": {
+            "value": "$Text--lighter"
+          },
+          "text-align": {
+            "value": "$text-align-left"
+          }
         },
         "H5 - Right": {
-          "font-family": "OpenSans-Bold",
-          "font-family-name": "OpenSans",
-          "font-weight": "Bold",
-          "font-size": "$font-size-5",
-          "text-color": "$color-60",
-          "text-align": "$text-align-center"
+          "font-family": {
+            "value": "$OpenSans-Bold"
+          },
+          "font-family-name": {
+            "value": "OpenSans"
+          },
+          "font-weight": {
+            "value": "Bold"
+          },
+          "fontSize": {
+            "value": "$font-size-5"
+          },
+          "text-color": {
+            "value": "$Text--lighter"
+          },
+          "text-align": {
+            "value": "$text-align-center"
+          }
         },
         "Primary": {
           "H5 - Center": {
-            "font-family": "OpenSans-Bold",
-            "font-family-name": "OpenSans",
-            "font-weight": "Bold",
-            "font-size": "$font-size-5",
-            "text-color": "$color-78",
-            "text-align": "$text-align-center"
+            "font-family": {
+              "value": "$OpenSans-Bold"
+            },
+            "font-family-name": {
+              "value": "OpenSans"
+            },
+            "font-weight": {
+              "value": "Bold"
+            },
+            "fontSize": {
+              "value": "$font-size-5"
+            },
+            "text-color": {
+              "value": "$Brand-Primary"
+            },
+            "text-align": {
+              "value": "$text-align-center"
+            }
           },
           "H5 - Left": {
-            "font-family": "OpenSans-Bold",
-            "font-family-name": "OpenSans",
-            "font-weight": "Bold",
-            "font-size": "$font-size-5",
-            "text-color": "$color-78",
-            "text-align": "$text-align-left"
+            "font-family": {
+              "value": "$OpenSans-Bold"
+            },
+            "font-family-name": {
+              "value": "OpenSans"
+            },
+            "font-weight": {
+              "value": "Bold"
+            },
+            "fontSize": {
+              "value": "$font-size-5"
+            },
+            "text-color": {
+              "value": "$Brand-Primary"
+            },
+            "text-align": {
+              "value": "$text-align-left"
+            }
           }
         },
         "Secondary": {
           "H5 - Center": {
-            "font-family": "OpenSans-Bold",
-            "font-family-name": "OpenSans",
-            "font-weight": "Bold",
-            "font-size": "$font-size-5",
-            "text-color": "$color-10",
-            "text-align": "$text-align-center"
+            "font-family": {
+              "value": "$OpenSans-Bold"
+            },
+            "font-family-name": {
+              "value": "OpenSans"
+            },
+            "font-weight": {
+              "value": "Bold"
+            },
+            "fontSize": {
+              "value": "$font-size-5"
+            },
+            "text-color": {
+              "value": "$Brand-Interaction"
+            },
+            "text-align": {
+              "value": "$text-align-center"
+            }
           },
           "H5 - Left": {
-            "font-family": "OpenSans-Bold",
-            "font-family-name": "OpenSans",
-            "font-weight": "Bold",
-            "font-size": "$font-size-5",
-            "text-color": "$color-10",
-            "text-align": "$text-align-left"
+            "font-family": {
+              "value": "$OpenSans-Bold"
+            },
+            "font-family-name": {
+              "value": "OpenSans"
+            },
+            "font-weight": {
+              "value": "Bold"
+            },
+            "fontSize": {
+              "value": "$font-size-5"
+            },
+            "text-color": {
+              "value": "$Brand-Interaction"
+            },
+            "text-align": {
+              "value": "$text-align-left"
+            }
           }
         }
       },
       "H6": {
         "H6 - Left": {
-          "font-family": "OpenSans-Bold",
-          "font-family-name": "OpenSans",
-          "font-weight": "Bold",
-          "font-size": "$font-size-1",
-          "text-color": "$color-11",
-          "text-align": "$text-align-left"
+          "font-family": {
+            "value": "$OpenSans-Bold"
+          },
+          "font-family-name": {
+            "value": "OpenSans"
+          },
+          "font-weight": {
+            "value": "Bold"
+          },
+          "fontSize": {
+            "value": "$font-size-1"
+          },
+          "text-color": {
+            "value": "$Text"
+          },
+          "text-align": {
+            "value": "$text-align-left"
+          }
         },
         "Primary": {
           "H6 - Center": {
-            "font-family": "OpenSans-Semibold",
-            "font-family-name": "OpenSans",
-            "font-weight": "Semibold",
-            "font-size": "$font-size-1",
-            "text-color": "$color-78",
-            "text-align": "$text-align-center"
+            "font-family": {
+              "value": "$OpenSans-Semibold"
+            },
+            "font-family-name": {
+              "value": "OpenSans"
+            },
+            "font-weight": {
+              "value": "Semibold"
+            },
+            "fontSize": {
+              "value": "$font-size-1"
+            },
+            "text-color": {
+              "value": "$Brand-Primary"
+            },
+            "text-align": {
+              "value": "$text-align-center"
+            }
           },
           "H6 - Left": {
-            "font-family": "OpenSans-Bold",
-            "font-family-name": "OpenSans",
-            "font-weight": "Bold",
-            "font-size": "$font-size-1",
-            "text-color": "$color-78",
-            "text-align": "$text-align-left"
+            "font-family": {
+              "value": "$OpenSans-Bold"
+            },
+            "font-family-name": {
+              "value": "OpenSans"
+            },
+            "font-weight": {
+              "value": "Bold"
+            },
+            "fontSize": {
+              "value": "$font-size-1"
+            },
+            "text-color": {
+              "value": "$Brand-Primary"
+            },
+            "text-align": {
+              "value": "$text-align-left"
+            }
           }
         }
       },
       "Labels": {
         "Center": {
-          "font-family": "OpenSans-Semibold",
-          "font-family-name": "OpenSans",
-          "font-weight": "Semibold",
-          "font-size": "$font-size-2",
-          "text-color": "$color-11",
-          "text-align": "$text-align-left"
+          "font-family": {
+            "value": "$OpenSans-Semibold"
+          },
+          "font-family-name": {
+            "value": "OpenSans"
+          },
+          "font-weight": {
+            "value": "Semibold"
+          },
+          "fontSize": {
+            "value": "$font-size-2"
+          },
+          "text-color": {
+            "value": "$Text"
+          },
+          "text-align": {
+            "value": "$text-align-left"
+          }
         },
         "Left": {
-          "font-family": "OpenSans-Semibold",
-          "font-family-name": "OpenSans",
-          "font-weight": "Semibold",
-          "font-size": "$font-size-2",
-          "text-color": "$color-11",
-          "text-align": "$text-align-left"
+          "font-family": {
+            "value": "$OpenSans-Semibold"
+          },
+          "font-family-name": {
+            "value": "OpenSans"
+          },
+          "font-weight": {
+            "value": "Semibold"
+          },
+          "fontSize": {
+            "value": "$font-size-2"
+          },
+          "text-color": {
+            "value": "$Text"
+          },
+          "text-align": {
+            "value": "$text-align-left"
+          }
         }
       },
       "Links": {
         "Link": {
-          "font-family": "OpenSans-Semibold",
-          "font-family-name": "OpenSans",
-          "font-weight": "Semibold",
-          "font-size": "$font-size-4",
-          "text-color": "$color-10",
-          "text-align": "$text-align-left"
+          "font-family": {
+            "value": "$OpenSans-Semibold"
+          },
+          "font-family-name": {
+            "value": "OpenSans"
+          },
+          "font-weight": {
+            "value": "Semibold"
+          },
+          "fontSize": {
+            "value": "$font-size-4"
+          },
+          "text-color": {
+            "value": "$Brand-Interaction"
+          },
+          "text-align": {
+            "value": "$text-align-left"
+          }
         },
         "Link - hover": {
-          "font-family": "OpenSans-Semibold",
-          "font-family-name": "OpenSans",
-          "font-weight": "Semibold",
-          "font-size": "$font-size-4",
-          "text-color": "$color-120",
-          "text-align": "$text-align-left"
+          "font-family": {
+            "value": "$OpenSans-Semibold"
+          },
+          "font-family-name": {
+            "value": "OpenSans"
+          },
+          "font-weight": {
+            "value": "Semibold"
+          },
+          "fontSize": {
+            "value": "$font-size-4"
+          },
+          "text-color": {
+            "value": "$Brand-Interaction--hover"
+          },
+          "text-align": {
+            "value": "$text-align-left"
+          }
         }
       },
       "Nav": {
         "NavItem": {
-          "font-family": "OpenSans",
-          "font-family-name": "OpenSans",
-          "font-weight": "Regular",
-          "font-size": "$font-size-7",
-          "text-color": "$color-11",
-          "text-align": "$text-align-left"
+          "font-family": {
+            "value": "$OpenSans"
+          },
+          "font-family-name": {
+            "value": "OpenSans"
+          },
+          "font-weight": {
+            "value": "Regular"
+          },
+          "fontSize": {
+            "value": "$font-size-7"
+          },
+          "text-color": {
+            "value": "$Text"
+          },
+          "text-align": {
+            "value": "$text-align-left"
+          }
         },
         "NavItem - Active": {
-          "font-family": "OpenSans",
-          "font-family-name": "OpenSans",
-          "font-weight": "Regular",
-          "font-size": "$font-size-7",
-          "text-color": "$color-20",
-          "text-align": "$text-align-left"
+          "font-family": {
+            "value": "$OpenSans"
+          },
+          "font-family-name": {
+            "value": "OpenSans"
+          },
+          "font-weight": {
+            "value": "Regular"
+          },
+          "fontSize": {
+            "value": "$font-size-7"
+          },
+          "text-color": {
+            "value": "$Brand-Primary--lighter"
+          },
+          "text-align": {
+            "value": "$text-align-left"
+          }
         }
       }
     }
