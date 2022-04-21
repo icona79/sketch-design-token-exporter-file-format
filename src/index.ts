@@ -61,23 +61,6 @@ fromFile(resolve(__dirname, sketchDocumentPath)).then(
 
     swatches.forEach(swatch => {
       let swatchColor = setColor(swatch, 'hex')
-      // swatchColor = rgbHex(
-      //   swatch.value.red * 255,
-      //   swatch.value.green * 255,
-      //   swatch.value.blue * 255,
-      //   swatch.value.alpha
-      // )
-      // "rgba(227, 2, 126, 1)"
-      // swatchColorRGBA =
-      //   'rgba(' +
-      //   Math.floor(swatch.value.red * 255) +
-      //   ' ,' +
-      //   Math.floor(swatch.value.green * 255) +
-      //   ' ,' +
-      //   Math.floor(swatch.value.blue * 255) +
-      //   ' ,' +
-      //   Math.floor(swatch.value.alpha * 100) / 100 +
-      //   ')'
       colors.push([
         swatch.name.substring(swatch.name.lastIndexOf('/') + 1),
         swatchColor,
