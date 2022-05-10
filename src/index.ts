@@ -6,8 +6,36 @@ import rgbHex from 'rgb-hex'
 import { isDeepStrictEqual } from 'util'
 import { getDefaultCompilerOptions, isConstructorTypeNode } from 'typescript'
 
-// const sketchDocumentPath = '../sample-file.sketch'
-const sketchDocumentPath = '../testKit.sketch'
+import config from './config.json'
+
+let sketchDocumentPath = config.defaultSketchFile
+
+const os = require('os')
+const path = require('path')
+const desktopDir = path.join(os.homedir(), 'Desktop')
+
+let desktopFile = desktopDir + '/Tokens.sketch'
+// Reminder, Process ARGV 0 and 1 are already set in package.json
+let argumentFile = process.argv[2]
+
+if (argumentFile !== undefined) {
+  let argumentDirectory = 'Desktop'
+  if (argumentFile.charAt(0) === '~' || argumentFile.charAt(0) === '/') {
+    let newArgumentFilePath = argumentFile.substring(1)
+    const [directory, ...file] = newArgumentFilePath.split('/')
+    argumentDirectory = path.join(os.homedir(), '/' + directory)
+    argumentFile = argumentDirectory + file.join('/')
+  } else if (argumentFile.charAt(0) === '.') {
+    argumentFile = path.resolve(argumentFile)
+  }
+}
+
+// Taking care of other option to selec the Document to be processed
+if (fs.existsSync(argumentFile)) {
+  sketchDocumentPath = argumentFile
+} else if (fs.existsSync(desktopFile)) {
+  sketchDocumentPath = desktopDir + '/Tokens.sketch'
+}
 
 // General variables
 const variablePrefix = '$'
@@ -844,7 +872,7 @@ fromFile(resolve(__dirname, sketchDocumentPath)).then(
 
     // Finally, store the color information in a `colors.json` file:
     fs.writeFile(
-      'design-tokens.json',
+      desktopDir + '/design-tokens.json',
       JSON.stringify(designTokensList, null, 2),
       err => {
         if (err) throw err
