@@ -1,8 +1,12 @@
-# File Format Project Template
+# Sketch Design Tokens exporter
 
-This is a template for a file format project, with a few basic features and sensible defaults.
+This tool permit you to export from a Sketch document a list of Design Tokens compatible with Amazon Style Dictionary
 
-## Setup
+## Script details
+
+[TBD]
+
+## Run the script
 
 Optional, if you use `nvm` (highly recommended):
 
@@ -22,3 +26,8 @@ and run the project:
 ```bash
 npm start
 ```
+
+### Options
+
+The script load by default the `testKit.sketch`
+It is possible to analyze any Sketch document via parameter (`npm start path_to_file`) or by placing a document named `Tokens.sketch` in your Desktop folder.
