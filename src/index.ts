@@ -927,11 +927,11 @@ function setColor(swatch, type = 'hex') {
     let swatchColorRGBA =
       'rgba(' +
       Math.floor(swatch.red * 255) +
-      ' ,' +
+      ', ' +
       Math.floor(swatch.green * 255) +
-      ' ,' +
+      ', ' +
       Math.floor(swatch.blue * 255) +
-      ' ,' +
+      ', ' +
       Math.floor(swatch.alpha * 100) / 100 +
       ')'
 
