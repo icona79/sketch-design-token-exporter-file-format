@@ -1119,9 +1119,9 @@ function setGradientDetails(object, currentItem, type = 0, prefix = '') {
 
   if (type === 1) {
     if (fill.gradient.elipseLength > 0) {
-      object['type'] = gradientCircleType[1]
+      currentObject['type'] = gradientCircleType[1]
     } else {
-      object['type'] = gradientCircleType[0]
+      currentObject['type'] = gradientCircleType[0]
     }
   }
   let degree = Math.round(
